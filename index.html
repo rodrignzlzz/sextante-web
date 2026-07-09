@@ -171,12 +171,36 @@
     position: relative;
     overflow: hidden;
   }
-  .hero .compass {
+  .hero .sextant {
     position: absolute;
-    right: -110px;
-    top: -140px;
-    opacity: 0.07;
+    right: -20px;
+    top: 50px;
+    opacity: 0.16;
     pointer-events: none;
+    animation: sextant-float 9s ease-in-out infinite;
+  }
+  .sextant-arm {
+    transform-box: view-box;
+    transform-origin: 50% 25%;
+    animation: sextant-swing 7s ease-in-out infinite;
+  }
+  .sextant-star {
+    animation: star-twinkle 4s ease-in-out infinite;
+  }
+  @keyframes sextant-swing {
+    0%, 100% { transform: rotate(-16deg); }
+    50% { transform: rotate(16deg); }
+  }
+  @keyframes sextant-float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-14px); }
+  }
+  @keyframes star-twinkle {
+    0%, 100% { opacity: 0.35; }
+    50% { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero .sextant, .sextant-arm, .sextant-star { animation: none; }
   }
   .hero-inner { max-width: 780px; position: relative; }
   .hero .eyebrow { margin-bottom: 22px; }
@@ -237,13 +261,20 @@
     overflow: hidden;
     box-shadow: var(--shadow-soft);
   }
-  .service-cell { background: var(--paper); padding: 32px; }
+  .service-cell {
+    background: var(--paper);
+    padding: 32px;
+    transition: background 0.25s ease;
+  }
+  .service-cell:hover { background: var(--forest-tint); }
   .service-cell .cell-title {
     font-family: var(--serif);
     font-size: 20px;
     font-weight: 500;
     margin-bottom: 10px;
+    transition: color 0.25s ease;
   }
+  .service-cell:hover .cell-title { color: var(--forest); }
   .service-cell .cell-desc {
     font-size: 14.5px;
     line-height: 1.6;
@@ -275,6 +306,11 @@
   .process-step {
     border-top: 1px solid rgba(245, 241, 232, 0.18);
     padding-top: 24px;
+    transition: transform 0.25s ease, border-top-color 0.25s ease;
+  }
+  .process-step:hover {
+    transform: translateY(-5px);
+    border-top-color: var(--gold);
   }
   .process-step .step-num {
     font-family: var(--mono);
@@ -500,19 +536,44 @@
   .faq-list { display: flex; flex-direction: column; }
   .faq-item {
     border-top: 1px solid rgba(245, 241, 232, 0.18);
-    padding: 26px 0;
   }
-  .faq-item .faq-q {
+  .faq-toggle {
+    width: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    text-align: left;
+    padding: 24px 0;
     font-family: var(--serif);
     font-size: 19px;
     font-weight: 500;
-    margin-bottom: 10px;
+    color: var(--cream);
+    transition: color 0.2s ease;
   }
-  .faq-item .faq-a {
+  .faq-toggle:hover { color: var(--gold); }
+  .faq-toggle .chev {
+    flex-shrink: 0;
+    transition: transform 0.3s ease;
+  }
+  .faq-item.open .faq-toggle .chev { transform: rotate(180deg); }
+  .faq-answer {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s ease;
+  }
+  .faq-item.open .faq-answer { grid-template-rows: 1fr; }
+  .faq-answer .faq-a {
+    overflow: hidden;
     font-size: 14.5px;
     line-height: 1.65;
     color: var(--cream-dim);
   }
+  .faq-item.open .faq-a { padding-bottom: 26px; }
+  .faq-a { transition: padding 0.35s ease; }
 
   /* CONTACTO */
   .contact { padding: 110px 32px; text-align: center; }
@@ -596,7 +657,7 @@
     .hero { padding: 56px 20px 48px; }
     .hero h1 { font-size: 33px; }
     .hero p { font-size: 16.5px; }
-    .hero .compass { width: 280px; height: 280px; right: -120px; top: -100px; }
+    .hero .sextant { width: 220px; height: 220px; right: -70px; top: 30px; opacity: 0.12; }
     .hero-ctas { flex-direction: column; }
     .hero-ctas a { text-align: center; }
     .stats .stat-title { font-size: 26px; }
@@ -653,14 +714,27 @@
 
   <!-- HERO -->
   <section class="hero container">
-    <svg class="compass" width="460" height="460" viewBox="0 0 100 100" aria-hidden="true">
-      <circle cx="50" cy="50" r="46" stroke="#0e5b43" stroke-width="0.5" fill="none"/>
-      <circle cx="50" cy="50" r="34" stroke="#0e5b43" stroke-width="0.5" fill="none"/>
-      <line x1="50" y1="2" x2="50" y2="98" stroke="#0e5b43" stroke-width="0.5"/>
-      <line x1="2" y1="50" x2="98" y2="50" stroke="#0e5b43" stroke-width="0.5"/>
-      <line x1="14" y1="14" x2="86" y2="86" stroke="#0e5b43" stroke-width="0.35"/>
-      <line x1="86" y1="14" x2="14" y2="86" stroke="#0e5b43" stroke-width="0.35"/>
-      <path d="M50 12 L55 50 L50 88 L45 50 Z" fill="#0e5b43"/>
+    <svg class="sextant" width="420" height="420" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+      <!-- estrella -->
+      <path class="sextant-star" d="M162 26 L165 34 L173 37 L165 40 L162 48 L159 40 L151 37 L159 34 Z" fill="#0e5b43"/>
+      <!-- telescopio -->
+      <line x1="100" y1="50" x2="130" y2="20" stroke="#0e5b43" stroke-width="5" stroke-linecap="round"/>
+      <!-- brazos del marco -->
+      <line x1="100" y1="50" x2="38" y2="148" stroke="#0e5b43" stroke-width="4" stroke-linecap="round"/>
+      <line x1="100" y1="50" x2="162" y2="148" stroke="#0e5b43" stroke-width="4" stroke-linecap="round"/>
+      <!-- travesaño -->
+      <line x1="65" y1="106" x2="135" y2="106" stroke="#0e5b43" stroke-width="3" stroke-linecap="round"/>
+      <!-- arco graduado -->
+      <path d="M38 148 A116 116 0 0 0 162 148" stroke="#0e5b43" stroke-width="4" stroke-linecap="round"/>
+      <path d="M44 152 A108 108 0 0 0 156 152" stroke="#0e5b43" stroke-width="7" stroke-dasharray="2 11" opacity="0.85"/>
+      <!-- brazo indice (animado) -->
+      <g class="sextant-arm">
+        <line x1="100" y1="50" x2="100" y2="164" stroke="#0e5b43" stroke-width="4" stroke-linecap="round"/>
+        <circle cx="100" cy="158" r="5" stroke="#0e5b43" stroke-width="3"/>
+      </g>
+      <!-- pivote -->
+      <circle cx="100" cy="50" r="7" fill="#0e5b43"/>
+      <circle cx="100" cy="50" r="2.6" fill="#f5f1e8"/>
     </svg>
     <div class="hero-inner">
       <div class="eyebrow">Financiación &amp; estructuración de capital</div>
@@ -893,21 +967,33 @@
     <div class="eyebrow">Preguntas frecuentes</div>
     <h2>Lo que nos preguntan siempre.</h2>
     <div class="faq-list">
-      <div class="faq-item">
-        <div class="faq-q">¿Cómo cobráis por vuestro trabajo?</div>
-        <div class="faq-a">Con un honorario base reducido y una parte del valor que le generamos al cliente: el ahorro conseguido frente a su situación de partida. Si no hay ahorro, no hay éxito que cobrar.</div>
+      <div class="faq-item open">
+        <button class="faq-toggle" aria-expanded="true">
+          ¿Cómo cobráis por vuestro trabajo?
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-a">Con un honorario base reducido y una parte del valor que le generamos al cliente: el ahorro conseguido frente a su situación de partida. Si no hay ahorro, no hay éxito que cobrar.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">¿Qué tamaño de operación trabajáis?</div>
-        <div class="faq-a">Analizamos cada caso de forma individual. En el diagnóstico inicial te decimos con franqueza si tu operación encaja con lo que hacemos.</div>
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Qué tamaño de operación trabajáis?
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-a">Analizamos cada caso de forma individual. En el diagnóstico inicial te decimos con franqueza si tu operación encaja con lo que hacemos.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">¿Cuánto tarda un proceso típico?</div>
-        <div class="faq-a">Depende de la complejidad de cada operación; te damos un plazo realista en el diagnóstico inicial y te mantenemos informado en todo momento.</div>
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Cuánto tarda un proceso típico?
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-a">Depende de la complejidad de cada operación; te damos un plazo realista en el diagnóstico inicial y te mantenemos informado en todo momento.</div></div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">¿Trabajáis con empresas de cualquier sector?</div>
-        <div class="faq-a">Sí, aunque el enfoque y los instrumentos disponibles varían según el sector y la etapa de la compañía.</div>
+        <button class="faq-toggle" aria-expanded="false">
+          ¿Trabajáis con empresas de cualquier sector?
+          <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="faq-answer"><div class="faq-a">Sí, aunque el enfoque y los instrumentos disponibles varían según el sector y la etapa de la compañía.</div></div>
       </div>
     </div>
     </div>
@@ -953,6 +1039,15 @@
     document.getElementById('tab-aplicar').setAttribute('aria-selected', !isInicio);
     window.scrollTo({ top: 0 });
   }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-toggle').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var item = btn.closest('.faq-item');
+      var isOpen = item.classList.toggle('open');
+      btn.setAttribute('aria-expanded', isOpen);
+    });
+  });
 
   // Anchor links in the nav should always land on the Inicio view
   document.querySelectorAll('.desktop-nav a, a[href="#contacto"], a[href="#que-hacemos"]').forEach(function (a) {
