@@ -141,9 +141,13 @@
     border-radius: var(--radius-btn);
     font-size: 15px;
     font-weight: 600;
-    transition: background 0.15s ease;
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .btn-primary:hover { background: var(--forest-deep); }
+  .btn-primary:hover {
+    background: var(--forest-deep);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -6px rgba(10, 70, 51, 0.45);
+  }
   .btn-secondary {
     display: inline-block;
     border: 1px solid var(--line-strong);
@@ -152,9 +156,14 @@
     font-size: 15px;
     font-weight: 600;
     color: var(--ink);
-    transition: border-color 0.15s ease, color 0.15s ease;
+    transition: border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
-  .btn-secondary:hover { border-color: var(--forest); color: var(--forest); }
+  .btn-secondary:hover {
+    border-color: var(--forest);
+    color: var(--forest);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px -8px rgba(22, 22, 15, 0.25);
+  }
 
   /* HERO */
   .hero {
@@ -344,10 +353,15 @@
     border-radius: var(--radius-card);
     background: var(--paper);
     box-shadow: var(--shadow-soft);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  .operation-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 2px 6px rgba(22,22,15,.06), 0 30px 70px -28px rgba(22,22,15,.32);
   }
   .operation-card .icon {
-    width: 34px;
-    height: 34px;
+    width: 38px;
+    height: 38px;
     border-radius: 8px;
     background: var(--forest-tint);
     display: flex;
@@ -356,8 +370,8 @@
     margin-bottom: 20px;
   }
   .operation-card .icon img {
-    height: 20px;
-    width: auto;
+    width: 24px;
+    height: 24px;
     display: block;
   }
   .operation-card .card-title {
@@ -369,6 +383,84 @@
     font-size: 13.5px;
     line-height: 1.6;
     color: var(--ink-soft);
+  }
+
+  /* HERRAMIENTAS */
+  .tools {
+    background: var(--paper);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+    padding: 100px 32px;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .tools h2 { margin-bottom: 24px; }
+  .tools .lead {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .tools .big-num {
+    font-family: var(--serif);
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 1;
+    color: var(--forest);
+  }
+  .tools .big-num-label {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-top: 10px;
+  }
+  .tool-items { display: flex; flex-direction: column; gap: 20px; }
+  .tool-item {
+    background: var(--cream);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-card);
+    padding: 24px 26px;
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .tool-item:hover {
+    transform: translateY(-3px);
+    border-color: var(--forest-line);
+    box-shadow: 0 2px 6px rgba(22,22,15,.06), 0 30px 70px -28px rgba(22,22,15,.32);
+  }
+  .tool-item .tool-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    color: var(--signal);
+    font-weight: 600;
+    padding-top: 3px;
+    flex-shrink: 0;
+  }
+  .tool-item .tool-title {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .tool-item .tool-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+  }
+  .tools .more-note {
+    font-size: 13.5px;
+    color: var(--ink-faint);
+    margin-top: 18px;
+    font-style: italic;
   }
 
   /* POR QUE SEXTANTE */
@@ -477,6 +569,7 @@
     .desktop-nav { display: none; }
     .hero h1 { font-size: 42px; }
     .services-grid,
+    .tools-grid,
     .turnaround { grid-template-columns: 1fr; gap: 40px; }
     .operations-grid,
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
@@ -502,6 +595,9 @@
     .services, .operations, .trust, .faq { padding-top: 64px; padding-bottom: 64px; }
     .process { padding: 64px 20px; }
     .process .compass { width: 220px; height: 220px; right: -80px; top: -60px; }
+    .tools { padding: 64px 20px; }
+    .tools .big-num { font-size: 56px; }
+    .tool-item { padding: 20px; gap: 14px; }
     .quote-section { padding-top: 64px; }
     .turnaround { padding: 0 20px 64px; }
     .contact { padding: 72px 20px; }
@@ -530,6 +626,7 @@
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#proceso">Cómo trabajamos</a>
       <a href="#sectores">Operaciones</a>
+      <a href="#herramientas">Herramientas</a>
       <a href="#equipo">Por qué nosotros</a>
     </nav>
 
@@ -686,24 +783,67 @@
     <h2>Adaptamos la estructura a cada situación de capital.</h2>
     <div class="operations-grid">
       <div class="operation-card">
-        <div class="icon"><img src="logo.png" alt="" aria-hidden="true"></div>
+        <div class="icon"><img src="icon-mark.png" alt="" aria-hidden="true"></div>
         <div class="card-title">Financiación de circulante</div>
         <div class="card-desc">Recursos para sostener el crecimiento operativo del negocio.</div>
       </div>
       <div class="operation-card">
-        <div class="icon"><img src="logo.png" alt="" aria-hidden="true"></div>
+        <div class="icon"><img src="icon-mark.png" alt="" aria-hidden="true"></div>
         <div class="card-title">Refinanciación</div>
         <div class="card-desc">Reordenación de compromisos financieros existentes en mejores condiciones.</div>
       </div>
       <div class="operation-card">
-        <div class="icon"><img src="logo.png" alt="" aria-hidden="true"></div>
+        <div class="icon"><img src="icon-mark.png" alt="" aria-hidden="true"></div>
         <div class="card-title">Sale &amp; leaseback</div>
         <div class="card-desc">Liberación de capital a través de activos inmobiliarios o productivos.</div>
       </div>
       <div class="operation-card">
-        <div class="icon"><img src="logo.png" alt="" aria-hidden="true"></div>
+        <div class="icon"><img src="icon-mark.png" alt="" aria-hidden="true"></div>
         <div class="card-title">Adquisición y expansión</div>
         <div class="card-desc">Capital para comprar compañías o financiar nuevas etapas de crecimiento.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HERRAMIENTAS -->
+  <section id="herramientas" class="tools">
+    <div class="container tools-grid">
+      <div>
+        <div class="eyebrow">Herramientas de financiación</div>
+        <h2>Conocemos más de 50 herramientas para mejorar tu financiación.</h2>
+        <p class="lead">
+          La mayoría de empresas trabaja siempre con las dos o tres de siempre.
+          Combinar las adecuadas cambia el coste, las garantías y la probabilidad
+          de éxito de la operación.
+        </p>
+        <div class="big-num">+50</div>
+        <div class="big-num-label">Instrumentos de financiación</div>
+      </div>
+      <div>
+        <div class="tool-items">
+          <div class="tool-item">
+            <div class="tool-num">01</div>
+            <div>
+              <div class="tool-title">Avales SGR y otros avales</div>
+              <div class="tool-desc">Sociedades de garantía recíproca y avales técnicos o financieros que desbloquean operaciones donde la garantía es el obstáculo.</div>
+            </div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-num">02</div>
+            <div>
+              <div class="tool-title">Líneas ICO</div>
+              <div class="tool-desc">Financiación con respaldo público para inversión y liquidez, en condiciones que el mercado por sí solo no ofrece.</div>
+            </div>
+          </div>
+          <div class="tool-item">
+            <div class="tool-num">03</div>
+            <div>
+              <div class="tool-title">Pólizas de crédito</div>
+              <div class="tool-desc">Liquidez flexible para el día a día del negocio, pagando solo por el capital realmente dispuesto.</div>
+            </div>
+          </div>
+        </div>
+        <p class="more-note">…y las demás las seleccionamos según lo que necesita tu operación.</p>
       </div>
     </div>
   </section>
