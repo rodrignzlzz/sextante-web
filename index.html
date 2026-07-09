@@ -1,0 +1,791 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sextante Capital — Financiación &amp; estructuración de capital</title>
+<meta name="description" content="Estructuramos operaciones de financiación de deuda, capital y fusiones para empresas y promotores — con criterio independiente, análisis riguroso y una ejecución cuidada de principio a fin.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: oklch(0.975 0.007 75);
+    --bg-alt: oklch(0.93 0.008 75);
+    --ink: oklch(0.2 0.015 250);
+    --ink-soft: oklch(0.35 0.02 250);
+    --ink-muted: oklch(0.4 0.02 250);
+    --ink-faint: oklch(0.45 0.02 250);
+    --ink-footer: oklch(0.5 0.02 250);
+    --line: oklch(0.85 0.01 75);
+    --line-strong: oklch(0.75 0.01 75);
+    --navy: oklch(0.26 0.09 255);
+    --navy-deep: oklch(0.24 0.09 255);
+    --navy-hover: oklch(0.32 0.09 255);
+    --navy-bg: oklch(0.16 0.07 255);
+    --navy-line: oklch(0.32 0.06 255);
+    --green: oklch(0.4 0.09 155);
+    --green-bg: oklch(0.92 0.03 155);
+    --gold: oklch(0.72 0.11 75);
+    --gold-soft: oklch(0.75 0.11 75);
+    --cream: oklch(0.97 0.008 80);
+    --cream-soft: oklch(0.95 0.01 80);
+    --cream-muted: oklch(0.75 0.015 80);
+    --serif: 'Newsreader', serif;
+    --sans: 'Public Sans', sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    font-family: var(--sans);
+    color: var(--ink);
+    min-height: 100vh;
+  }
+  a { color: inherit; text-decoration: none; }
+  ::selection { background: oklch(0.4 0.09 155 / 0.2); }
+  html { scroll-behavior: smooth; }
+
+  .container { max-width: 1200px; margin: 0 auto; }
+
+  .eyebrow {
+    font-size: 13.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 18px;
+  }
+
+  h2 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 34px;
+    line-height: 1.25;
+    margin: 0;
+  }
+
+  /* NAV */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: oklch(0.975 0.007 75 / 0.9);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .site-header .container {
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+  .brand svg { flex-shrink: 0; }
+
+  .desktop-nav { display: flex; align-items: center; gap: 36px; }
+  .desktop-nav a {
+    font-size: 14.5px;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+  .desktop-nav a:hover { color: var(--ink); }
+
+  .tab-switch {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px;
+    background: var(--bg-alt);
+    border-radius: 999px;
+  }
+  .tab-switch button {
+    border: none;
+    cursor: pointer;
+    padding: 9px 18px;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: var(--sans);
+    background: transparent;
+    color: var(--ink-muted);
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .tab-switch button.active {
+    background: var(--navy);
+    color: var(--cream);
+  }
+
+  /* BUTTONS */
+  .btn-primary {
+    display: inline-block;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 15px 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.15s ease;
+  }
+  .btn-primary:hover { background: var(--navy-hover); }
+  .btn-secondary {
+    display: inline-block;
+    border: 1px solid var(--line-strong);
+    padding: 15px 28px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--navy-deep);
+    transition: border-color 0.15s ease;
+  }
+  .btn-secondary:hover { border-color: var(--green); }
+
+  /* HERO */
+  .hero {
+    padding: 100px 32px 72px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero .compass {
+    position: absolute;
+    right: -110px;
+    top: -140px;
+    opacity: 0.06;
+    pointer-events: none;
+  }
+  .hero-inner { max-width: 780px; position: relative; }
+  .hero .eyebrow { margin-bottom: 22px; }
+  .hero h1 {
+    font-family: var(--serif);
+    font-weight: 500;
+    font-size: 56px;
+    line-height: 1.12;
+    margin: 0 0 26px;
+    letter-spacing: -0.01em;
+  }
+  .hero p {
+    font-size: 19px;
+    line-height: 1.6;
+    color: var(--ink-muted);
+    max-width: 620px;
+    margin: 0 0 36px;
+  }
+  .hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  /* STATS STRIP */
+  .stats {
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+  .stats .container {
+    padding: 40px 32px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .stats .stat-title {
+    font-family: var(--serif);
+    font-size: 34px;
+    font-weight: 500;
+  }
+  .stats .stat-desc {
+    font-size: 14.5px;
+    color: var(--ink-faint);
+    margin-top: 6px;
+  }
+
+  /* QUE HACEMOS */
+  .services { padding: 100px 32px; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.6fr;
+    gap: 64px;
+  }
+  .service-cells {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+  }
+  .service-cell { background: var(--bg); padding: 32px; }
+  .service-cell .cell-title {
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .service-cell .cell-desc {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-faint);
+  }
+
+  /* COMO TRABAJAMOS */
+  .process {
+    background: var(--navy-bg);
+    color: var(--cream-soft);
+    padding: 100px 32px;
+    position: relative;
+    overflow: hidden;
+  }
+  .process .compass {
+    position: absolute;
+    right: -70px;
+    top: -70px;
+    opacity: 0.08;
+  }
+  .process .container { position: relative; }
+  .process .eyebrow { color: var(--gold); }
+  .process h2 { margin-bottom: 56px; max-width: 620px; }
+  .process-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 48px;
+  }
+  .process-step {
+    border-top: 1px solid var(--navy-line);
+    padding-top: 24px;
+  }
+  .process-step .step-num {
+    font-size: 13px;
+    letter-spacing: 0.05em;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+  .process-step .step-title {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .process-step .step-desc {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--cream-muted);
+  }
+
+  /* DE UN NO A UN SI */
+  .quote-section { padding: 100px 32px 0; }
+  .quote-section blockquote {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 1.4;
+    color: var(--navy-deep);
+    max-width: 820px;
+    margin: 0 0 72px;
+  }
+  .turnaround {
+    padding: 0 32px 100px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: start;
+  }
+  .turnaround h2 { margin-bottom: 24px; }
+  .turnaround .lead {
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--ink-faint);
+    margin: 0;
+  }
+  .turnaround-items { display: flex; flex-direction: column; gap: 28px; }
+  .turnaround-item {
+    border-left: 2px solid var(--green);
+    padding-left: 20px;
+  }
+  .turnaround-item .item-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  .turnaround-item .item-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-faint);
+  }
+
+  /* SECTORES / OPERACIONES */
+  .operations { padding: 100px 32px; }
+  .operations h2 { margin-bottom: 56px; max-width: 620px; }
+  .operations-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .operation-card {
+    padding: 28px 24px;
+    border: 1px solid var(--line);
+    border-radius: 6px;
+  }
+  .operation-card .icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: var(--green-bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  .operation-card .icon::after {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 3px;
+    background: var(--green);
+  }
+  .operation-card .card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  .operation-card .card-desc {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--ink-faint);
+  }
+
+  /* POR QUE SEXTANTE */
+  .trust { background: var(--bg-alt); padding: 100px 32px; }
+  .trust h2 { margin-bottom: 56px; max-width: 620px; }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 28px;
+  }
+  .trust-item .item-title {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .trust-item .item-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-faint);
+  }
+
+  /* FAQ */
+  .faq { max-width: 900px; margin: 0 auto; padding: 100px 32px; }
+  .faq h2 { margin-bottom: 48px; }
+  .faq-list { display: flex; flex-direction: column; }
+  .faq-item {
+    border-top: 1px solid var(--line);
+    padding: 26px 0;
+  }
+  .faq-item .faq-q {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .faq-item .faq-a {
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--ink-faint);
+  }
+
+  /* CONTACTO */
+  .contact { padding: 110px 32px; text-align: center; }
+  .contact h2 {
+    font-size: 38px;
+    margin: 0 auto 22px;
+    max-width: 640px;
+  }
+  .contact p {
+    font-size: 16.5px;
+    color: var(--ink-faint);
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+  .contact .btn-primary { padding: 16px 32px; }
+
+  /* FOOTER */
+  .site-footer {
+    border-top: 1px solid var(--line);
+    padding: 40px 32px;
+  }
+  .site-footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .site-footer .footer-brand {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .site-footer .footer-note {
+    font-size: 13px;
+    color: var(--ink-footer);
+  }
+
+  /* APLICAR */
+  .aplicar-main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 140px 32px 160px;
+    text-align: center;
+  }
+  .aplicar-main svg { margin: 0 auto 28px; display: block; }
+  .aplicar-main h2 {
+    font-size: 34px;
+    line-height: 1.3;
+    margin: 0 0 20px;
+  }
+  .aplicar-main p {
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--ink-faint);
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+
+  [hidden] { display: none !important; }
+
+  /* RESPONSIVE */
+  @media (max-width: 960px) {
+    .desktop-nav { display: none; }
+    .hero h1 { font-size: 42px; }
+    .services-grid,
+    .turnaround { grid-template-columns: 1fr; gap: 40px; }
+    .operations-grid,
+    .trust-grid { grid-template-columns: repeat(2, 1fr); }
+    .process-steps { grid-template-columns: 1fr; gap: 36px; }
+    .stats .container { grid-template-columns: 1fr; gap: 28px; }
+  }
+  @media (max-width: 560px) {
+    .site-header .container { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
+    .hero { padding: 64px 20px 48px; }
+    .hero h1 { font-size: 34px; }
+    .hero p { font-size: 17px; }
+    .quote-section blockquote { font-size: 24px; }
+    .services, .operations, .trust, .faq, .contact,
+    .quote-section { padding-left: 20px; padding-right: 20px; }
+    .services, .operations, .trust, .faq { padding-top: 64px; padding-bottom: 64px; }
+    .process { padding: 64px 20px; }
+    .quote-section { padding-top: 64px; }
+    .turnaround { padding: 0 20px 64px; }
+    .contact { padding: 72px 20px; }
+    .contact h2 { font-size: 30px; }
+    .operations-grid, .trust-grid { grid-template-columns: 1fr; }
+    h2 { font-size: 28px; }
+    .aplicar-main { padding: 90px 20px 110px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="site-header">
+  <div class="container">
+    <a href="#" class="brand" onclick="showTab('inicio')">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <circle cx="12" cy="12" r="10.5" stroke="oklch(0.26 0.09 255)" stroke-width="1.2"/>
+        <path d="M12 3.5V12L17 15.5" stroke="oklch(0.26 0.09 255)" stroke-width="1.2" stroke-linecap="round"/>
+      </svg>
+      Sextante Capital
+    </a>
+
+    <nav class="desktop-nav">
+      <a href="#que-hacemos">Qué hacemos</a>
+      <a href="#proceso">Cómo trabajamos</a>
+      <a href="#sectores">Operaciones</a>
+      <a href="#equipo">Por qué nosotros</a>
+    </nav>
+
+    <div class="tab-switch" role="tablist" aria-label="Sección">
+      <button id="tab-inicio" class="active" role="tab" aria-selected="true" onclick="showTab('inicio')">Inicio</button>
+      <button id="tab-aplicar" role="tab" aria-selected="false" onclick="showTab('aplicar')">Aplicar</button>
+    </div>
+  </div>
+</header>
+
+<!-- ===================== INICIO ===================== -->
+<main id="view-inicio">
+
+  <!-- HERO -->
+  <section class="hero container">
+    <svg class="compass" width="460" height="460" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="46" stroke="oklch(0.24 0.09 255)" stroke-width="0.5" fill="none"/>
+      <circle cx="50" cy="50" r="34" stroke="oklch(0.24 0.09 255)" stroke-width="0.5" fill="none"/>
+      <line x1="50" y1="2" x2="50" y2="98" stroke="oklch(0.24 0.09 255)" stroke-width="0.5"/>
+      <line x1="2" y1="50" x2="98" y2="50" stroke="oklch(0.24 0.09 255)" stroke-width="0.5"/>
+      <line x1="14" y1="14" x2="86" y2="86" stroke="oklch(0.24 0.09 255)" stroke-width="0.35"/>
+      <line x1="86" y1="14" x2="14" y2="86" stroke="oklch(0.24 0.09 255)" stroke-width="0.35"/>
+      <path d="M50 12 L55 50 L50 88 L45 50 Z" fill="oklch(0.24 0.09 255)"/>
+    </svg>
+    <div class="hero-inner">
+      <div class="eyebrow">Financiación &amp; estructuración de capital</div>
+      <h1>Estructuramos el capital que necesita tu próxima etapa.</h1>
+      <p>
+        Estructuramos operaciones de financiación de deuda, capital y fusiones para empresas y promotores —
+        con criterio independiente, análisis riguroso y una ejecución cuidada de principio a fin.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contacto" class="btn-primary">Hablar con nosotros</a>
+        <a href="#que-hacemos" class="btn-secondary">Qué hacemos ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS STRIP -->
+  <section class="stats">
+    <div class="container">
+      <div>
+        <div class="stat-title">Deuda &amp; M&amp;A</div>
+        <div class="stat-desc">Estructuras a medida según la etapa y el riesgo de cada operación.</div>
+      </div>
+      <div>
+        <div class="stat-title">Independientes</div>
+        <div class="stat-desc">Sin vínculos con entidades financiadoras. Trabajamos para el cliente.</div>
+      </div>
+      <div>
+        <div class="stat-title">De extremo a extremo</div>
+        <div class="stat-desc">Desde el diagnóstico hasta el cierre y el seguimiento posterior.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUE HACEMOS -->
+  <section id="que-hacemos" class="services container">
+    <div class="services-grid">
+      <div>
+        <div class="eyebrow">Qué hacemos</div>
+        <h2>Financiación y estructuración, a la medida de cada operación.</h2>
+      </div>
+      <div class="service-cells">
+        <div class="service-cell">
+          <div class="cell-title">Financiación de deuda</div>
+          <div class="cell-desc">Estructuración y búsqueda de deuda senior, mezzanine y financiación garantizada según el perfil de la operación.</div>
+        </div>
+        <div class="service-cell">
+          <div class="cell-title">Project finance</div>
+          <div class="cell-desc">Estructuras dedicadas a proyectos con flujos de caja propios y repago a largo plazo.</div>
+        </div>
+        <div class="service-cell">
+          <div class="cell-title">Fusiones y adquisiciones</div>
+          <div class="cell-desc">Compraventas, valoración y negociación en operaciones corporativas.</div>
+        </div>
+        <div class="service-cell">
+          <div class="cell-title">Reestructuración financiera</div>
+          <div class="cell-desc">Reordenación de la estructura de deuda existente ante cambios de ciclo o de estrategia.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COMO TRABAJAMOS -->
+  <section id="proceso" class="process">
+    <svg class="compass" width="380" height="380" viewBox="0 0 100 100" aria-hidden="true">
+      <circle cx="50" cy="50" r="46" stroke="oklch(0.75 0.11 75)" stroke-width="0.6" fill="none"/>
+      <circle cx="50" cy="50" r="34" stroke="oklch(0.75 0.11 75)" stroke-width="0.6" fill="none"/>
+      <line x1="50" y1="2" x2="50" y2="98" stroke="oklch(0.75 0.11 75)" stroke-width="0.6"/>
+      <line x1="2" y1="50" x2="98" y2="50" stroke="oklch(0.75 0.11 75)" stroke-width="0.6"/>
+      <line x1="14" y1="14" x2="86" y2="86" stroke="oklch(0.75 0.11 75)" stroke-width="0.4"/>
+      <line x1="86" y1="14" x2="14" y2="86" stroke="oklch(0.75 0.11 75)" stroke-width="0.4"/>
+      <path d="M50 12 L55 50 L50 88 L45 50 Z" fill="oklch(0.75 0.11 75)"/>
+    </svg>
+    <div class="container">
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Tres fases, con criterio claro en cada una.</h2>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="step-num">PASO 01</div>
+          <div class="step-title">Diagnóstico</div>
+          <div class="step-desc">Analizamos la situación financiera y los objetivos de la operación para definir el enfoque adecuado.</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">PASO 02</div>
+          <div class="step-title">Estructura</div>
+          <div class="step-desc">Diseñamos la estructura de capital óptima y preparamos la documentación para el mercado.</div>
+        </div>
+        <div class="process-step">
+          <div class="step-num">PASO 03</div>
+          <div class="step-title">Ejecución</div>
+          <div class="step-desc">Acompañamos la negociación hasta el cierre, y damos seguimiento tras la operación.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DE UN NO A UN SI -->
+  <section class="quote-section container">
+    <blockquote>
+      "No es que tu operación no sea financiable. Es que nadie te ha enseñado dónde y cómo buscarla."
+    </blockquote>
+  </section>
+  <section class="turnaround container">
+    <div>
+      <div class="eyebrow">Cuando ya te han dicho que no</div>
+      <h2>Convertimos una negativa en condiciones mejores.</h2>
+      <p class="lead">
+        Un rechazo o unas condiciones pobres suelen deberse a cómo se ha presentado la operación, no a la operación en sí.
+        Con el enfoque, la documentación y los interlocutores adecuados, hemos visto convertirse un "no" en un "sí" —
+        y unas condiciones aceptables en unas notablemente mejores.
+      </p>
+    </div>
+    <div class="turnaround-items">
+      <div class="turnaround-item">
+        <div class="item-title">Reestructurar la propuesta</div>
+        <div class="item-desc">Reformulamos el dossier y los términos para responder a lo que realmente preocupa al financiador.</div>
+      </div>
+      <div class="turnaround-item">
+        <div class="item-title">Ampliar el círculo</div>
+        <div class="item-desc">Llevamos la operación a otros interlocutores mejor alineados con su perfil.</div>
+      </div>
+      <div class="turnaround-item">
+        <div class="item-title">Renegociar condiciones</div>
+        <div class="item-desc">Usamos alternativas reales sobre la mesa para mejorar tipo, garantías y plazos.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TIPOS DE OPERACION -->
+  <section id="sectores" class="operations container">
+    <div class="eyebrow">Tipos de operación</div>
+    <h2>Adaptamos la estructura a cada situación de capital.</h2>
+    <div class="operations-grid">
+      <div class="operation-card">
+        <div class="icon"></div>
+        <div class="card-title">Financiación de circulante</div>
+        <div class="card-desc">Recursos para sostener el crecimiento operativo del negocio.</div>
+      </div>
+      <div class="operation-card">
+        <div class="icon"></div>
+        <div class="card-title">Refinanciación</div>
+        <div class="card-desc">Reordenación de compromisos financieros existentes en mejores condiciones.</div>
+      </div>
+      <div class="operation-card">
+        <div class="icon"></div>
+        <div class="card-title">Sale &amp; leaseback</div>
+        <div class="card-desc">Liberación de capital a través de activos inmobiliarios o productivos.</div>
+      </div>
+      <div class="operation-card">
+        <div class="icon"></div>
+        <div class="card-title">M&amp;A</div>
+        <div class="card-desc">Compraventa de compañías y procesos de consolidación sectorial.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- POR QUE SEXTANTE -->
+  <section id="equipo" class="trust">
+    <div class="container">
+      <div class="eyebrow">Por qué Sextante</div>
+      <h2>Trabajamos para el cliente, no para el financiador.</h2>
+      <div class="trust-grid">
+        <div class="trust-item">
+          <div class="item-title">Independientes</div>
+          <div class="item-desc">Sin vínculos con entidades financiadoras ni comisiones por colocación.</div>
+        </div>
+        <div class="trust-item">
+          <div class="item-title">Honorarios claros</div>
+          <div class="item-desc">Sabes desde el inicio qué pagas y por qué, sin sorpresas al cierre.</div>
+        </div>
+        <div class="trust-item">
+          <div class="item-title">Confidencialidad</div>
+          <div class="item-desc">Cada operación se trata con la máxima discreción, dentro y fuera del proceso.</div>
+        </div>
+        <div class="trust-item">
+          <div class="item-title">Acompañamiento real</div>
+          <div class="item-desc">Un mismo interlocutor desde el diagnóstico hasta el cierre y después.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="eyebrow">Preguntas frecuentes</div>
+    <h2>Lo que nos preguntan siempre.</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">¿Cómo cobráis por vuestro trabajo?</div>
+        <div class="faq-a">Con un honorario base reducido y una parte del valor que le generamos al cliente: el ahorro conseguido frente a su situación de partida. Si no hay ahorro, no hay éxito que cobrar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Qué tamaño de operación trabajáis?</div>
+        <div class="faq-a">Analizamos cada caso de forma individual. En el diagnóstico inicial te decimos con franqueza si tu operación encaja con lo que hacemos.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Cuánto tarda un proceso típico?</div>
+        <div class="faq-a">Depende de la complejidad, pero un proceso de financiación suele moverse entre 6 y 14 semanas desde el diagnóstico hasta el cierre.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">¿Trabajáis con empresas de cualquier sector?</div>
+        <div class="faq-a">Sí, aunque el enfoque y los instrumentos disponibles varían según el sector y la etapa de la compañía.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="contact container">
+    <h2>Hablemos de la estructura de tu próxima operación.</h2>
+    <p>Cuéntanos brevemente tu situación y te respondemos en menos de 48 horas laborables.</p>
+    <a href="mailto:hola@sextantecapital.es" class="btn-primary">hola@sextantecapital.es</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-brand">Sextante Capital</div>
+      <div class="footer-note">© 2026 Sextante Capital. Contenido informativo, no constituye oferta vinculante.</div>
+    </div>
+  </footer>
+
+</main>
+
+<!-- ===================== APLICAR ===================== -->
+<main id="view-aplicar" class="aplicar-main" hidden>
+  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+    <circle cx="12" cy="12" r="10.5" stroke="oklch(0.4 0.09 155)" stroke-width="1.2"/>
+    <path d="M12 3.5V12L17 15.5" stroke="oklch(0.4 0.09 155)" stroke-width="1.2" stroke-linecap="round"/>
+  </svg>
+  <div class="eyebrow">Aplicar</div>
+  <h2>El formulario de aplicación estará disponible próximamente.</h2>
+  <p>
+    Muy pronto podrás enviarnos la información de tu operación directamente desde aquí.
+    Mientras tanto, escríbenos y lo revisamos contigo.
+  </p>
+  <a href="mailto:hola@sextantecapital.es" class="btn-primary">hola@sextantecapital.es</a>
+</main>
+
+<script>
+  function showTab(tab) {
+    var isInicio = tab === 'inicio';
+    document.getElementById('view-inicio').hidden = !isInicio;
+    document.getElementById('view-aplicar').hidden = isInicio;
+    document.getElementById('tab-inicio').classList.toggle('active', isInicio);
+    document.getElementById('tab-aplicar').classList.toggle('active', !isInicio);
+    document.getElementById('tab-inicio').setAttribute('aria-selected', isInicio);
+    document.getElementById('tab-aplicar').setAttribute('aria-selected', !isInicio);
+    window.scrollTo({ top: 0 });
+  }
+
+  // Anchor links in the nav should always land on the Inicio view
+  document.querySelectorAll('.desktop-nav a, a[href="#contacto"], a[href="#que-hacemos"]').forEach(function (a) {
+    a.addEventListener('click', function () {
+      if (document.getElementById('view-inicio').hidden) showTab('inicio');
+    });
+  });
+</script>
+
+</body>
+</html>
