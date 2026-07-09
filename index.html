@@ -199,9 +199,8 @@
 
   /* STATS STRIP */
   .stats {
-    border-top: 1px solid var(--line);
-    border-bottom: 1px solid var(--line);
-    background: var(--paper);
+    background: var(--forest-deep);
+    color: var(--cream);
   }
   .stats .container {
     padding: 40px 32px;
@@ -216,7 +215,7 @@
   }
   .stats .stat-desc {
     font-size: 14.5px;
-    color: var(--ink-faint);
+    color: var(--cream-dim);
     margin-top: 6px;
     line-height: 1.55;
   }
@@ -340,7 +339,12 @@
   }
 
   /* SECTORES / OPERACIONES */
-  .operations { padding: 100px 32px; }
+  .operations {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 100px 32px;
+  }
+  .operations .eyebrow { color: var(--gold); }
   .operations h2 { margin-bottom: 56px; max-width: 620px; }
   .operations-grid {
     display: grid;
@@ -352,6 +356,7 @@
     border: 1px solid var(--line);
     border-radius: var(--radius-card);
     background: var(--paper);
+    color: var(--ink);
     box-shadow: var(--shadow-soft);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
@@ -484,11 +489,17 @@
   }
 
   /* FAQ */
-  .faq { max-width: 900px; margin: 0 auto; padding: 100px 32px; }
+  .faq {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 100px 32px;
+  }
+  .faq-inner { max-width: 836px; margin: 0 auto; }
+  .faq .eyebrow { color: var(--gold); }
   .faq h2 { margin-bottom: 48px; }
   .faq-list { display: flex; flex-direction: column; }
   .faq-item {
-    border-top: 1px solid var(--line);
+    border-top: 1px solid rgba(245, 241, 232, 0.18);
     padding: 26px 0;
   }
   .faq-item .faq-q {
@@ -500,7 +511,7 @@
   .faq-item .faq-a {
     font-size: 14.5px;
     line-height: 1.65;
-    color: var(--ink-soft);
+    color: var(--cream-dim);
   }
 
   /* CONTACTO */
@@ -669,7 +680,7 @@
   <section class="stats">
     <div class="container">
       <div>
-        <div class="stat-title">Deuda &amp; M&amp;A</div>
+        <div class="stat-title">Deuda &amp; adquisiciones</div>
         <div class="stat-desc">Estructuras a medida según la etapa y el riesgo de cada operación.</div>
       </div>
       <div>
@@ -778,7 +789,8 @@
   </section>
 
   <!-- TIPOS DE OPERACION -->
-  <section id="sectores" class="operations container">
+  <section id="sectores" class="operations">
+    <div class="container">
     <div class="eyebrow">Tipos de operación</div>
     <h2>Adaptamos la estructura a cada situación de capital.</h2>
     <div class="operations-grid">
@@ -802,6 +814,7 @@
         <div class="card-title">Adquisición y expansión</div>
         <div class="card-desc">Capital para comprar compañías o financiar nuevas etapas de crecimiento.</div>
       </div>
+    </div>
     </div>
   </section>
 
@@ -876,6 +889,7 @@
 
   <!-- FAQ -->
   <section class="faq">
+    <div class="faq-inner">
     <div class="eyebrow">Preguntas frecuentes</div>
     <h2>Lo que nos preguntan siempre.</h2>
     <div class="faq-list">
@@ -889,12 +903,13 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">¿Cuánto tarda un proceso típico?</div>
-        <div class="faq-a">Depende de la complejidad, pero un proceso de financiación suele moverse entre 6 y 14 semanas desde el diagnóstico hasta el cierre.</div>
+        <div class="faq-a">Depende de la complejidad de cada operación; te damos un plazo realista en el diagnóstico inicial y te mantenemos informado en todo momento.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">¿Trabajáis con empresas de cualquier sector?</div>
         <div class="faq-a">Sí, aunque el enfoque y los instrumentos disponibles varían según el sector y la etapa de la compañía.</div>
       </div>
+    </div>
     </div>
   </section>
 
