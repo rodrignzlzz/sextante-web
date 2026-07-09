@@ -592,20 +592,151 @@
   .faq-item.open .faq-a { padding-bottom: 26px; }
   .faq-a { transition: padding 0.35s ease; }
 
+  /* ENCAJE */
+  .fit { padding: 100px 32px 0; }
+  .fit-card {
+    max-width: 900px;
+    margin: 0 auto;
+    background: var(--sand);
+    border-radius: var(--radius-card);
+    padding: 56px 60px;
+  }
+  .fit-card h2 { margin-bottom: 20px; max-width: 620px; }
+  .fit-card .lead {
+    font-size: 16px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+  }
+  .fit-facts {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 24px;
+    border-top: 1px solid var(--line-strong);
+    padding-top: 28px;
+  }
+  .fit-fact .fact-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .fit-fact .fact-value {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
   /* CONTACTO */
-  .contact { padding: 110px 32px; text-align: center; }
+  .contact { padding: 110px 32px; }
+  .contact .contact-head { text-align: center; }
   .contact h2 {
     font-size: 38px;
     margin: 0 auto 22px;
     max-width: 640px;
   }
-  .contact p {
+  .contact .contact-head p {
     font-size: 16.5px;
     color: var(--ink-soft);
     max-width: 480px;
-    margin: 0 auto 36px;
+    margin: 0 auto 48px;
   }
-  .contact .btn-primary { padding: 16px 32px; }
+
+  /* FORMULARIO */
+  .contact-form {
+    max-width: 760px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 24px;
+    text-align: left;
+  }
+  .form-field { display: flex; flex-direction: column; gap: 7px; }
+  .form-field.full { grid-column: 1 / -1; }
+  .form-field label {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--ink-soft);
+  }
+  .form-field label .req { color: var(--signal); }
+  .form-field input,
+  .form-field select,
+  .form-field textarea {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-btn);
+    padding: 13px 14px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    width: 100%;
+  }
+  .form-field textarea { resize: vertical; min-height: 110px; }
+  .form-field input:focus,
+  .form-field select:focus,
+  .form-field textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(14, 91, 67, 0.12);
+  }
+  .form-field.invalid input,
+  .form-field.invalid textarea { border-color: #b3452c; }
+  .form-field .field-error {
+    display: none;
+    font-size: 12.5px;
+    color: #b3452c;
+  }
+  .form-field.invalid .field-error { display: block; }
+  .consent-field {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--ink-soft);
+  }
+  .consent-field input {
+    margin-top: 3px;
+    width: 16px;
+    height: 16px;
+    accent-color: var(--forest);
+    flex-shrink: 0;
+  }
+  .consent-field.invalid { color: #b3452c; }
+  .contact-form .btn-primary {
+    grid-column: 1 / -1;
+    justify-self: center;
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+    padding: 16px 40px;
+  }
+  .contact-form .btn-primary[disabled] { opacity: 0.6; cursor: wait; }
+  .form-status {
+    grid-column: 1 / -1;
+    display: none;
+    padding: 15px 18px;
+    border-radius: var(--radius-btn);
+    font-size: 14.5px;
+    line-height: 1.55;
+  }
+  .form-status.success {
+    display: block;
+    background: var(--forest-tint);
+    color: var(--forest-deep);
+    border: 1px solid var(--forest-line);
+  }
+  .form-status.error {
+    display: block;
+    background: rgba(192, 135, 26, 0.12);
+    color: #7a5510;
+    border: 1px solid rgba(192, 135, 26, 0.35);
+  }
 
   /* FOOTER */
   .site-footer {
@@ -721,6 +852,8 @@
     .stats .stat:first-child { border-top: none; padding-top: 0; }
     .stats .stat:last-child { padding-bottom: 0; }
     .foot-top { grid-template-columns: 1fr; }
+    .fit-card { padding: 40px 32px; }
+    .fit-facts { grid-template-columns: 1fr; gap: 20px; }
   }
   @media (max-width: 640px) {
     .foot-cols { grid-template-columns: 1fr 1fr; }
@@ -751,7 +884,10 @@
     .turnaround { padding: 0 20px 64px; }
     .contact { padding: 72px 20px; }
     .contact h2 { font-size: 28px; }
-    .contact .btn-primary { display: block; text-align: center; }
+    .contact-form { grid-template-columns: 1fr; }
+    .contact-form .btn-primary { width: 100%; }
+    .fit { padding: 64px 20px 0; }
+    .fit-card { padding: 32px 24px; }
     .operations-grid, .trust-grid { grid-template-columns: 1fr; gap: 18px; }
     h2 { font-size: 27px; }
     .service-cells { grid-template-columns: 1fr; }
@@ -1094,11 +1230,89 @@
     </div>
   </section>
 
+  <!-- ENCAJE -->
+  <section id="encaje" class="fit">
+    <div class="fit-card">
+      <div class="eyebrow">¿Encajamos?</div>
+      <h2>Si tu operación se parece a esto, hablemos.</h2>
+      <p class="lead">
+        Acompañamos a pymes españolas que necesitan financiar su día a día, una inversión,
+        una refinanciación o quieren aprovechar la financiación pública — con especial
+        conocimiento del mercado balear y del sector náutico. No hace falta que tengas la
+        operación definida: el diagnóstico inicial sirve precisamente para eso.
+      </p>
+      <!-- EDITAR: ajusta el rango y el foco aquí -->
+      <div class="fit-facts">
+        <div class="fit-fact">
+          <div class="fact-label">Rango orientativo</div>
+          <div class="fact-value">[RELLENAR: p. ej. 100.000 € – 5M €]</div>
+        </div>
+        <div class="fit-fact">
+          <div class="fact-label">Foco</div>
+          <div class="fact-value">Pyme española · circulante, inversión, refinanciación y financiación pública · mercado balear y sector náutico</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- CONTACTO -->
   <section id="contacto" class="contact container">
-    <h2>Hablemos de la estructura de tu próxima operación.</h2>
-    <p>Cuéntanos brevemente tu situación y te respondemos en menos de 48 horas laborables.</p>
-    <a href="mailto:sextantecapital@gmail.com" class="btn-primary">sextantecapital@gmail.com</a>
+    <div class="contact-head">
+      <h2>Hablemos de la estructura de tu próxima operación.</h2>
+      <p>Cuéntanos brevemente tu situación y te respondemos en menos de 48 horas laborables.</p>
+    </div>
+    <form id="contact-form" class="contact-form" novalidate>
+      <div class="form-field">
+        <label for="cf-nombre">Nombre y apellidos <span class="req">*</span></label>
+        <input type="text" id="cf-nombre" name="nombre" autocomplete="name">
+        <span class="field-error">Indica tu nombre y apellidos.</span>
+      </div>
+      <div class="form-field">
+        <label for="cf-email">Email <span class="req">*</span></label>
+        <input type="email" id="cf-email" name="email" autocomplete="email">
+        <span class="field-error">Indica un email válido.</span>
+      </div>
+      <div class="form-field">
+        <label for="cf-telefono">Teléfono</label>
+        <input type="tel" id="cf-telefono" name="telefono" autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="cf-empresa">Empresa</label>
+        <input type="text" id="cf-empresa" name="empresa" autocomplete="organization">
+      </div>
+      <div class="form-field">
+        <label for="cf-tipo">Tipo de operación</label>
+        <select id="cf-tipo" name="tipo_operacion">
+          <option value="">Selecciona una opción</option>
+          <option>Financiación de circulante</option>
+          <option>Financiación de inversión o CAPEX</option>
+          <option>Refinanciación o reestructuración</option>
+          <option>Financiación de adquisición (M&amp;A)</option>
+          <option>Financiación pública o subvenciones</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="cf-importe">Importe aproximado</label>
+        <select id="cf-importe" name="importe">
+          <option value="">Selecciona una opción</option>
+          <option>Menos de 250.000 €</option>
+          <option>250.000 – 1M €</option>
+          <option>1M – 5M €</option>
+          <option>Más de 5M €</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label for="cf-mensaje">Mensaje</label>
+        <textarea id="cf-mensaje" name="mensaje" placeholder="Cuéntanos brevemente tu situación y qué necesitas."></textarea>
+      </div>
+      <label class="consent-field" id="cf-consent-field">
+        <input type="checkbox" id="cf-consent">
+        <span>He leído y acepto la <a href="privacidad.html" target="_blank" style="color: var(--forest); text-decoration: underline;">política de privacidad</a> y consiento el tratamiento de mis datos para gestionar esta consulta. <span class="req">*</span></span>
+      </label>
+      <div class="form-status" id="cf-status" role="status"></div>
+      <button type="submit" class="btn-primary" id="cf-submit">Enviar consulta</button>
+    </form>
   </section>
 
   <!-- FOOTER -->
@@ -1120,13 +1334,13 @@
           </div>
           <div class="foot-col">
             <h4>Legal</h4>
-            <a href="#">Aviso legal</a>
-            <a href="#">Privacidad</a>
+            <a href="aviso-legal.html">Aviso legal</a>
+            <a href="privacidad.html">Política de privacidad</a>
           </div>
           <div class="foot-col">
             <h4>Contacto</h4>
             <a href="#contacto">Hablar con nosotros</a>
-            <a href="mailto:sextantecapital@gmail.com">sextantecapital@gmail.com</a>
+            <a href="#contacto">Formulario de contacto</a>
           </div>
         </div>
       </div>
@@ -1150,7 +1364,7 @@
     próximamente; mientras tanto, escríbenos con una breve descripción de tu caso
     y empezamos el diagnóstico.
   </p>
-  <a href="mailto:sextantecapital@gmail.com" class="btn-primary">sextantecapital@gmail.com</a>
+  <a href="#contacto" class="btn-primary">Ir al formulario de contacto</a>
 </main>
 
 <script>
@@ -1164,6 +1378,94 @@
     document.getElementById('tab-aplicar').setAttribute('aria-selected', !isInicio);
     window.scrollTo({ top: 0 });
   }
+
+  /* ==========================================================
+     FORMULARIO DE CONTACTO — CÓMO ACTIVARLO
+     El envío usa Formspree (https://formspree.io), un servicio de
+     formularios sin servidor propio y sin exponer credenciales:
+       1. Crea una cuenta gratuita en formspree.io
+       2. Crea un formulario nuevo ("New form") y pon como email de
+          destino el buzón donde quieras recibir las consultas.
+       3. Copia el ID del formulario (algo como "xqkrzvbn") y
+          sustituye RELLENAR_ID_FORMSPREE en la línea siguiente.
+     Hasta entonces, el formulario muestra un aviso de "no activado"
+     al intentar enviar. No hay ninguna clave secreta en este código:
+     el ID de Formspree es público por diseño.
+     ========================================================== */
+  var FORM_ENDPOINT = 'https://formspree.io/f/RELLENAR_ID_FORMSPREE';
+
+  (function () {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    var status = document.getElementById('cf-status');
+    var submitBtn = document.getElementById('cf-submit');
+
+    function setInvalid(el, invalid) {
+      el.classList.toggle('invalid', invalid);
+    }
+
+    function validate() {
+      var ok = true;
+      var nombre = document.getElementById('cf-nombre');
+      var email = document.getElementById('cf-email');
+      var consent = document.getElementById('cf-consent');
+
+      var nombreOk = nombre.value.trim().length > 1;
+      setInvalid(nombre.closest('.form-field'), !nombreOk);
+      if (!nombreOk) ok = false;
+
+      var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email.value.trim());
+      setInvalid(email.closest('.form-field'), !emailOk);
+      if (!emailOk) ok = false;
+
+      var consentOk = consent.checked;
+      document.getElementById('cf-consent-field').classList.toggle('invalid', !consentOk);
+      if (!consentOk) ok = false;
+
+      return ok;
+    }
+
+    function showStatus(type, msg) {
+      status.className = 'form-status ' + type;
+      status.textContent = msg;
+    }
+
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'form-status';
+
+      if (!validate()) {
+        showStatus('error', 'Revisa los campos marcados: faltan datos obligatorios o el email no es válido.');
+        return;
+      }
+
+      if (FORM_ENDPOINT.indexOf('RELLENAR') !== -1) {
+        showStatus('error', 'El formulario aún no está activado. (Administrador: configura el ID de Formspree en el código — busca RELLENAR_ID_FORMSPREE.)');
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Enviando…';
+
+      fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (res.ok) {
+          form.reset();
+          showStatus('success', 'Consulta enviada. Te respondemos en menos de 48 horas laborables.');
+        } else {
+          showStatus('error', 'No se pudo enviar la consulta. Inténtalo de nuevo en unos minutos.');
+        }
+      }).catch(function () {
+        showStatus('error', 'No se pudo enviar la consulta. Comprueba tu conexión e inténtalo de nuevo.');
+      }).finally(function () {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Enviar consulta';
+      });
+    });
+  })();
 
   // FAQ accordion
   document.querySelectorAll('.faq-toggle').forEach(function (btn) {
