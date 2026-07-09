@@ -11,7 +11,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&display=swap" rel="stylesheet">
 <style>
   :root {
     --cream: #f5f1e8;
@@ -30,9 +30,9 @@
     --signal: #c0871a;
     --gold: #e6b95c;
     --cream-dim: #cfc9ba;
-    --serif: 'Fraunces', Georgia, serif;
-    --sans: 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
-    --mono: 'JetBrains Mono', ui-monospace, monospace;
+    --serif: 'Spectral', Georgia, 'Times New Roman', serif;
+    --sans: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+    --mono: ui-monospace, 'Cascadia Code', Consolas, monospace;
     --radius-card: 6px;
     --radius-btn: 4px;
     --shadow-soft: 0 1px 2px rgba(22,22,15,.04), 0 12px 36px -18px rgba(22,22,15,.2);
@@ -484,22 +484,35 @@
     .stats .container { grid-template-columns: 1fr; gap: 28px; }
   }
   @media (max-width: 560px) {
-    .site-header .container { padding: 14px 20px; flex-wrap: wrap; gap: 12px; }
-    .hero { padding: 64px 20px 48px; }
-    .hero h1 { font-size: 34px; }
-    .hero p { font-size: 17px; }
-    .quote-section blockquote { font-size: 24px; }
+    .site-header .container { padding: 12px 16px; gap: 10px; }
+    .brand { font-size: 17px; gap: 8px; }
+    .brand img { height: 22px; }
+    .tab-switch { padding: 3px; }
+    .tab-switch button { padding: 8px 14px; font-size: 13px; }
+    .hero { padding: 56px 20px 48px; }
+    .hero h1 { font-size: 33px; }
+    .hero p { font-size: 16.5px; }
+    .hero .compass { width: 280px; height: 280px; right: -120px; top: -100px; }
+    .hero-ctas { flex-direction: column; }
+    .hero-ctas a { text-align: center; }
+    .stats .stat-title { font-size: 26px; }
+    .quote-section blockquote { font-size: 23px; margin-bottom: 56px; }
     .services, .operations, .trust, .faq, .contact,
     .quote-section { padding-left: 20px; padding-right: 20px; }
     .services, .operations, .trust, .faq { padding-top: 64px; padding-bottom: 64px; }
     .process { padding: 64px 20px; }
+    .process .compass { width: 220px; height: 220px; right: -80px; top: -60px; }
     .quote-section { padding-top: 64px; }
     .turnaround { padding: 0 20px 64px; }
     .contact { padding: 72px 20px; }
-    .contact h2 { font-size: 30px; }
-    .operations-grid, .trust-grid { grid-template-columns: 1fr; }
-    h2 { font-size: 28px; }
-    .aplicar-main { padding: 90px 20px 110px; }
+    .contact h2 { font-size: 28px; }
+    .contact .btn-primary { display: block; text-align: center; }
+    .operations-grid, .trust-grid { grid-template-columns: 1fr; gap: 18px; }
+    h2 { font-size: 27px; }
+    .service-cells { grid-template-columns: 1fr; }
+    .service-cell { padding: 24px; }
+    .aplicar-main { padding: 80px 20px 100px; }
+    .site-footer .container { flex-direction: column; align-items: flex-start; }
   }
 </style>
 </head>
