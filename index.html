@@ -610,24 +610,77 @@
   /* FOOTER */
   .site-footer {
     border-top: 1px solid var(--line);
-    padding: 40px 32px;
+    padding: 48px 32px 40px;
     background: var(--paper);
   }
-  .site-footer .container {
+  .foot-top {
+    display: grid;
+    grid-template-columns: 1.4fr 2fr;
+    gap: 32px;
+    padding-bottom: 32px;
+    border-bottom: 1px solid var(--line);
+  }
+  .foot-brand {
     display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--serif);
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+  .foot-brand img { height: 26px; }
+  .foot-desc {
+    color: var(--ink-soft);
+    font-size: 15px;
+    max-width: 352px;
+    line-height: 1.55;
+    margin: 0;
+  }
+  .foot-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+  .foot-col h4 {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    font-weight: 500;
+    margin: 0 0 13px;
+  }
+  .foot-col a {
+    display: block;
+    padding: 5px 0;
+    font-size: 15px;
+    color: var(--ink-soft);
+    transition: color 0.15s ease;
+  }
+  .foot-col a:hover { color: var(--ink); }
+  .foot-bot {
+    padding-top: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 16px;
   }
-  .site-footer .footer-brand {
-    font-family: var(--serif);
-    font-size: 16px;
-    font-weight: 600;
-  }
-  .site-footer .footer-note {
-    font-size: 13px;
+  .foot-bot .mono-label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
     color: var(--ink-faint);
+  }
+  .disclaimer {
+    margin: 24px 0 0;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    line-height: 1.6;
+    max-width: 960px;
   }
 
   /* APLICAR */
@@ -667,6 +720,10 @@
     .stats .stat { border-left: none; padding: 22px 0; border-top: 1px solid rgba(245, 241, 232, 0.16); }
     .stats .stat:first-child { border-top: none; padding-top: 0; }
     .stats .stat:last-child { padding-bottom: 0; }
+    .foot-top { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 640px) {
+    .foot-cols { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
     .site-header .container { padding: 12px 16px; gap: 10px; }
@@ -1031,8 +1088,36 @@
   <!-- FOOTER -->
   <footer class="site-footer">
     <div class="container">
-      <div class="footer-brand">Sextante Capital</div>
-      <div class="footer-note">© 2026 Sextante Capital. Contenido informativo, no constituye oferta vinculante.</div>
+      <div class="foot-top">
+        <div>
+          <div class="foot-brand"><img src="logo.png" alt="" aria-hidden="true">Sextante&nbsp;Capital</div>
+          <p class="foot-desc">Financiación y estructuración de capital para empresas y promotores. Criterio independiente, análisis riguroso y ejecución cuidada de principio a fin.</p>
+        </div>
+        <div class="foot-cols">
+          <div class="foot-col">
+            <h4>Navegación</h4>
+            <a href="#que-hacemos">Qué hacemos</a>
+            <a href="#proceso">Cómo trabajamos</a>
+            <a href="#sectores">Operaciones</a>
+            <a href="#herramientas">Herramientas</a>
+            <a href="#equipo">Por qué nosotros</a>
+          </div>
+          <div class="foot-col">
+            <h4>Legal</h4>
+            <a href="#">Aviso legal</a>
+            <a href="#">Privacidad</a>
+          </div>
+          <div class="foot-col">
+            <h4>Contacto</h4>
+            <a href="#contacto">Hablar con nosotros</a>
+            <a href="mailto:sextantecapital@gmail.com">sextantecapital@gmail.com</a>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bot">
+        <span class="mono-label">© 2026 Sextante Capital · España</span>
+      </div>
+      <p class="disclaimer">El contenido de esta web es de carácter informativo y no constituye una oferta vinculante, una recomendación personalizada ni asesoramiento financiero. Cada operación se analiza de forma individual y las condiciones finales dependen de su estudio y aprobación por las entidades correspondientes.</p>
     </div>
   </footer>
 
