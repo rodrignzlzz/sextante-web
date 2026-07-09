@@ -76,10 +76,11 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(245, 241, 232, 0.92);
+    background: rgba(10, 70, 51, 0.94);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--line);
+    border-bottom: 1px solid rgba(245, 241, 232, 0.14);
+    color: var(--cream);
   }
   .site-header .container {
     padding: 20px 32px;
@@ -101,18 +102,18 @@
   .desktop-nav { display: flex; align-items: center; gap: 36px; }
   .desktop-nav a {
     font-size: 14.5px;
-    color: var(--ink-soft);
+    color: rgba(245, 241, 232, 0.78);
     font-weight: 500;
     transition: color 0.15s ease;
   }
-  .desktop-nav a:hover { color: var(--forest); }
+  .desktop-nav a:hover { color: var(--gold); }
 
   .tab-switch {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 4px;
-    background: var(--sand);
+    background: rgba(245, 241, 232, 0.12);
     border-radius: 999px;
   }
   .tab-switch button {
@@ -124,12 +125,13 @@
     font-weight: 600;
     font-family: var(--sans);
     background: transparent;
-    color: var(--ink-soft);
+    color: var(--cream-dim);
     transition: background 0.15s ease, color 0.15s ease;
   }
+  .tab-switch button:hover { color: var(--cream); }
   .tab-switch button.active {
-    background: var(--forest);
-    color: var(--cream);
+    background: var(--cream);
+    color: var(--forest-deep);
   }
 
   /* BUTTONS */
