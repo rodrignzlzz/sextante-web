@@ -816,23 +816,97 @@
 
   /* APLICAR */
   .aplicar-main {
-    max-width: 720px;
+    max-width: 1060px;
     margin: 0 auto;
-    padding: 140px 32px 160px;
+    padding: 100px 32px 130px;
     text-align: center;
   }
-  .aplicar-main svg { margin: 0 auto 28px; display: block; }
   .aplicar-main h2 {
     font-size: 34px;
     line-height: 1.3;
     margin: 0 0 20px;
   }
-  .aplicar-main p {
+  .aplicar-main .aplicar-intro {
     font-size: 16px;
     line-height: 1.6;
     color: var(--ink-soft);
-    max-width: 480px;
-    margin: 0 auto 36px;
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .aplicar-grid {
+    display: grid;
+    grid-template-columns: 0.9fr 1.3fr;
+    gap: 44px;
+    margin-top: 64px;
+    text-align: left;
+    align-items: start;
+  }
+  .aplicar-grid .contact-form { max-width: none; margin: 0; }
+
+  /* WIDGET ESTIMADOR */
+  .estimator {
+    background: var(--sand);
+    border-radius: var(--radius-card);
+    padding: 34px 30px;
+  }
+  .est-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 500;
+    margin-bottom: 26px;
+  }
+  .est-row { margin-bottom: 28px; }
+  .est-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    color: var(--ink-soft);
+  }
+  .est-label strong {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .estimator input[type="range"] {
+    width: 100%;
+    accent-color: var(--forest);
+    cursor: pointer;
+  }
+  .est-result {
+    border-top: 1px solid var(--line-strong);
+    padding-top: 24px;
+  }
+  .est-result-label {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin-bottom: 8px;
+  }
+  .est-central {
+    font-family: var(--serif);
+    font-size: 44px;
+    font-weight: 500;
+    line-height: 1.1;
+    color: var(--forest);
+  }
+  .est-rango {
+    font-size: 13px;
+    color: var(--ink-faint);
+    margin-top: 8px;
+  }
+  .est-note {
+    font-size: 12px;
+    font-style: italic;
+    color: var(--ink-faint);
+    line-height: 1.55;
+    margin: 24px 0 0;
   }
 
   [hidden] { display: none !important; }
@@ -854,6 +928,7 @@
     .foot-top { grid-template-columns: 1fr; }
     .fit-card { padding: 40px 32px; }
     .fit-facts { grid-template-columns: 1fr; gap: 20px; }
+    .aplicar-grid { grid-template-columns: 1fr; gap: 36px; }
   }
   @media (max-width: 640px) {
     .foot-cols { grid-template-columns: 1fr 1fr; }
@@ -892,7 +967,9 @@
     h2 { font-size: 27px; }
     .service-cells { grid-template-columns: 1fr; }
     .service-cell { padding: 24px; }
-    .aplicar-main { padding: 80px 20px 100px; }
+    .aplicar-main { padding: 64px 20px 90px; }
+    .estimator { padding: 26px 20px; }
+    .est-central { font-size: 36px; }
     .site-footer .container { flex-direction: column; align-items: flex-start; }
   }
 </style>
@@ -1359,13 +1436,83 @@
   <img src="logo.png" alt="" height="56" style="display:block; margin: 0 auto 28px;">
   <div class="eyebrow">Aplicar</div>
   <h2>Todo empieza con un diagnóstico.</h2>
-  <p>
+  <p class="aplicar-intro">
     Analizamos tu situación y los objetivos de la operación, y te decimos con franqueza
-    si podemos mejorar tu financiación. El formulario de aplicación estará disponible
-    próximamente; mientras tanto, escríbenos con una breve descripción de tu caso
-    y empezamos el diagnóstico.
+    si podemos mejorar tu financiación. Cuéntanos tu caso y empezamos.
   </p>
-  <a href="#contacto" class="btn-primary">Ir al formulario de contacto</a>
+
+  <div class="aplicar-grid">
+    <aside class="estimator">
+      <div class="est-eyebrow">¿Cuánto vale mejorar tu financiación?</div>
+      <div class="est-row">
+        <div class="est-label">
+          <span>Importe de la operación</span>
+          <strong id="est-importe-out">1.000.000 €</strong>
+        </div>
+        <input type="range" id="est-importe" min="100000" max="5000000" step="50000" value="1000000" aria-label="Importe de la operación">
+      </div>
+      <div class="est-result">
+        <div class="est-result-label">Mejorar tu tipo en 1 punto supondría</div>
+        <div class="est-central" id="est-central">10.000 €</div>
+        <div class="est-rango" id="est-rango">entre 5.000 € y 15.000 € al año, según la operación</div>
+      </div>
+      <p class="est-note">Estimación orientativa sobre el coste financiero anual. El diagnóstico concreta cuánto es posible en tu caso.</p>
+    </aside>
+
+    <form class="contact-form aplicar-form" id="aplicar-form" novalidate>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <div class="form-field">
+        <label for="af-nombre">Nombre y apellidos <span class="req">*</span></label>
+        <input type="text" id="af-nombre" name="nombre" autocomplete="name">
+        <span class="field-error">Indica tu nombre y apellidos.</span>
+      </div>
+      <div class="form-field">
+        <label for="af-email">Email <span class="req">*</span></label>
+        <input type="email" id="af-email" name="email" autocomplete="email">
+        <span class="field-error">Indica un email válido.</span>
+      </div>
+      <div class="form-field">
+        <label for="af-telefono">Teléfono</label>
+        <input type="tel" id="af-telefono" name="telefono" autocomplete="tel">
+      </div>
+      <div class="form-field">
+        <label for="af-empresa">Empresa</label>
+        <input type="text" id="af-empresa" name="empresa" autocomplete="organization">
+      </div>
+      <div class="form-field">
+        <label for="af-tipo">Tipo de operación</label>
+        <select id="af-tipo" name="tipo_operacion">
+          <option value="">Selecciona una opción</option>
+          <option>Financiación de circulante</option>
+          <option>Financiación de inversión o CAPEX</option>
+          <option>Refinanciación o reestructuración</option>
+          <option>Financiación de adquisición (M&amp;A)</option>
+          <option>Financiación pública o subvenciones</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="form-field">
+        <label for="af-importe">Importe aproximado</label>
+        <select id="af-importe" name="importe">
+          <option value="">Selecciona una opción</option>
+          <option>Menos de 250.000 €</option>
+          <option>250.000 – 1M €</option>
+          <option>1M – 5M €</option>
+          <option>Más de 5M €</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label for="af-mensaje">Mensaje</label>
+        <textarea id="af-mensaje" name="mensaje" placeholder="Cuéntanos brevemente tu situación y qué necesitas."></textarea>
+      </div>
+      <label class="consent-field">
+        <input type="checkbox">
+        <span>He leído y acepto la <a href="privacidad.html" target="_blank" style="color: var(--forest); text-decoration: underline;">política de privacidad</a> y consiento el tratamiento de mis datos para gestionar esta consulta. <span class="req">*</span></span>
+      </label>
+      <div class="form-status" role="status"></div>
+      <button type="submit" class="btn-primary">Pide tu diagnóstico</button>
+    </form>
+  </div>
 </main>
 
 <script>
@@ -1391,11 +1538,10 @@
      ========================================================== */
   var FORM_ENDPOINT = 'https://formsubmit.co/ajax/sextantecapital@gmail.com';
 
-  (function () {
-    var form = document.getElementById('contact-form');
-    if (!form) return;
-    var status = document.getElementById('cf-status');
-    var submitBtn = document.getElementById('cf-submit');
+  document.querySelectorAll('form.contact-form').forEach(function (form) {
+    var status = form.querySelector('.form-status');
+    var submitBtn = form.querySelector('button[type="submit"]');
+    var submitLabel = submitBtn.textContent;
 
     function setInvalid(el, invalid) {
       el.classList.toggle('invalid', invalid);
@@ -1403,9 +1549,10 @@
 
     function validate() {
       var ok = true;
-      var nombre = document.getElementById('cf-nombre');
-      var email = document.getElementById('cf-email');
-      var consent = document.getElementById('cf-consent');
+      var nombre = form.querySelector('[name="nombre"]');
+      var email = form.querySelector('[name="email"]');
+      var consentField = form.querySelector('.consent-field');
+      var consent = consentField.querySelector('input[type="checkbox"]');
 
       var nombreOk = nombre.value.trim().length > 1;
       setInvalid(nombre.closest('.form-field'), !nombreOk);
@@ -1416,7 +1563,7 @@
       if (!emailOk) ok = false;
 
       var consentOk = consent.checked;
-      document.getElementById('cf-consent-field').classList.toggle('invalid', !consentOk);
+      consentField.classList.toggle('invalid', !consentOk);
       if (!consentOk) ok = false;
 
       return ok;
@@ -1468,9 +1615,25 @@
         showStatus('error', 'No se pudo enviar la consulta en este momento.', true);
       }).finally(function () {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Enviar consulta';
+        submitBtn.textContent = submitLabel;
       });
     });
+  });
+
+  // Widget: estimador de ahorro (vista Aplicar)
+  (function () {
+    var slider = document.getElementById('est-importe');
+    if (!slider) return;
+    var fmt = function (n) { return Math.round(n).toLocaleString('es-ES') + ' €'; };
+    function update() {
+      var importe = Number(slider.value);
+      document.getElementById('est-importe-out').textContent = fmt(importe);
+      document.getElementById('est-central').textContent = fmt(importe * 0.01);
+      document.getElementById('est-rango').textContent =
+        'entre ' + fmt(importe * 0.005) + ' y ' + fmt(importe * 0.015) + ' al año, según la operación';
+    }
+    slider.addEventListener('input', update);
+    update();
   })();
 
   // FAQ accordion
