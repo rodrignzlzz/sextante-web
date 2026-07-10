@@ -1245,7 +1245,7 @@
       <div class="fit-facts">
         <div class="fit-fact">
           <div class="fact-label">Rango orientativo</div>
-          <div class="fact-value">[RELLENAR: p. ej. 100.000 € – 5M €]</div>
+          <div class="fact-value">100.000 € – 5M €</div>
         </div>
         <div class="fit-fact">
           <div class="fact-label">Foco</div>
@@ -1262,6 +1262,7 @@
       <p>Cuéntanos brevemente tu situación y te respondemos en menos de 48 horas laborables.</p>
     </div>
     <form id="contact-form" class="contact-form" novalidate>
+      <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
       <div class="form-field">
         <label for="cf-nombre">Nombre y apellidos <span class="req">*</span></label>
         <input type="text" id="cf-nombre" name="nombre" autocomplete="name">
@@ -1380,19 +1381,15 @@
   }
 
   /* ==========================================================
-     FORMULARIO DE CONTACTO — CÓMO ACTIVARLO
-     El envío usa Formspree (https://formspree.io), un servicio de
-     formularios sin servidor propio y sin exponer credenciales:
-       1. Crea una cuenta gratuita en formspree.io
-       2. Crea un formulario nuevo ("New form") y pon como email de
-          destino el buzón donde quieras recibir las consultas.
-       3. Copia el ID del formulario (algo como "xqkrzvbn") y
-          sustituye RELLENAR_ID_FORMSPREE en la línea siguiente.
-     Hasta entonces, el formulario muestra un aviso de "no activado"
-     al intentar enviar. No hay ninguna clave secreta en este código:
-     el ID de Formspree es público por diseño.
+     FORMULARIO DE CONTACTO — envío con FormSubmit (formsubmit.co)
+     Las consultas llegan a sextantecapital@gmail.com sin necesidad
+     de servidor propio ni de crear ninguna cuenta.
+     ACTIVACIÓN (solo la primera vez): cuando llegue el primer envío,
+     FormSubmit manda un email de confirmación a ese buzón — pulsa el
+     botón "Activate" y a partir de ahí todas las consultas entran.
+     No hay ninguna clave secreta en este código.
      ========================================================== */
-  var FORM_ENDPOINT = 'https://formspree.io/f/RELLENAR_ID_FORMSPREE';
+  var FORM_ENDPOINT = 'https://formsubmit.co/ajax/sextantecapital@gmail.com';
 
   (function () {
     var form = document.getElementById('contact-form');
@@ -1425,9 +1422,18 @@
       return ok;
     }
 
-    function showStatus(type, msg) {
+    function showStatus(type, msg, withMailFallback) {
       status.className = 'form-status ' + type;
       status.textContent = msg;
+      if (withMailFallback) {
+        var a = document.createElement('a');
+        a.href = 'mailto:sextantecapital@gmail.com?subject=' + encodeURIComponent('Consulta — Sextante Capital');
+        a.textContent = 'escribirnos directamente a sextantecapital@gmail.com';
+        a.style.cssText = 'color: inherit; text-decoration: underline; font-weight: 600;';
+        status.appendChild(document.createTextNode(' También puedes '));
+        status.appendChild(a);
+        status.appendChild(document.createTextNode('.'));
+      }
     }
 
     form.addEventListener('submit', function (e) {
@@ -1439,27 +1445,27 @@
         return;
       }
 
-      if (FORM_ENDPOINT.indexOf('RELLENAR') !== -1) {
-        showStatus('error', 'El formulario aún no está activado. (Administrador: configura el ID de Formspree en el código — busca RELLENAR_ID_FORMSPREE.)');
-        return;
-      }
-
       submitBtn.disabled = true;
       submitBtn.textContent = 'Enviando…';
 
+      var data = new FormData(form);
+      data.append('_subject', 'Nueva consulta web — Sextante Capital');
+      data.append('_template', 'table');
+      data.append('_captcha', 'false');
+
       fetch(FORM_ENDPOINT, {
         method: 'POST',
-        body: new FormData(form),
+        body: data,
         headers: { 'Accept': 'application/json' }
       }).then(function (res) {
         if (res.ok) {
           form.reset();
           showStatus('success', 'Consulta enviada. Te respondemos en menos de 48 horas laborables.');
         } else {
-          showStatus('error', 'No se pudo enviar la consulta. Inténtalo de nuevo en unos minutos.');
+          showStatus('error', 'No se pudo enviar la consulta en este momento.', true);
         }
       }).catch(function () {
-        showStatus('error', 'No se pudo enviar la consulta. Comprueba tu conexión e inténtalo de nuevo.');
+        showStatus('error', 'No se pudo enviar la consulta en este momento.', true);
       }).finally(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = 'Enviar consulta';
