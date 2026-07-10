@@ -1,0 +1,72 @@
+/* Estilos del blog — extiende legal.css */
+.post-list { display: flex; flex-direction: column; }
+.post-card {
+  border-top: 1px solid var(--line);
+  padding: 34px 0;
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 28px;
+}
+.post-card:last-child { border-bottom: 1px solid var(--line); }
+.post-meta {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  padding-top: 6px;
+}
+.post-card h2 { margin: 0 0 10px; font-size: 24px; }
+.post-card h2 a { color: var(--ink); transition: color 0.15s ease; }
+.post-card h2 a:hover { color: var(--forest); text-decoration: none; }
+.post-card p { margin: 0 0 12px; font-size: 15px; }
+.post-card .read-more {
+  font-size: 14.5px;
+  font-weight: 600;
+  color: var(--forest);
+}
+.post-card .read-more:hover { text-decoration: none; color: var(--forest-deep); }
+
+/* CTA al final de los artículos */
+.post-cta {
+  margin-top: 56px;
+  border-top: 1px solid var(--line);
+  padding-top: 30px;
+}
+.post-cta p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: var(--ink-soft);
+  margin: 0 0 20px;
+}
+.post-cta .btn-primary {
+  display: inline-block;
+  background: var(--forest);
+  color: var(--cream);
+  padding: 14px 28px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+.post-cta .btn-primary:hover { background: var(--forest-deep); transform: translateY(-2px); text-decoration: none; }
+.post-cta .btn-call {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  border: 1px solid var(--forest);
+  color: var(--forest);
+  padding: 13px 24px;
+  border-radius: 2px;
+  font-size: 15px;
+  font-weight: 600;
+  margin-left: 14px;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+.post-cta .btn-call:hover { background: var(--forest); color: var(--cream); transform: translateY(-2px); text-decoration: none; }
+
+@media (max-width: 640px) {
+  .post-card { grid-template-columns: 1fr; gap: 8px; }
+  .post-cta .btn-call { margin-left: 0; margin-top: 12px; }
+}
