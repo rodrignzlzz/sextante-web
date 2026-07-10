@@ -1118,7 +1118,7 @@
     .brand { font-size: 17px; gap: 8px; }
     .brand img { height: 22px; }
     .tab-switch { padding: 3px; }
-    .tab-switch button { padding: 8px 14px; font-size: 13px; }
+    .tab-switch button { padding: 7px 10px; font-size: 12.5px; }
     .hero { padding: 56px 20px 48px; }
     .hero h1 { font-size: 33px; }
     .hero p { font-size: 16.5px; }
@@ -1169,12 +1169,13 @@
     <nav class="desktop-nav">
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#sectores">Operaciones</a>
-      <a href="#startups">Startups</a>
+      <a href="#" data-tab onclick="showTab('startups'); return false;">Startups</a>
       <a href="blog.html">Blog</a>
     </nav>
 
     <div class="tab-switch" role="tablist" aria-label="Sección">
       <button id="tab-inicio" class="active" role="tab" aria-selected="true" onclick="showTab('inicio')">Inicio</button>
+      <button id="tab-startups" role="tab" aria-selected="false" onclick="showTab('startups')">Startups</button>
       <button id="tab-aplicar" role="tab" aria-selected="false" onclick="showTab('aplicar')">Aplicar</button>
     </div>
   </div>
@@ -1393,65 +1394,6 @@
     </div>
   </section>
 
-  <!-- STARTUPS -->
-  <section id="startups" class="startups">
-    <div class="container">
-      <div class="startups-head">
-        <div>
-          <div class="eyebrow">Startups &amp; new ventures</div>
-          <h2>Crece con deuda, diluyéndote lo menos posible.</h2>
-        </div>
-        <p class="lead">
-          Cada ronda que levantas antes de tiempo es compañía que no recuperas.
-          Para startups y proyectos nuevos con ingresos o plan sólido, la deuda bien
-          estructurada extiende el camino sin ceder más capital del necesario.
-          Y cuando lo que toca es capital, también te ponemos en contacto con
-          inversores que encajan con tu etapa.
-        </p>
-      </div>
-      <div class="startups-grid">
-        <div class="startup-item">
-          <div class="st-num">01</div>
-          <div class="st-title">Venture debt</div>
-          <div class="st-desc">Deuda diseñada para compañías respaldadas por inversores: alarga el runway entre rondas y protege el cap table.</div>
-        </div>
-        <div class="startup-item">
-          <div class="st-num">02</div>
-          <div class="st-title">Préstamos participativos</div>
-          <div class="st-desc">ENISA y líneas públicas equivalentes: financiación a largo plazo, sin garantías personales y sin dilución.</div>
-        </div>
-        <div class="startup-item">
-          <div class="st-num">03</div>
-          <div class="st-title">Deuda bancaria con avales</div>
-          <div class="st-desc">Estructuras con SGR y garantías que abren la financiación bancaria a compañías jóvenes sin historial largo.</div>
-        </div>
-      </div>
-      <div class="equity-note">
-        <div>
-          <h3 class="equity-title">¿Y si lo que toca es equity?</h3>
-        </div>
-        <div>
-          <p class="equity-text">
-            No todo se financia con deuda. Cuando la vía correcta es capital — una ronda,
-            un socio industrial, un family office — te presentamos a inversores adecuados
-            para tu etapa y tu sector, y te ayudamos a llegar con la historia bien contada.
-          </p>
-          <p class="equity-text">
-            Antes de firmar, tres cosas que conviene tener claras: el equity es la financiación
-            más cara que existe — el 20&nbsp;% que cedes hoy valdrá mucho más dentro de cinco años —;
-            los términos importan tanto o más que la valoración (liquidación preferente,
-            antidilución, vesting); y la mejor posición para negociar una ronda es no necesitarla
-            con urgencia — precisamente lo que la deuda bien planteada te permite.
-          </p>
-        </div>
-      </div>
-      <div class="startups-cta">
-        <p class="cta-line">Si estás levantando ronda — o quieres evitarla — el diagnóstico te dice cuánta deuda soporta tu plan.</p>
-        <a href="#" class="text-cta" onclick="showTab('aplicar'); return false;">Pide tu diagnóstico →</a>
-      </div>
-    </div>
-  </section>
-
   <!-- HERRAMIENTAS -->
   <section id="herramientas" class="tools">
     <div class="container tools-grid">
@@ -1655,43 +1597,67 @@
     </form>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="foot-top">
-        <div>
-          <div class="foot-brand"><img src="logo.png?v=2" alt="" aria-hidden="true">Sextante&nbsp;Capital</div>
-          <p class="foot-desc">Financiación y estructuración de capital para empresas y promotores. Criterio independiente, análisis riguroso y ejecución cuidada de principio a fin.</p>
-        </div>
-        <div class="foot-cols">
-          <div class="foot-col">
-            <h4>Navegación</h4>
-            <a href="#que-hacemos">Qué hacemos</a>
-            <a href="#proceso">Cómo trabajamos</a>
-            <a href="#sectores">Operaciones</a>
-            <a href="#herramientas">Herramientas</a>
-            <a href="#equipo">Por qué nosotros</a>
-            <a href="blog.html">Blog</a>
-          </div>
-          <div class="foot-col">
-            <h4>Legal</h4>
-            <a href="aviso-legal.html">Aviso legal</a>
-            <a href="privacidad.html">Política de privacidad</a>
-          </div>
-          <div class="foot-col">
-            <h4>Contacto</h4>
-            <a href="#contacto">Formulario de contacto</a>
-            <a href="tel:+34633952154">633 952 154</a>
-          </div>
-        </div>
-      </div>
-      <div class="foot-bot">
-        <span class="mono-label">© 2026 Sextante Capital · España</span>
-      </div>
-      <p class="disclaimer">El contenido de esta web es de carácter informativo y no constituye una oferta vinculante, una recomendación personalizada ni asesoramiento financiero. Cada operación se analiza de forma individual y las condiciones finales dependen de su estudio y aprobación por las entidades correspondientes.</p>
-    </div>
-  </footer>
+</main>
 
+<!-- ===================== STARTUPS ===================== -->
+<main id="view-startups" hidden>
+  <section id="startups" class="startups">
+    <div class="container">
+      <div class="startups-head">
+        <div>
+          <div class="eyebrow">Startups &amp; new ventures</div>
+          <h2>Crece con deuda, diluyéndote lo menos posible.</h2>
+        </div>
+        <p class="lead">
+          Cada ronda que levantas antes de tiempo es compañía que no recuperas.
+          Para startups y proyectos nuevos con ingresos o plan sólido, la deuda bien
+          estructurada extiende el camino sin ceder más capital del necesario.
+          Y cuando lo que toca es capital, también te ponemos en contacto con
+          inversores que encajan con tu etapa.
+        </p>
+      </div>
+      <div class="startups-grid">
+        <div class="startup-item">
+          <div class="st-num">01</div>
+          <div class="st-title">Venture debt</div>
+          <div class="st-desc">Deuda diseñada para compañías respaldadas por inversores: alarga el runway entre rondas y protege el cap table.</div>
+        </div>
+        <div class="startup-item">
+          <div class="st-num">02</div>
+          <div class="st-title">Préstamos participativos</div>
+          <div class="st-desc">ENISA y líneas públicas equivalentes: financiación a largo plazo, sin garantías personales y sin dilución.</div>
+        </div>
+        <div class="startup-item">
+          <div class="st-num">03</div>
+          <div class="st-title">Deuda bancaria con avales</div>
+          <div class="st-desc">Estructuras con SGR y garantías que abren la financiación bancaria a compañías jóvenes sin historial largo.</div>
+        </div>
+      </div>
+      <div class="equity-note">
+        <div>
+          <h3 class="equity-title">¿Y si lo que toca es equity?</h3>
+        </div>
+        <div>
+          <p class="equity-text">
+            No todo se financia con deuda. Cuando la vía correcta es capital — una ronda,
+            un socio industrial, un family office — te presentamos a inversores adecuados
+            para tu etapa y tu sector, y te ayudamos a llegar con la historia bien contada.
+          </p>
+          <p class="equity-text">
+            Antes de firmar, tres cosas que conviene tener claras: el equity es la financiación
+            más cara que existe — el 20&nbsp;% que cedes hoy valdrá mucho más dentro de cinco años —;
+            los términos importan tanto o más que la valoración (liquidación preferente,
+            antidilución, vesting); y la mejor posición para negociar una ronda es no necesitarla
+            con urgencia — precisamente lo que la deuda bien planteada te permite.
+          </p>
+        </div>
+      </div>
+      <div class="startups-cta">
+        <p class="cta-line">Si estás levantando ronda — o quieres evitarla — el diagnóstico te dice cuánta deuda soporta tu plan.</p>
+        <a href="#" class="text-cta" onclick="showTab('aplicar'); return false;">Pide tu diagnóstico →</a>
+      </div>
+    </div>
+  </section>
 </main>
 
 <!-- ===================== APLICAR ===================== -->
@@ -1788,15 +1754,55 @@
   </div>
 </main>
 
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand"><img src="logo.png?v=2" alt="" aria-hidden="true">Sextante&nbsp;Capital</div>
+        <p class="foot-desc">Financiación y estructuración de capital para empresas y promotores. Criterio independiente, análisis riguroso y ejecución cuidada de principio a fin.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4>Navegación</h4>
+          <a href="#que-hacemos">Qué hacemos</a>
+          <a href="#proceso">Cómo trabajamos</a>
+          <a href="#sectores">Operaciones</a>
+          <a href="#herramientas">Herramientas</a>
+          <a href="#" data-tab onclick="showTab('startups'); return false;">Startups</a>
+          <a href="blog.html">Blog</a>
+        </div>
+        <div class="foot-col">
+          <h4>Legal</h4>
+          <a href="aviso-legal.html">Aviso legal</a>
+          <a href="privacidad.html">Política de privacidad</a>
+        </div>
+        <div class="foot-col">
+          <h4>Contacto</h4>
+          <a href="#contacto">Formulario de contacto</a>
+          <a href="tel:+34633952154">633 952 154</a>
+        </div>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <span class="mono-label">© 2026 Sextante Capital · España</span>
+    </div>
+    <p class="disclaimer">El contenido de esta web es de carácter informativo y no constituye una oferta vinculante, una recomendación personalizada ni asesoramiento financiero. Cada operación se analiza de forma individual y las condiciones finales dependen de su estudio y aprobación por las entidades correspondientes.</p>
+  </div>
+</footer>
+
 <script>
   function showTab(tab) {
-    var isInicio = tab === 'inicio';
-    document.getElementById('view-inicio').hidden = !isInicio;
-    document.getElementById('view-aplicar').hidden = isInicio;
-    document.getElementById('tab-inicio').classList.toggle('active', isInicio);
-    document.getElementById('tab-aplicar').classList.toggle('active', !isInicio);
-    document.getElementById('tab-inicio').setAttribute('aria-selected', isInicio);
-    document.getElementById('tab-aplicar').setAttribute('aria-selected', !isInicio);
+    ['inicio', 'startups', 'aplicar'].forEach(function (name) {
+      var view = document.getElementById('view-' + name);
+      var btn = document.getElementById('tab-' + name);
+      var active = name === tab;
+      if (view) view.hidden = !active;
+      if (btn) {
+        btn.classList.toggle('active', active);
+        btn.setAttribute('aria-selected', active);
+      }
+    });
     window.scrollTo({ top: 0 });
   }
 
@@ -1922,8 +1928,8 @@
     });
   });
 
-  // Anchor links in the nav should always land on the Inicio view
-  document.querySelectorAll('.desktop-nav a, a[href="#contacto"], a[href="#que-hacemos"]').forEach(function (a) {
+  // Anchor links in the nav and footer should always land on the Inicio view
+  document.querySelectorAll('.desktop-nav a[href^="#"]:not([data-tab]), .foot-col a[href^="#"]:not([data-tab]), a[href="#contacto"], a[href="#que-hacemos"]').forEach(function (a) {
     a.addEventListener('click', function () {
       if (document.getElementById('view-inicio').hidden) showTab('inicio');
     });
