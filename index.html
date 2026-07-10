@@ -593,6 +593,25 @@
   }
   .text-cta:hover { color: var(--forest-deep); }
 
+  /* TEASER STARTUPS (inicio) */
+  .startups-teaser {
+    background: var(--sand);
+    padding: 90px 32px;
+  }
+  .teaser-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .teaser-grid h2 { max-width: 560px; }
+  .teaser-grid p {
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
   /* HERRAMIENTAS */
   .tools {
     background: var(--paper);
@@ -1094,7 +1113,9 @@
     .services-grid,
     .tools-grid,
     .startups-head,
+    .teaser-grid,
     .turnaround { grid-template-columns: 1fr; gap: 40px; }
+    .teaser-grid { gap: 24px; }
     .startups-head { gap: 24px; margin-bottom: 48px; }
     .startups-grid { grid-template-columns: 1fr; gap: 32px; }
     .equity-note { grid-template-columns: 1fr; gap: 20px; }
@@ -1391,6 +1412,24 @@
       <p class="cta-q">¿Tienes una operación entre manos?</p>
       <a href="#contacto" class="btn-primary">Agenda una llamada de 30 minutos</a>
     </div>
+    </div>
+  </section>
+
+  <!-- TEASER STARTUPS -->
+  <section class="startups-teaser">
+    <div class="container teaser-grid">
+      <div>
+        <div class="eyebrow">Startups &amp; new ventures</div>
+        <h2>¿Construyes una startup? Crece diluyéndote lo menos posible.</h2>
+      </div>
+      <div>
+        <p>
+          Venture debt, préstamos participativos, deuda con avales — y acceso a
+          inversores cuando lo que toca es equity. Hemos preparado una página
+          entera sobre cómo financiar tu crecimiento sin regalar tu compañía.
+        </p>
+        <a href="#" class="text-cta" data-tab onclick="showTab('startups'); return false;">Ver cómo ayudamos a startups →</a>
+      </div>
     </div>
   </section>
 
