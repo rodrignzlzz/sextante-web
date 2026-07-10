@@ -880,8 +880,35 @@
     accent-color: var(--forest);
     cursor: pointer;
   }
+  .est-compare {
+    border-top: 1px solid var(--line-strong);
+    padding: 20px 0 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .est-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 14px;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .est-line em { font-style: normal; color: var(--ink-faint); }
+  .est-line strong {
+    font-family: var(--serif);
+    font-size: 16.5px;
+    font-weight: 600;
+    color: var(--ink);
+    white-space: nowrap;
+  }
+  .est-line .est-caro {
+    color: #a04c31;
+  }
   .est-result {
     border-top: 1px solid var(--line-strong);
+    margin-top: 18px;
     padding-top: 24px;
   }
   .est-result-label {
@@ -1451,12 +1478,22 @@
         </div>
         <input type="range" id="est-importe" min="100000" max="5000000" step="50000" value="1000000" aria-label="Importe de la operación">
       </div>
-      <div class="est-result">
-        <div class="est-result-label">Mejorar tu tipo en 1 punto supondría</div>
-        <div class="est-central" id="est-central">10.000 €</div>
-        <div class="est-rango" id="est-rango">entre 5.000 € y 15.000 € al año, según la operación</div>
+      <div class="est-compare">
+        <div class="est-line">
+          <span>Intereses con un préstamo bancario caro <em id="est-tipo-banco">(8,5 % TAE)</em></span>
+          <strong class="est-caro" id="est-banco">85.000 €/año</strong>
+        </div>
+        <div class="est-line">
+          <span>Con la estructura adecuada <em id="est-tipo-nosotros">(7,0 %)</em></span>
+          <strong id="est-nosotros">70.000 €/año</strong>
+        </div>
       </div>
-      <p class="est-note">Estimación orientativa sobre el coste financiero anual. El diagnóstico concreta cuánto es posible en tu caso.</p>
+      <div class="est-result">
+        <div class="est-result-label">Ahorro potencial en intereses</div>
+        <div class="est-central" id="est-central">15.000 €</div>
+        <div class="est-rango" id="est-rango">cada año, sobre 1.000.000 € de financiación</div>
+      </div>
+      <p class="est-note">Ejemplo orientativo comparando un préstamo pyme en el tramo caro del mercado bancario con una estructura bien planteada. El diagnóstico concreta cuánto es posible en tu caso.</p>
     </aside>
 
     <form class="contact-form aplicar-form" id="aplicar-form" novalidate>
@@ -1624,13 +1661,17 @@
   (function () {
     var slider = document.getElementById('est-importe');
     if (!slider) return;
+    // EDITAR: tipos de referencia de la comparativa
+    var TIPO_BANCO_CARO = 0.085; // préstamo pyme en el tramo caro del mercado
+    var TIPO_NOSOTROS = 0.07;    // estructura bien planteada
     var fmt = function (n) { return Math.round(n).toLocaleString('es-ES') + ' €'; };
     function update() {
       var importe = Number(slider.value);
       document.getElementById('est-importe-out').textContent = fmt(importe);
-      document.getElementById('est-central').textContent = fmt(importe * 0.01);
-      document.getElementById('est-rango').textContent =
-        'entre ' + fmt(importe * 0.005) + ' y ' + fmt(importe * 0.015) + ' al año, según la operación';
+      document.getElementById('est-banco').textContent = fmt(importe * TIPO_BANCO_CARO) + '/año';
+      document.getElementById('est-nosotros').textContent = fmt(importe * TIPO_NOSOTROS) + '/año';
+      document.getElementById('est-central').textContent = fmt(importe * (TIPO_BANCO_CARO - TIPO_NOSOTROS));
+      document.getElementById('est-rango').textContent = 'cada año, sobre ' + fmt(importe) + ' de financiación';
     }
     slider.addEventListener('input', update);
     update();
