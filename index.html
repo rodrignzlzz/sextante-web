@@ -550,6 +550,56 @@
     color: var(--ink-soft);
   }
 
+  /* COMPARADOR ANTES / DESPUÉS */
+  .compare-card {
+    grid-column: 1 / -1;
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: var(--paper);
+    border: 1px solid var(--line-strong);
+  }
+  .compare-col {
+    padding: 32px 38px;
+    font-family: var(--mono);
+  }
+  .compare-col.antes { border-right: 1px solid var(--line); }
+  .cmp-label {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+    margin-bottom: 20px;
+  }
+  .compare-col.despues .cmp-label { color: var(--forest); }
+  .cmp-line {
+    font-size: 14px;
+    color: var(--ink-soft);
+  }
+  .cmp-line strong { color: #a04c31; font-weight: 600; }
+  .compare-col.despues .cmp-line strong { color: var(--forest); }
+  .cmp-arrow {
+    color: var(--line-strong);
+    padding: 7px 0;
+    font-size: 14px;
+  }
+  .cmp-final {
+    margin-top: 14px;
+    font-family: var(--serif);
+    font-size: 24px;
+    color: var(--ink-soft);
+  }
+  .cmp-final strong { color: #a04c31; font-weight: 500; }
+  .compare-col.despues .cmp-final { font-size: 28px; color: var(--ink); }
+  .compare-col.despues .cmp-final strong { color: var(--forest); font-weight: 600; }
+  .compare-note {
+    grid-column: 1 / -1;
+    font-size: 12.5px;
+    font-style: italic;
+    color: var(--ink-faint);
+    margin: 14px 0 0;
+  }
+
   /* SECTORES / OPERACIONES */
   .operations {
     background: var(--forest-deep);
@@ -1288,6 +1338,8 @@
     .equity-note { grid-template-columns: 1fr; gap: 20px; }
     .stage-grid { grid-template-columns: 1fr; }
     .de-lists { grid-template-columns: 1fr; gap: 28px; }
+    .compare-card { grid-template-columns: 1fr; }
+    .compare-col.antes { border-right: none; border-bottom: 1px solid var(--line); }
     .operations-grid,
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
     .process-steps { grid-template-columns: 1fr; gap: 36px; }
@@ -1562,6 +1614,25 @@
         <div class="item-desc">Usamos alternativas reales sobre la mesa para mejorar tipo, garantías y plazos.</div>
       </div>
     </div>
+    <div class="compare-card">
+      <div class="compare-col antes">
+        <div class="cmp-label">Antes</div>
+        <div class="cmp-line"><strong>5</strong> bancos consultados</div>
+        <div class="cmp-arrow">↓</div>
+        <div class="cmp-line"><strong>1</strong> oferta recibida</div>
+        <div class="cmp-arrow">↓</div>
+        <div class="cmp-final">Interés <strong>8,2&nbsp;%</strong></div>
+      </div>
+      <div class="compare-col despues">
+        <div class="cmp-label">Después</div>
+        <div class="cmp-line"><strong>17</strong> entidades consultadas</div>
+        <div class="cmp-arrow">↓</div>
+        <div class="cmp-line"><strong>6</strong> ofertas recibidas</div>
+        <div class="cmp-arrow">↓</div>
+        <div class="cmp-final">Interés <strong>5,6&nbsp;%</strong></div>
+      </div>
+    </div>
+    <p class="compare-note">Ejemplo ilustrativo. Cada operación es distinta: el diagnóstico te dice qué es posible en la tuya.</p>
     <div class="section-cta" style="grid-column: 1 / -1;">
       <p class="cta-q">¿Te han dicho que no?</p>
       <a href="#contacto" class="btn-primary">Agenda una llamada de 30 minutos</a>
