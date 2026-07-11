@@ -380,6 +380,100 @@
   .process .container { position: relative; }
   .process .eyebrow { color: var(--gold); }
   .process h2 { margin-bottom: 56px; max-width: 620px; }
+  .process-top {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: 64px;
+    align-items: center;
+    margin-bottom: 64px;
+  }
+  .process-top h2 { margin-bottom: 0; }
+
+  /* PANEL ESTADO DE OPERACIÓN */
+  .op-tracker {
+    background: rgba(245, 241, 232, 0.05);
+    border: 1px solid rgba(245, 241, 232, 0.16);
+    border-radius: 3px;
+    padding: 24px 26px 20px;
+    font-family: var(--mono);
+    width: 100%;
+  }
+  .op-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .op-title {
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .op-live {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--cream-dim);
+  }
+  .op-live-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--forest-bright);
+    animation: op-pulse 2s ease-in-out infinite;
+  }
+  .op-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 10px 2px;
+    border-top: 1px solid rgba(245, 241, 232, 0.1);
+    font-size: 13px;
+    color: var(--cream);
+  }
+  .op-row .op-mark { color: var(--gold); }
+  .op-row.current { color: #fff; }
+  .op-row.current .op-status {
+    color: var(--gold);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    animation: op-pulse 2s ease-in-out infinite;
+  }
+  .op-row.pending { opacity: 0.4; }
+  .op-bar {
+    height: 3px;
+    background: rgba(245, 241, 232, 0.12);
+    border-radius: 99px;
+    margin-top: 16px;
+    overflow: hidden;
+  }
+  .op-bar-fill {
+    width: 52%;
+    height: 100%;
+    background: var(--gold);
+    border-radius: 99px;
+  }
+  .op-caption {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(245, 241, 232, 0.55);
+    margin: 14px 0 0;
+    line-height: 1.5;
+  }
+  @keyframes op-pulse {
+    50% { opacity: 0.25; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .op-live-dot, .op-row.current .op-status { animation: none; }
+  }
   .process-steps {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1197,6 +1291,8 @@
     .operations-grid,
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
     .process-steps { grid-template-columns: 1fr; gap: 36px; }
+    .process-top { grid-template-columns: 1fr; gap: 40px; margin-bottom: 48px; }
+    .process-top h2 { margin-bottom: 0; }
     .stats .container { grid-template-columns: 1fr; gap: 0; padding-top: 48px; padding-bottom: 48px; }
     .stats .stat { border-left: none; padding: 22px 0; border-top: 1px solid rgba(245, 241, 232, 0.16); }
     .stats .stat:first-child { border-top: none; padding-top: 0; }
@@ -1397,8 +1493,25 @@
       <path d="M50 12 L55 50 L50 88 L45 50 Z" fill="#e6b95c"/>
     </svg>
     <div class="container">
-      <div class="eyebrow">Cómo trabajamos</div>
-      <h2>Tres fases, con criterio claro en cada una.</h2>
+      <div class="process-top">
+        <div>
+          <div class="eyebrow">Cómo trabajamos</div>
+          <h2>Tres fases, con criterio claro en cada una.</h2>
+        </div>
+        <div class="op-tracker" aria-hidden="true">
+          <div class="op-head">
+            <span class="op-title">Estado de una operación</span>
+            <span class="op-live"><span class="op-live-dot"></span>En curso</span>
+          </div>
+          <div class="op-row"><span>Documentación</span><span class="op-mark">✓</span></div>
+          <div class="op-row"><span>Análisis</span><span class="op-mark">✓</span></div>
+          <div class="op-row current"><span>Presentación a entidades</span><span class="op-status">En curso</span></div>
+          <div class="op-row pending"><span>Negociación</span></div>
+          <div class="op-row pending"><span>Firma</span></div>
+          <div class="op-bar"><div class="op-bar-fill"></div></div>
+          <p class="op-caption">Así de claro sabrás siempre dónde está tu operación.</p>
+        </div>
+      </div>
       <div class="process-steps">
         <div class="process-step">
           <div class="step-num">PASO 01</div>
