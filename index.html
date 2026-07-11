@@ -22,8 +22,8 @@
     --ink-faint: #8a8475;
     --line: #e2dccc;
     --line-strong: #cfc6b1;
-    --forest: #0e5b43;
-    --forest-deep: #0a4633;
+    --forest: #0b4a36;
+    --forest-deep: #072f23;
     --forest-bright: #2c8d68;
     --forest-tint: #e4ede7;
     --forest-line: #c4d8cc;
@@ -89,7 +89,7 @@
     position: sticky;
     top: 0;
     z-index: 50;
-    background: rgba(10, 70, 51, 0.94);
+    background: rgba(7, 47, 35, 0.94);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(245, 241, 232, 0.14);
@@ -151,6 +151,21 @@
     background: var(--cream);
     color: var(--forest-deep);
   }
+  .lang-toggle {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+    color: var(--cream-dim);
+    background: transparent;
+    border: 1px solid rgba(245, 241, 232, 0.3);
+    border-radius: 999px;
+    padding: 8px 13px;
+    cursor: pointer;
+    transition: color 0.15s ease, border-color 0.15s ease;
+    flex-shrink: 0;
+  }
+  .lang-toggle:hover { color: var(--cream); border-color: rgba(245, 241, 232, 0.6); }
 
   /* BUTTONS */
   .btn-primary {
@@ -166,7 +181,7 @@
   .btn-primary:hover {
     background: var(--forest-deep);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px -6px rgba(10, 70, 51, 0.45);
+    box-shadow: 0 6px 18px -6px rgba(7, 47, 35, 0.45);
   }
   .btn-secondary {
     display: inline-block;
@@ -384,7 +399,7 @@
     background: var(--forest-deep);
     border-radius: 6px;
     overflow: hidden;
-    box-shadow: 0 40px 90px -35px rgba(10, 70, 51, 0.55);
+    box-shadow: 0 40px 90px -35px rgba(7, 47, 35, 0.55);
   }
   .dash-topbar {
     display: flex;
@@ -1882,9 +1897,12 @@
       <a href="#contacto">Contáctanos</a>
     </nav>
 
-    <div class="tab-switch" role="tablist" aria-label="Sección">
-      <a href="blog.html" class="tab-link">Blog</a>
-      <button id="tab-aplicar" role="tab" aria-selected="false" onclick="showTab('aplicar')">Aplicar</button>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <div class="tab-switch" role="tablist" aria-label="Sección">
+        <a href="blog.html" class="tab-link">Blog</a>
+        <button id="tab-aplicar" role="tab" aria-selected="false" onclick="showTab('aplicar')">Aplicar</button>
+      </div>
+      <button id="lang-toggle" class="lang-toggle" aria-label="Switch language">EN</button>
     </div>
   </div>
 </header>
@@ -1896,41 +1914,41 @@
   <section class="hero container">
     <svg class="sextant" width="420" height="420" viewBox="0 0 200 200" fill="none" aria-hidden="true">
       <!-- estrella -->
-      <path class="sextant-star" d="M168 20 L170.5 27 L177.5 29.5 L170.5 32 L168 39 L165.5 32 L158.5 29.5 L165.5 27 Z" fill="#0e5b43"/>
+      <path class="sextant-star" d="M168 20 L170.5 27 L177.5 29.5 L170.5 32 L168 39 L165.5 32 L158.5 29.5 L165.5 27 Z" fill="#0b4a36"/>
       <!-- brazos del marco -->
-      <line x1="100" y1="42" x2="37.2" y2="137.2" stroke="#0e5b43" stroke-width="5" stroke-linecap="round"/>
-      <line x1="100" y1="42" x2="162.8" y2="137.2" stroke="#0e5b43" stroke-width="5" stroke-linecap="round"/>
+      <line x1="100" y1="42" x2="37.2" y2="137.2" stroke="#0b4a36" stroke-width="5" stroke-linecap="round"/>
+      <line x1="100" y1="42" x2="162.8" y2="137.2" stroke="#0b4a36" stroke-width="5" stroke-linecap="round"/>
       <!-- travesaño y refuerzos -->
-      <line x1="55" y1="116" x2="145" y2="116" stroke="#0e5b43" stroke-width="4" stroke-linecap="round"/>
-      <line x1="70" y1="117" x2="63" y2="134" stroke="#0e5b43" stroke-width="3" stroke-linecap="round"/>
-      <line x1="130" y1="117" x2="137" y2="134" stroke="#0e5b43" stroke-width="3" stroke-linecap="round"/>
+      <line x1="55" y1="116" x2="145" y2="116" stroke="#0b4a36" stroke-width="4" stroke-linecap="round"/>
+      <line x1="70" y1="117" x2="63" y2="134" stroke="#0b4a36" stroke-width="3" stroke-linecap="round"/>
+      <line x1="130" y1="117" x2="137" y2="134" stroke="#0b4a36" stroke-width="3" stroke-linecap="round"/>
       <!-- espejos y filtros (brazo izquierdo) -->
-      <rect x="57" y="76" width="20" height="6" rx="1.5" fill="#0e5b43" transform="rotate(-38 67 79)"/>
-      <rect x="47" y="93" width="16" height="5" rx="1.5" fill="#0e5b43" transform="rotate(-38 55 95.5)"/>
+      <rect x="57" y="76" width="20" height="6" rx="1.5" fill="#0b4a36" transform="rotate(-38 67 79)"/>
+      <rect x="47" y="93" width="16" height="5" rx="1.5" fill="#0b4a36" transform="rotate(-38 55 95.5)"/>
       <!-- telescopio -->
-      <rect x="118" y="72" width="52" height="14" rx="4" stroke="#0e5b43" stroke-width="4"/>
-      <rect x="170" y="75" width="11" height="8" rx="2" fill="#0e5b43"/>
-      <rect x="112" y="69" width="7" height="20" rx="2" fill="#0e5b43"/>
-      <line x1="126" y1="86" x2="126" y2="97" stroke="#0e5b43" stroke-width="3.5"/>
+      <rect x="118" y="72" width="52" height="14" rx="4" stroke="#0b4a36" stroke-width="4"/>
+      <rect x="170" y="75" width="11" height="8" rx="2" fill="#0b4a36"/>
+      <rect x="112" y="69" width="7" height="20" rx="2" fill="#0b4a36"/>
+      <line x1="126" y1="86" x2="126" y2="97" stroke="#0b4a36" stroke-width="3.5"/>
       <!-- arco graduado (banda con marcas) -->
-      <path d="M21.8 142.1 A127 127 0 0 0 178.2 142.1" stroke="#0e5b43" stroke-width="3.5"/>
-      <path d="M29.8 131.8 A114 114 0 0 0 170.2 131.8" stroke="#0e5b43" stroke-width="3"/>
-      <line x1="21.8" y1="142.1" x2="29.8" y2="131.8" stroke="#0e5b43" stroke-width="3.5" stroke-linecap="round"/>
-      <line x1="178.2" y1="142.1" x2="170.2" y2="131.8" stroke="#0e5b43" stroke-width="3.5" stroke-linecap="round"/>
-      <path d="M25.8 137 A120.5 120.5 0 0 0 174.2 137" stroke="#0e5b43" stroke-width="9" stroke-dasharray="1.8 6.5" opacity="0.8"/>
+      <path d="M21.8 142.1 A127 127 0 0 0 178.2 142.1" stroke="#0b4a36" stroke-width="3.5"/>
+      <path d="M29.8 131.8 A114 114 0 0 0 170.2 131.8" stroke="#0b4a36" stroke-width="3"/>
+      <line x1="21.8" y1="142.1" x2="29.8" y2="131.8" stroke="#0b4a36" stroke-width="3.5" stroke-linecap="round"/>
+      <line x1="178.2" y1="142.1" x2="170.2" y2="131.8" stroke="#0b4a36" stroke-width="3.5" stroke-linecap="round"/>
+      <path d="M25.8 137 A120.5 120.5 0 0 0 174.2 137" stroke="#0b4a36" stroke-width="9" stroke-dasharray="1.8 6.5" opacity="0.8"/>
       <!-- brazo indice (animado) -->
       <g class="sextant-arm">
-        <line x1="100" y1="42" x2="100" y2="158" stroke="#0e5b43" stroke-width="6" stroke-linecap="round"/>
-        <circle cx="100" cy="104" r="5.5" fill="#0e5b43"/>
+        <line x1="100" y1="42" x2="100" y2="158" stroke="#0b4a36" stroke-width="6" stroke-linecap="round"/>
+        <circle cx="100" cy="104" r="5.5" fill="#0b4a36"/>
         <circle cx="100" cy="104" r="2" fill="#f5f1e8"/>
-        <rect x="92" y="150" width="16" height="24" rx="3" fill="#0e5b43"/>
+        <rect x="92" y="150" width="16" height="24" rx="3" fill="#0b4a36"/>
         <circle cx="100" cy="160" r="3.4" fill="#f5f1e8"/>
       </g>
       <!-- disco pivote -->
-      <circle cx="100" cy="42" r="14" fill="#0e5b43"/>
+      <circle cx="100" cy="42" r="14" fill="#0b4a36"/>
       <circle cx="100" cy="42" r="5" fill="#f5f1e8"/>
-      <line x1="100" y1="28" x2="100" y2="18" stroke="#0e5b43" stroke-width="4" stroke-linecap="round"/>
-      <circle cx="100" cy="15" r="4.5" stroke="#0e5b43" stroke-width="3"/>
+      <line x1="100" y1="28" x2="100" y2="18" stroke="#0b4a36" stroke-width="4" stroke-linecap="round"/>
+      <circle cx="100" cy="15" r="4.5" stroke="#0b4a36" stroke-width="3"/>
     </svg>
     <div class="hero-inner">
       <div class="eyebrow">Financiación &amp; estructuración de capital</div>
@@ -2116,25 +2134,8 @@
       <path d="M50 12 L55 50 L50 88 L45 50 Z" fill="#e6b95c"/>
     </svg>
     <div class="container">
-      <div class="process-top">
-        <div>
-          <div class="eyebrow">Cómo trabajamos</div>
-          <h2>Tres fases, con criterio claro en cada una.</h2>
-        </div>
-        <div class="op-tracker" aria-hidden="true">
-          <div class="op-head">
-            <span class="op-title">Estado de una operación</span>
-            <span class="op-live"><span class="op-live-dot"></span>En curso</span>
-          </div>
-          <div class="op-row"><span>Documentación</span><span class="op-mark">✓</span></div>
-          <div class="op-row"><span>Análisis</span><span class="op-mark">✓</span></div>
-          <div class="op-row current"><span>Presentación a entidades</span><span class="op-status">En curso</span></div>
-          <div class="op-row pending"><span>Negociación</span></div>
-          <div class="op-row pending"><span>Firma</span></div>
-          <div class="op-bar"><div class="op-bar-fill"></div></div>
-          <p class="op-caption">Así de claro sabrás siempre dónde está tu operación.</p>
-        </div>
-      </div>
+      <div class="eyebrow">Cómo trabajamos</div>
+      <h2>Tres fases, con criterio claro en cada una.</h2>
       <div class="process-steps">
         <div class="process-step">
           <div class="step-num">PASO 01</div>
@@ -2830,11 +2831,12 @@
       status.className = 'form-status ' + type;
       status.textContent = msg;
       if (withMailFallback) {
+        var en2 = window.SITE_LANG === 'en';
         var a = document.createElement('a');
         a.href = 'mailto:sextantecapital@gmail.com?subject=' + encodeURIComponent('Consulta — Sextante Capital');
-        a.textContent = 'escribirnos directamente a sextantecapital@gmail.com';
+        a.textContent = en2 ? 'email us directly at sextantecapital@gmail.com' : 'escribirnos directamente a sextantecapital@gmail.com';
         a.style.cssText = 'color: inherit; text-decoration: underline; font-weight: 600;';
-        status.appendChild(document.createTextNode(' También puedes '));
+        status.appendChild(document.createTextNode(en2 ? ' You can also ' : ' También puedes '));
         status.appendChild(a);
         status.appendChild(document.createTextNode('.'));
       }
@@ -2844,13 +2846,16 @@
       e.preventDefault();
       status.className = 'form-status';
 
+      var en = window.SITE_LANG === 'en';
       if (!validate()) {
-        showStatus('error', 'Revisa los campos marcados: faltan datos obligatorios o el email no es válido.');
+        showStatus('error', en
+          ? 'Check the highlighted fields: required data is missing or the email is not valid.'
+          : 'Revisa los campos marcados: faltan datos obligatorios o el email no es válido.');
         return;
       }
 
       submitBtn.disabled = true;
-      submitBtn.textContent = 'Enviando…';
+      submitBtn.textContent = en ? 'Sending…' : 'Enviando…';
 
       var data = new FormData(form);
       data.append('_subject', 'Nueva consulta web — Sextante Capital');
@@ -2864,12 +2869,14 @@
       }).then(function (res) {
         if (res.ok) {
           form.reset();
-          showStatus('success', 'Consulta enviada. Te respondemos en menos de 48 horas laborables.');
+          showStatus('success', en
+            ? 'Enquiry sent. We reply within 48 working hours.'
+            : 'Consulta enviada. Te respondemos en menos de 48 horas laborables.');
         } else {
-          showStatus('error', 'No se pudo enviar la consulta en este momento.', true);
+          showStatus('error', en ? 'The enquiry could not be sent right now.' : 'No se pudo enviar la consulta en este momento.', true);
         }
       }).catch(function () {
-        showStatus('error', 'No se pudo enviar la consulta en este momento.', true);
+        showStatus('error', en ? 'The enquiry could not be sent right now.' : 'No se pudo enviar la consulta en este momento.', true);
       }).finally(function () {
         submitBtn.disabled = false;
         submitBtn.textContent = submitLabel;
@@ -2886,15 +2893,19 @@
     var TIPO_NOSOTROS = 0.0625;   // tipo que podemos conseguir
     var fmt = function (n) { return Math.round(n).toLocaleString('es-ES') + ' €'; };
     function update() {
+      var en = window.SITE_LANG === 'en';
       var importe = Number(slider.value);
       document.getElementById('est-importe-out').textContent = fmt(importe);
-      document.getElementById('est-banco').textContent = fmt(importe * TIPO_BANCO_CARO) + '/año';
-      document.getElementById('est-nosotros').textContent = fmt(importe * TIPO_NOSOTROS) + '/año';
+      document.getElementById('est-banco').textContent = fmt(importe * TIPO_BANCO_CARO) + (en ? '/yr' : '/año');
+      document.getElementById('est-nosotros').textContent = fmt(importe * TIPO_NOSOTROS) + (en ? '/yr' : '/año');
       document.getElementById('est-central').textContent = fmt(importe * (TIPO_BANCO_CARO - TIPO_NOSOTROS));
-      document.getElementById('est-rango').textContent = 'cada año, sobre ' + fmt(importe) + ' de financiación';
+      document.getElementById('est-rango').textContent = en
+        ? 'every year, on ' + fmt(importe) + ' of financing'
+        : 'cada año, sobre ' + fmt(importe) + ' de financiación';
     }
     slider.addEventListener('input', update);
     update();
+    window.__estUpdate = update;
   })();
 
   // Dashboard: animar al entrar en pantalla (gráficos + contadores)
@@ -2951,28 +2962,33 @@
     var chipsBox = document.getElementById('fin-chips');
     if (!chipsBox) return;
     var DATA = [
-      { n: 'ICO', d: 'Líneas públicas que se firman a través de tu banco: liquidez e inversión con tipos limitados por el propio ICO y plazos largos con carencia.', w: 'Tu perfil es bancable y quieres abaratar coste y alargar plazo.', m: 'Hasta 10+ años · Tipo limitado · Vía banco' },
-      { n: 'SGR', d: 'Una sociedad de garantía recíproca avala tu operación ante el banco: la garantía la pone la SGR, no tu patrimonio personal.', w: 'La garantía es lo que frena tu operación, o quieres evitar el aval personal.', m: 'Coste ~0,5–1,25 %/año · Mejora tipo y plazo' },
-      { n: 'Renting', d: 'Uso de vehículos o equipos por una cuota que incluye mantenimiento y servicios, sin inversión inicial y fuera de balance.', w: 'Necesitas renovar equipamiento sin inmovilizar caja ni endeudar el balance.', m: 'Cuota todo incluido · Sin inversión inicial' },
-      { n: 'Leasing', d: 'Financiación de un activo con opción de compra al final: el activo es la garantía y la cuota tiene ventajas fiscales.', w: 'Vas a comprar maquinaria, vehículos o inmuebles de uso productivo.', m: 'El activo garantiza · Amortización acelerada' },
-      { n: 'Factoring', d: 'Anticipas el cobro de tus facturas de clientes; en la modalidad sin recurso, el riesgo de impago se traslada al financiador.', w: 'Cobras a 60–120 días y necesitas convertir cartera en caja.', m: 'Caja inmediata · Posible sin recurso' },
-      { n: 'Confirming', d: 'El financiador gestiona tus pagos a proveedores, que pueden anticipar el cobro. Tú ordenas tu tesorería y ganas músculo negociador.', w: 'Quieres reforzar la relación con proveedores y ordenar los pagos.', m: 'Mejora negociación · Ordena tesorería' },
-      { n: 'Venture Debt', d: 'Deuda para startups respaldadas por inversores, normalmente con un pequeño componente de warrants: alarga el runway sin ceder apenas cap table.', w: 'Estás entre rondas con métricas creciendo y quieres llegar más lejos antes de levantar.', m: 'Junto a rondas · Dilución mínima' },
-      { n: 'Fondos privados', d: 'Fondos de deuda que prestan directamente, sin banco: más rápidos y flexibles en estructura, a cambio de un tipo superior.', w: 'El importe, el plazo o la urgencia no encajan en la banca tradicional.', m: 'Semanas, no meses · Estructura a medida' },
-      { n: 'Family Offices', d: 'Capital privado paciente que entra como deuda, equity o fórmulas mixtas, con relación directa y criterios propios.', w: 'Tu operación es singular y se explica mejor de tú a tú que ante un comité.', m: 'Capital paciente · Deuda o equity' },
-      { n: 'Bancos', d: 'La financiación más barata disponible y la base de casi cualquier estructura; exige historial, cuentas ordenadas y garantías.', w: 'Siempre que el perfil lo permita: el resto de piezas se construye alrededor.', m: 'El coste más bajo · Exige preparación' },
-      { n: 'ENISA', d: 'Préstamos participativos públicos sin aval ni garantías personales, que además refuerzan los fondos propios a ojos del resto de financiadores.', w: 'Empresa joven o en crecimiento que quiere financiarse sin diluirse.', m: 'Sin aval · Sin dilución · Largo plazo' },
-      { n: 'CDTI', d: 'Financiación pública para proyectos de I+D e innovación tecnológica, con tramos no reembolsables y tipos bonificados.', w: 'Tu proyecto tiene componente tecnológico o de innovación real.', m: 'Tramo no reembolsable · Para I+D' }
+      { n: 'ICO', nEn: 'ICO', d: 'Líneas públicas que se firman a través de tu banco: liquidez e inversión con tipos limitados por el propio ICO y plazos largos con carencia.', dEn: 'Public credit lines signed through your bank: liquidity and investment with rates capped by ICO itself and long terms with grace periods.', w: 'Tu perfil es bancable y quieres abaratar coste y alargar plazo.', wEn: 'Your profile is bankable and you want a lower cost and a longer term.', m: 'Hasta 10+ años · Tipo limitado · Vía banco', mEn: 'Up to 10+ years · Capped rate · Via your bank' },
+      { n: 'SGR', nEn: 'SGR', d: 'Una sociedad de garantía recíproca avala tu operación ante el banco: la garantía la pone la SGR, no tu patrimonio personal.', dEn: 'A mutual guarantee society backs your deal before the bank: the guarantee comes from the SGR, not your personal assets.', w: 'La garantía es lo que frena tu operación, o quieres evitar el aval personal.', wEn: 'Collateral is what blocks your deal, or you want to avoid personal guarantees.', m: 'Coste ~0,5–1,25 %/año · Mejora tipo y plazo', mEn: 'Cost ~0.5–1.25%/yr · Improves rate and term' },
+      { n: 'Renting', nEn: 'Renting', d: 'Uso de vehículos o equipos por una cuota que incluye mantenimiento y servicios, sin inversión inicial y fuera de balance.', dEn: 'Use of vehicles or equipment for a fee that includes maintenance and services, with no upfront investment and off balance sheet.', w: 'Necesitas renovar equipamiento sin inmovilizar caja ni endeudar el balance.', wEn: 'You need to renew equipment without tying up cash or loading the balance sheet.', m: 'Cuota todo incluido · Sin inversión inicial', mEn: 'All-in fee · No upfront investment' },
+      { n: 'Leasing', nEn: 'Leasing', d: 'Financiación de un activo con opción de compra al final: el activo es la garantía y la cuota tiene ventajas fiscales.', dEn: 'Asset financing with a purchase option at the end: the asset itself is the collateral and the fee carries tax advantages.', w: 'Vas a comprar maquinaria, vehículos o inmuebles de uso productivo.', wEn: 'You are buying machinery, vehicles or productive real estate.', m: 'El activo garantiza · Amortización acelerada', mEn: 'Asset-backed · Accelerated depreciation' },
+      { n: 'Factoring', nEn: 'Factoring', d: 'Anticipas el cobro de tus facturas de clientes; en la modalidad sin recurso, el riesgo de impago se traslada al financiador.', dEn: 'You collect your customer invoices upfront; in the non-recourse form, default risk shifts to the financier.', w: 'Cobras a 60–120 días y necesitas convertir cartera en caja.', wEn: 'You get paid at 60–120 days and need to turn receivables into cash.', m: 'Caja inmediata · Posible sin recurso', mEn: 'Immediate cash · Non-recourse available' },
+      { n: 'Confirming', nEn: 'Confirming', d: 'El financiador gestiona tus pagos a proveedores, que pueden anticipar el cobro. Tú ordenas tu tesorería y ganas músculo negociador.', dEn: 'The financier manages your supplier payments, who can collect early. You tidy up treasury and gain negotiating muscle.', w: 'Quieres reforzar la relación con proveedores y ordenar los pagos.', wEn: 'You want to strengthen supplier relationships and organise payments.', m: 'Mejora negociación · Ordena tesorería', mEn: 'Better terms · Organised treasury' },
+      { n: 'Venture Debt', nEn: 'Venture Debt', d: 'Deuda para startups respaldadas por inversores, normalmente con un pequeño componente de warrants: alarga el runway sin ceder apenas cap table.', dEn: 'Debt for investor-backed startups, usually with a small warrant component: extends runway while giving away almost no cap table.', w: 'Estás entre rondas con métricas creciendo y quieres llegar más lejos antes de levantar.', wEn: 'You are between rounds with growing metrics and want to get further before raising.', m: 'Junto a rondas · Dilución mínima', mEn: 'Alongside rounds · Minimal dilution' },
+      { n: 'Fondos privados', nEn: 'Private funds', d: 'Fondos de deuda que prestan directamente, sin banco: más rápidos y flexibles en estructura, a cambio de un tipo superior.', dEn: 'Debt funds that lend directly, no bank involved: faster and more flexible in structure, in exchange for a higher rate.', w: 'El importe, el plazo o la urgencia no encajan en la banca tradicional.', wEn: 'The amount, term or urgency does not fit traditional banking.', m: 'Semanas, no meses · Estructura a medida', mEn: 'Weeks, not months · Tailored structure' },
+      { n: 'Family Offices', nEn: 'Family Offices', d: 'Capital privado paciente que entra como deuda, equity o fórmulas mixtas, con relación directa y criterios propios.', dEn: 'Patient private capital that comes in as debt, equity or hybrids, with a direct relationship and its own criteria.', w: 'Tu operación es singular y se explica mejor de tú a tú que ante un comité.', wEn: 'Your deal is singular and is better explained face to face than before a committee.', m: 'Capital paciente · Deuda o equity', mEn: 'Patient capital · Debt or equity' },
+      { n: 'Bancos', nEn: 'Banks', d: 'La financiación más barata disponible y la base de casi cualquier estructura; exige historial, cuentas ordenadas y garantías.', dEn: 'The cheapest financing available and the base of almost any structure; requires track record, tidy accounts and guarantees.', w: 'Siempre que el perfil lo permita: el resto de piezas se construye alrededor.', wEn: 'Whenever your profile allows it: the other pieces are built around it.', m: 'El coste más bajo · Exige preparación', mEn: 'Lowest cost · Requires preparation' },
+      { n: 'ENISA', nEn: 'ENISA', d: 'Préstamos participativos públicos sin aval ni garantías personales, que además refuerzan los fondos propios a ojos del resto de financiadores.', dEn: 'Public participative loans with no personal guarantees, which also strengthen equity in the eyes of other financiers.', w: 'Empresa joven o en crecimiento que quiere financiarse sin diluirse.', wEn: 'A young or growing company that wants financing without dilution.', m: 'Sin aval · Sin dilución · Largo plazo', mEn: 'No guarantees · No dilution · Long term' },
+      { n: 'CDTI', nEn: 'CDTI', d: 'Financiación pública para proyectos de I+D e innovación tecnológica, con tramos no reembolsables y tipos bonificados.', dEn: 'Public financing for R&D and tech innovation projects, with non-refundable tranches and subsidised rates.', w: 'Tu proyecto tiene componente tecnológico o de innovación real.', wEn: 'Your project has a real technology or innovation component.', m: 'Tramo no reembolsable · Para I+D', mEn: 'Non-refundable tranche · For R&D' }
     ];
+    var currentIdx = 0;
+    function isEn() { return window.SITE_LANG === 'en'; }
     function select(i) {
+      currentIdx = i;
       chipsBox.querySelectorAll('.fin-chip').forEach(function (c, j) {
         c.classList.toggle('active', j === i);
         c.setAttribute('aria-selected', j === i);
+        c.textContent = isEn() ? DATA[j].nEn : DATA[j].n;
       });
-      document.getElementById('fd-title').textContent = DATA[i].n;
-      document.getElementById('fd-desc').textContent = DATA[i].d;
-      document.getElementById('fd-when').innerHTML = '<strong>Cuándo usarlo:</strong> ' + DATA[i].w;
-      document.getElementById('fd-meta').textContent = DATA[i].m;
+      var it = DATA[i];
+      document.getElementById('fd-title').textContent = isEn() ? it.nEn : it.n;
+      document.getElementById('fd-desc').textContent = isEn() ? it.dEn : it.d;
+      document.getElementById('fd-when').innerHTML = '<strong>' + (isEn() ? 'When to use it:' : 'Cuándo usarlo:') + '</strong> ' + (isEn() ? it.wEn : it.w);
+      document.getElementById('fd-meta').textContent = isEn() ? it.mEn : it.m;
     }
     DATA.forEach(function (item, i) {
       var b = document.createElement('button');
@@ -2984,6 +3000,7 @@
       chipsBox.appendChild(b);
     });
     select(0);
+    window.__refreshMap = function () { select(currentIdx); };
   })();
 
   // Calculadora de capacidad de financiación
@@ -3001,12 +3018,17 @@
       var antig = Number(document.getElementById('calc-antig').value) || 0;
       var deuda = Number(document.getElementById('calc-deuda').value) || 0;
 
+      var en = window.SITE_LANG === 'en';
       if (fact <= 0 || document.getElementById('calc-ebitda').value === '') {
-        out.innerHTML = 'Necesitamos al menos la facturación y el EBITDA para estimar la capacidad.';
+        out.innerHTML = en
+          ? 'We need at least revenue and EBITDA to estimate your capacity.'
+          : 'Necesitamos al menos la facturación y el EBITDA para estimar la capacidad.';
         return;
       }
       if (ebitda <= 0) {
-        out.innerHTML = 'Con EBITDA negativo, la vía no suele ser deuda tradicional — pero hay alternativas: participativos, ayudas públicas o capital. <strong>Hablemos.</strong>';
+        out.innerHTML = en
+          ? 'With negative EBITDA, traditional debt is rarely the route — but there are alternatives: participative loans, public grants or equity. <strong>Let\'s talk.</strong>'
+          : 'Con EBITDA negativo, la vía no suele ser deuda tradicional — pero hay alternativas: participativos, ayudas públicas o capital. <strong>Hablemos.</strong>';
         return;
       }
       var low = 2.5 * ebitda - deuda;
@@ -3021,13 +3043,19 @@
       low = round25(low); high = round25(high);
 
       if (high < 25000) {
-        out.innerHTML = 'Con estas cifras, el balance ya va cargado de deuda para los ratios habituales. Es justo el escenario donde una reestructuración aporta más — <strong>hablemos.</strong>';
+        out.innerHTML = en
+          ? 'With these numbers, the balance sheet is already loaded for the usual ratios. This is exactly where a restructuring adds the most — <strong>let\'s talk.</strong>'
+          : 'Con estas cifras, el balance ya va cargado de deuda para los ratios habituales. Es justo el escenario donde una reestructuración aporta más — <strong>hablemos.</strong>';
         return;
       }
       if (low === high || low < 25000) {
-        out.innerHTML = 'Tu empresa podría optar a en torno a <strong>' + fmt(high) + '</strong> de financiación.';
+        out.innerHTML = en
+          ? 'Your company could qualify for around <strong>' + fmt(high) + '</strong> of financing.'
+          : 'Tu empresa podría optar a en torno a <strong>' + fmt(high) + '</strong> de financiación.';
       } else {
-        out.innerHTML = 'Tu empresa podría optar a entre <strong>' + fmt(low) + '</strong> y <strong>' + fmt(high) + '</strong> de financiación.';
+        out.innerHTML = en
+          ? 'Your company could qualify for between <strong>' + fmt(low) + '</strong> and <strong>' + fmt(high) + '</strong> of financing.'
+          : 'Tu empresa podría optar a entre <strong>' + fmt(low) + '</strong> y <strong>' + fmt(high) + '</strong> de financiación.';
       }
     });
   })();
@@ -3040,6 +3068,264 @@
       btn.setAttribute('aria-expanded', isOpen);
     });
   });
+
+  /* ==========================================================
+     TRADUCCIÓN ES/EN
+     Diccionario de cadenas visibles + recorrido de nodos de texto.
+     Las piezas dinámicas (mapa, calculadora, formularios, estimador)
+     leen window.SITE_LANG directamente.
+     ========================================================== */
+  window.SITE_LANG = 'es';
+  (function () {
+    var D = {
+      // Navegación y pestañas
+      'Inicio': 'Home', 'Qué hacemos': 'What we do', 'Contáctanos': 'Contact us', 'Aplicar': 'Apply',
+      // Hero
+      'Financiación & estructuración de capital': 'Capital financing & structuring',
+      'Estructuramos el capital que necesita tu próxima etapa.': 'We structure the capital your next stage needs.',
+      'Estructuramos operaciones de financiación de deuda, capital y fusiones para empresas y promotores — con criterio independiente, análisis riguroso y una ejecución cuidada de principio a fin.': 'We structure debt, capital and M&A financing for companies and developers — with independent judgement, rigorous analysis and careful execution from start to finish.',
+      'Hablar con nosotros': 'Talk to us',
+      // Stats
+      '01 · Especialidad': '01 · Specialty', 'Deuda & estructuración': 'Debt & structuring',
+      'Estructuras a medida según la etapa y el riesgo de cada operación.': 'Tailored structures for the stage and risk of each deal.',
+      '02 · Criterio': '02 · Approach', 'Independientes': 'Independent',
+      'Sin vínculos con entidades financiadoras. Trabajamos para el cliente.': 'No ties to lenders. We work for the client.',
+      '03 · Alcance': '03 · Scope', 'De extremo a extremo': 'End to end',
+      'Desde el diagnóstico hasta el cierre y el seguimiento posterior.': 'From diagnosis to closing and follow-up.',
+      // Entidades
+      'Presentamos operaciones ante': 'We present deals to',
+      'Entidades ante las que podemos presentar operaciones. Sin vínculos ni acuerdos exclusivos: elegimos según tu operación.': 'Entities we can present deals to. No ties or exclusive agreements: we choose based on your deal.',
+      // Servicios
+      'Financiación y estructuración, a la medida de cada operación.': 'Financing and structuring, tailored to each deal.',
+      'Financiación de deuda': 'Debt financing',
+      'Estructuración y búsqueda de deuda senior, mezzanine y financiación garantizada según el perfil de la operación.': 'Structuring and sourcing of senior, mezzanine and secured debt to match the deal profile.',
+      'Estructuras dedicadas a proyectos con flujos de caja propios y repago a largo plazo.': 'Dedicated structures for projects with their own cash flows and long-term repayment.',
+      'Fusiones y adquisiciones': 'Mergers & acquisitions',
+      'Compraventas, valoración y negociación en operaciones corporativas.': 'Sales, valuation and negotiation in corporate transactions.',
+      'Reestructuración financiera': 'Financial restructuring',
+      'Reordenación de la estructura de deuda existente ante cambios de ciclo o de estrategia.': 'Reorganisation of the existing debt structure for changes of cycle or strategy.',
+      '¿Necesitas financiación?': 'Need financing?',
+      'Agenda una llamada de 30 minutos': 'Book a 30-minute call',
+      // Dashboard
+      'El expediente, en cifras': 'The file, in numbers',
+      'Hablamos el idioma de los financiadores.': 'We speak the language of lenders.',
+      'SXT · Expediente tipo': 'SXT · Sample file', 'Datos ilustrativos': 'Illustrative data',
+      'EBITDA · evolución': 'EBITDA · trend', 'Apalancamiento · DFN / EBITDA': 'Leverage · NFD / EBITDA',
+      'Estable': 'Stable', 'DSCR · cobertura del servicio de deuda': 'DSCR · debt service coverage',
+      'Coste medio de la deuda': 'Average cost of debt',
+      'Dentro de la zona de confort bancaria': 'Within the banking comfort zone',
+      'Mínimo bancario ~1,2x': 'Bank minimum ~1.2x', '3,0x límite': '3.0x limit',
+      'vs mínimo': 'vs minimum', 'Tras reestructurar la deuda viva': 'After restructuring existing debt',
+      'Métricas ilustrativas de un expediente tipo — las que mira cualquier comité de riesgos, y las que dejamos ordenadas antes de presentar tu operación.': 'Illustrative metrics of a sample file — the ones any risk committee looks at, and the ones we leave in order before presenting your deal.',
+      // Proceso
+      'Cómo trabajamos': 'How we work',
+      'Tres fases, con criterio claro en cada una.': 'Three phases, with clear judgement in each.',
+      'PASO 01': 'STEP 01', 'PASO 02': 'STEP 02', 'PASO 03': 'STEP 03',
+      'Diagnóstico': 'Diagnosis', 'Estructura': 'Structure', 'Ejecución': 'Execution',
+      'Analizamos la situación financiera y los objetivos de la operación para definir el enfoque adecuado.': 'We analyse the financial situation and the goals of the deal to define the right approach.',
+      'Diseñamos la estructura de capital óptima y preparamos la documentación para el mercado.': 'We design the optimal capital structure and prepare the documentation for the market.',
+      'Acompañamos la negociación hasta el cierre, y damos seguimiento tras la operación.': 'We support the negotiation through closing, and follow up after the deal.',
+      '¿Empezamos por el diagnóstico?': 'Shall we start with the diagnosis?',
+      // Cita y turnaround
+      '"No es que tu operación no sea financiable. Es que nadie te ha enseñado dónde y cómo buscarla."': '"It\'s not that your deal isn\'t financeable. It\'s that nobody has shown you where and how to look."',
+      'Cuando ya te han dicho que no': 'When you\'ve already been told no',
+      'Convertimos una negativa en condiciones mejores.': 'We turn a refusal into better terms.',
+      'Un rechazo o unas condiciones pobres suelen deberse a cómo se ha presentado la operación, no a la operación en sí. Con el enfoque, la documentación y los interlocutores adecuados, hemos visto convertirse un "no" en un "sí" — y unas condiciones aceptables en unas notablemente mejores.': 'A refusal or poor terms usually come from how the deal was presented, not the deal itself. With the right approach, documentation and counterparties, we have seen a "no" become a "yes" — and acceptable terms become remarkably better ones.',
+      'Reestructurar la propuesta': 'Restructure the proposal',
+      'Reformulamos el dossier y los términos para responder a lo que realmente preocupa al financiador.': 'We reshape the dossier and the terms to address what really worries the lender.',
+      'Ampliar el círculo': 'Widen the circle',
+      'Llevamos la operación a otros interlocutores mejor alineados con su perfil.': 'We take the deal to other counterparties better aligned with its profile.',
+      'Renegociar condiciones': 'Renegotiate terms',
+      'Usamos alternativas reales sobre la mesa para mejorar tipo, garantías y plazos.': 'We use real alternatives on the table to improve rate, guarantees and terms.',
+      'Antes': 'Before', 'Después': 'After',
+      'bancos consultados': 'banks approached', 'oferta recibida': 'offer received',
+      'entidades consultadas': 'lenders approached', 'ofertas recibidas': 'offers received',
+      'Interés': 'Interest',
+      'Ejemplo ilustrativo. Cada operación es distinta: el diagnóstico te dice qué es posible en la tuya.': 'Illustrative example. Every deal is different: the diagnosis tells you what is possible in yours.',
+      '¿Te han dicho que no?': 'Been told no?',
+      // Operaciones
+      'Tipos de operación': 'Deal types',
+      'Adaptamos la estructura a cada situación de capital.': 'We adapt the structure to each capital situation.',
+      'Financiación de circulante': 'Working capital financing',
+      'Recursos para sostener el crecimiento operativo del negocio.': 'Resources to sustain the operational growth of the business.',
+      'Refinanciación': 'Refinancing',
+      'Reordenación de compromisos financieros existentes en mejores condiciones.': 'Reorganisation of existing financial commitments on better terms.',
+      'Liberación de capital a través de activos inmobiliarios o productivos.': 'Unlocking capital through real estate or productive assets.',
+      'Adquisición y expansión': 'Acquisition & expansion',
+      'Capital para comprar compañías o financiar nuevas etapas de crecimiento.': 'Capital to buy companies or finance new stages of growth.',
+      '¿Tienes una operación entre manos?': 'Working on a deal?',
+      // Teaser startups
+      '¿Construyes una startup? Crece diluyéndote lo menos posible.': 'Building a startup? Grow with as little dilution as possible.',
+      'Venture debt, préstamos participativos, deuda con avales — y acceso a inversores cuando lo que toca es equity. Hemos preparado una página entera sobre cómo financiar tu crecimiento sin regalar tu compañía.': 'Venture debt, participative loans, guaranteed debt — and access to investors when equity is the answer. We have built a whole page on financing your growth without giving your company away.',
+      'Ver cómo ayudamos a startups →': 'See how we help startups →',
+      // Herramientas
+      'Herramientas de financiación': 'Financing tools',
+      'Conocemos más de 50 herramientas para mejorar tu financiación.': 'We know 50+ tools to improve your financing.',
+      'La mayoría de empresas trabaja siempre con las dos o tres de siempre. Combinar las adecuadas cambia el coste, las garantías y la probabilidad de éxito de la operación.': 'Most companies always use the same two or three. Combining the right ones changes the cost, the guarantees and the odds of the deal succeeding.',
+      'Instrumentos de financiación': 'Financing instruments',
+      'Avales SGR y otros avales': 'SGR and other guarantees',
+      'Sociedades de garantía recíproca y avales técnicos o financieros que desbloquean operaciones donde la garantía es el obstáculo.': 'Mutual guarantee societies and technical or financial guarantees that unlock deals where collateral is the obstacle.',
+      'Líneas ICO': 'ICO lines',
+      'Financiación con respaldo público para inversión y liquidez, en condiciones que el mercado por sí solo no ofrece.': 'Publicly backed financing for investment and liquidity, on terms the market alone does not offer.',
+      'Pólizas de crédito': 'Credit facilities',
+      'Liquidez flexible para el día a día del negocio, pagando solo por el capital realmente dispuesto.': 'Flexible liquidity for day-to-day business, paying only for the capital actually drawn.',
+      '…y las demás las seleccionamos según lo que necesita tu operación.': '…and we select the rest based on what your deal needs.',
+      'Mapa de financiación': 'Financing map',
+      '¿Qué tipo de financiación necesita tu empresa?': 'What type of financing does your company need?',
+      // Por qué Sextante
+      'Por qué Sextante': 'Why Sextante',
+      'Trabajamos para el cliente, no para el financiador.': 'We work for the client, not the lender.',
+      'Sin vínculos con entidades financiadoras ni comisiones por colocación.': 'No ties to lenders and no placement commissions.',
+      'Honorarios claros': 'Clear fees',
+      'Sabes desde el inicio qué pagas y por qué, sin sorpresas al cierre.': 'You know from the start what you pay and why, with no surprises at closing.',
+      'Confidencialidad': 'Confidentiality',
+      'Cada operación se trata con la máxima discreción, dentro y fuera del proceso.': 'Every deal is handled with maximum discretion, inside and outside the process.',
+      'Acompañamiento real': 'Real accompaniment',
+      'Un mismo interlocutor desde el diagnóstico hasta el cierre y después.': 'The same person from diagnosis to closing and beyond.',
+      '¿Hablamos?': 'Shall we talk?',
+      // FAQ
+      'Preguntas frecuentes': 'FAQ',
+      'Lo que nos preguntan siempre.': 'What we always get asked.',
+      '¿Cómo cobráis por vuestro trabajo?': 'How do you charge for your work?',
+      'Con un honorario base reducido y una parte del valor que le generamos al cliente: el ahorro conseguido frente a su situación de partida. Si no hay ahorro, no hay éxito que cobrar.': 'A reduced base fee plus a share of the value we create: the savings achieved versus your starting position. No savings, no success fee.',
+      '¿Qué tamaño de operación trabajáis?': 'What deal sizes do you work on?',
+      'Analizamos cada caso de forma individual. En el diagnóstico inicial te decimos con franqueza si tu operación encaja con lo que hacemos.': 'We look at every case individually. In the initial diagnosis we tell you frankly whether your deal fits what we do.',
+      '¿Cuánto tarda un proceso típico?': 'How long does a typical process take?',
+      'Depende de la complejidad de cada operación; te damos un plazo realista en el diagnóstico inicial y te mantenemos informado en todo momento.': 'It depends on the complexity of each deal; we give you a realistic timeline in the initial diagnosis and keep you informed throughout.',
+      '¿Trabajáis con empresas de cualquier sector?': 'Do you work with companies from any sector?',
+      'Sí, aunque el enfoque y los instrumentos disponibles varían según el sector y la etapa de la compañía.': 'Yes, although the approach and available instruments vary by sector and company stage.',
+      '¿Te queda alguna duda?': 'Still have questions?',
+      // Calculadora
+      'Calculadora': 'Calculator',
+      '¿Cuánta financiación podría conseguir tu empresa?': 'How much financing could your company get?',
+      'Introduce tus cifras anuales y obtén una horquilla orientativa en segundos. No guardamos ningún dato.': 'Enter your annual figures and get an indicative range in seconds. We store no data.',
+      'Facturación anual (€)': 'Annual revenue (€)', 'Beneficio neto (€)': 'Net profit (€)',
+      'Antigüedad (años)': 'Company age (years)', 'Deuda financiera actual (€)': 'Current financial debt (€)',
+      'Calcular capacidad': 'Calculate capacity', 'Capacidad estimada': 'Estimated capacity',
+      'Introduce tus cifras y te damos una horquilla orientativa al momento.': 'Enter your figures and we give you an indicative range on the spot.',
+      'Estimación orientativa basada en ratios habituales de mercado. La capacidad real depende del análisis completo de la operación — exactamente lo que hace el diagnóstico.': 'Indicative estimate based on usual market ratios. Real capacity depends on the full analysis of the deal — exactly what the diagnosis does.',
+      // Encaje
+      '¿Encajamos?': 'Are we a fit?',
+      'Si tu operación se parece a esto, hablemos.': 'If your deal looks like this, let\'s talk.',
+      'Acompañamos a pymes españolas que necesitan financiar su día a día, una inversión, una refinanciación o quieren aprovechar la financiación pública — con especial conocimiento del mercado balear y del sector náutico. No hace falta que tengas la operación definida: el diagnóstico inicial sirve precisamente para eso.': 'We support Spanish SMEs financing day-to-day operations, an investment or a refinancing, or wanting to make the most of public financing — with special knowledge of the Balearic market and the nautical sector. Your deal doesn\'t need to be defined yet: that is exactly what the initial diagnosis is for.',
+      'Rango orientativo': 'Indicative range', 'Foco': 'Focus',
+      'Pyme española · circulante, inversión, refinanciación y financiación pública · mercado balear y sector náutico': 'Spanish SMEs · working capital, investment, refinancing and public financing · Balearic market and nautical sector',
+      // Contacto
+      'Hablemos de la estructura de tu próxima operación.': 'Let\'s talk about the structure of your next deal.',
+      'Cuéntanos brevemente tu situación y te respondemos en menos de 48 horas laborables.': 'Tell us briefly about your situation and we reply within 48 working hours.',
+      'Llámanos · 633 952 154': 'Call us · 633 952 154',
+      'Nombre y apellidos': 'Full name', 'Teléfono': 'Phone', 'Empresa': 'Company',
+      'Tipo de operación': 'Deal type', 'Selecciona una opción': 'Select an option',
+      'Financiación de inversión o CAPEX': 'Investment or CAPEX financing',
+      'Refinanciación o reestructuración': 'Refinancing or restructuring',
+      'Financiación de adquisición (M&A)': 'Acquisition financing (M&A)',
+      'Financiación pública o subvenciones': 'Public financing or grants',
+      'Otro': 'Other', 'Importe aproximado': 'Approximate amount',
+      'Menos de 250.000 €': 'Under €250,000', '250.000 – 1M €': '€250,000 – 1M',
+      '1M – 5M €': '€1M – 5M', 'Más de 5M €': 'Over €5M', 'Mensaje': 'Message',
+      'He leído y acepto la': 'I have read and accept the',
+      'política de privacidad': 'privacy policy',
+      'y consiento el tratamiento de mis datos para gestionar esta consulta.': 'and consent to my data being processed to handle this enquiry.',
+      'Enviar consulta': 'Send enquiry',
+      'Indica tu nombre y apellidos.': 'Enter your full name.',
+      'Indica un email válido.': 'Enter a valid email.',
+      // Aplicar
+      'Todo empieza con un diagnóstico.': 'Everything starts with a diagnosis.',
+      'Analizamos tu situación y los objetivos de la operación, y te decimos con franqueza si podemos mejorar tu financiación. Cuéntanos tu caso y empezamos.': 'We analyse your situation and the goals of the deal, and tell you frankly whether we can improve your financing. Tell us your case and we get started.',
+      '¿Cuánto vale mejorar tu financiación?': 'How much is improving your financing worth?',
+      'Importe de la operación': 'Deal size',
+      'Intereses con un préstamo bancario caro': 'Interest on an expensive bank loan',
+      '(8,5 % TAE)': '(8.5% APR)', 'Con la estructura adecuada': 'With the right structure', '(6,25 %)': '(6.25%)',
+      'Ahorro potencial en intereses': 'Potential interest savings',
+      'Ejemplo orientativo comparando un préstamo pyme en el tramo caro del mercado bancario con una estructura bien planteada. El diagnóstico concreta cuánto es posible en tu caso.': 'Indicative example comparing an SME loan in the expensive band of the banking market with a well-designed structure. The diagnosis pins down what is possible in your case.',
+      'Pide tu diagnóstico': 'Request your diagnosis',
+      'Cuéntanos brevemente tu situación y qué necesitas.': 'Tell us briefly about your situation and what you need.',
+      // Startups
+      'Crece con deuda, diluyéndote lo menos posible.': 'Grow with debt, diluting as little as possible.',
+      'Cada ronda que levantas antes de tiempo es compañía que no recuperas. Para startups y proyectos nuevos con ingresos o plan sólido, la deuda bien estructurada extiende el camino sin ceder más capital del necesario. Y cuando lo que toca es capital, también te ponemos en contacto con inversores que encajan con tu etapa.': 'Every round you raise too early is company you never get back. For startups and new ventures with revenue or a solid plan, well-structured debt extends the road without giving up more capital than necessary. And when equity is the answer, we also connect you with investors who fit your stage.',
+      'Deuda diseñada para compañías respaldadas por inversores: alarga el runway entre rondas y protege el cap table.': 'Debt designed for investor-backed companies: extends runway between rounds and protects the cap table.',
+      'Préstamos participativos': 'Participative loans',
+      'ENISA y líneas públicas equivalentes: financiación a largo plazo, sin garantías personales y sin dilución.': 'ENISA and equivalent public lines: long-term financing, with no personal guarantees and no dilution.',
+      'Deuda bancaria con avales': 'Guaranteed bank debt',
+      'Estructuras con SGR y garantías que abren la financiación bancaria a compañías jóvenes sin historial largo.': 'Structures with SGRs and guarantees that open bank financing to young companies without a long track record.',
+      'CDTI y NEOTEC': 'CDTI & NEOTEC',
+      'Financiación pública para proyectos con base tecnológica: tramos no reembolsables y préstamos bonificados para I+D.': 'Public financing for tech-based projects: non-refundable tranches and subsidised R&D loans.',
+      'Crowdlending y deuda alternativa': 'Crowdlending & alternative debt',
+      'Plataformas y fondos que financian donde la banca aún no llega, con procesos rápidos y sin mover tu operativa.': 'Platforms and funds that finance where banks don\'t yet reach, with fast processes and without moving your banking.',
+      'Subvenciones y deducciones I+D': 'R&D grants & tax credits',
+      'Ayudas directas y deducciones fiscales que financian parte del desarrollo sin deuda y sin dilución.': 'Direct grants and tax deductions that finance part of the development with no debt and no dilution.',
+      '¿En qué etapa estás?': 'What stage are you at?',
+      'Pre-seed': 'Pre-seed', 'Seed': 'Seed', 'Serie A y siguientes': 'Series A and beyond',
+      'Casi todo es capital o ayudas: ENISA jóvenes emprendedores, NEOTEC, subvenciones. La deuda bancaria llega después — te ayudamos a no firmarla (ni avalarla) antes de tiempo.': 'Almost everything is equity or grants: ENISA for young entrepreneurs, NEOTEC, subsidies. Bank debt comes later — we help you not to sign it (or guarantee it) too soon.',
+      'Con los primeros ingresos entran los participativos, el crowdlending y los avales SGR. El objetivo: llegar a la Serie A con más métricas y menos dilución acumulada.': 'With first revenue come participative loans, crowdlending and SGR guarantees. The goal: reach Series A with more metrics and less accumulated dilution.',
+      'Venture debt junto a la ronda, banca con historial, CDTI para I+D. La estructura se profesionaliza — y cada punto de dilución evitado vale cada vez más.': 'Venture debt alongside the round, banks with track record, CDTI for R&D. The structure professionalises — and every point of dilution avoided is worth more and more.',
+      '¿Y si lo que toca es equity?': 'And if equity is the answer?',
+      'No todo se financia con deuda. Cuando la vía correcta es capital — una ronda, un socio industrial, un family office — te presentamos a inversores adecuados para tu etapa y tu sector, y te ayudamos a llegar con la historia bien contada.': 'Not everything is financed with debt. When the right route is capital — a round, an industrial partner, a family office — we introduce you to investors suited to your stage and sector, and help you arrive with the story well told.',
+      'Antes de firmar, tres cosas que conviene tener claras: el equity es la financiación más cara que existe — el 20 % que cedes hoy valdrá mucho más dentro de cinco años —; los términos importan tanto o más que la valoración (liquidación preferente, antidilución, vesting); y la mejor posición para negociar una ronda es no necesitarla con urgencia — precisamente lo que la deuda bien planteada te permite.': 'Before signing, three things worth being clear about: equity is the most expensive financing there is — the 20% you give up today will be worth much more in five years —; terms matter as much as or more than valuation (liquidation preference, anti-dilution, vesting); and the best position to negotiate a round is not to need it urgently — precisely what well-planned debt gives you.',
+      'Cuándo tiene sentido la deuda': 'When debt makes sense',
+      'Hay ingresos recurrentes o contratos que la repagan.': 'There is recurring revenue or contracts that repay it.',
+      'Necesitas 6–12 meses más de runway antes de la siguiente ronda.': 'You need 6–12 more months of runway before the next round.',
+      'Financias algo concreto: circulante, equipos, una campaña.': 'You are financing something concrete: working capital, equipment, a campaign.',
+      'Quieres cerrar la ronda desde una posición fuerte, no por necesidad.': 'You want to close the round from strength, not necessity.',
+      'Cuándo tiene sentido el equity': 'When equity makes sense',
+      'El producto aún no genera ingresos que soporten cuotas.': 'The product doesn\'t yet generate revenue that supports repayments.',
+      'La apuesta de crecimiento no tiene retorno inmediato.': 'The growth bet has no immediate return.',
+      'El inversor aporta más que dinero: red, mercado, experiencia.': 'The investor brings more than money: network, market, experience.',
+      'El balance ya no soporta más deuda con comodidad.': 'The balance sheet no longer carries more debt comfortably.',
+      'Si estás levantando ronda — o quieres evitarla — el diagnóstico te dice cuánta deuda soporta tu plan.': 'Whether you are raising a round — or want to avoid one — the diagnosis tells you how much debt your plan can carry.',
+      'Pide tu diagnóstico →': 'Request your diagnosis →',
+      // Footer
+      'Financiación y estructuración de capital para empresas y promotores. Criterio independiente, análisis riguroso y ejecución cuidada de principio a fin.': 'Capital financing and structuring for companies and developers. Independent judgement, rigorous analysis and careful execution from start to finish.',
+      'Navegación': 'Navigation', 'Operaciones': 'Deals', 'Herramientas': 'Tools',
+      'Aviso legal': 'Legal notice', 'Política de privacidad': 'Privacy policy',
+      'Contacto': 'Contact', 'Formulario de contacto': 'Contact form',
+      '© 2026 Sextante Capital · España': '© 2026 Sextante Capital · Spain',
+      'El contenido de esta web es de carácter informativo y no constituye una oferta vinculante, una recomendación personalizada ni asesoramiento financiero. Cada operación se analiza de forma individual y las condiciones finales dependen de su estudio y aprobación por las entidades correspondientes.': 'The content of this website is informational and does not constitute a binding offer, a personalised recommendation or financial advice. Every deal is analysed individually and final terms depend on review and approval by the relevant entities.'
+    };
+    var PLACEHOLDERS = [
+      { id: 'cf-mensaje', es: 'Cuéntanos brevemente tu situación y qué necesitas.', en: 'Tell us briefly about your situation and what you need.' },
+      { id: 'af-mensaje', es: 'Cuéntanos brevemente tu situación y qué necesitas.', en: 'Tell us briefly about your situation and what you need.' }
+    ];
+    function walk(node, fn) {
+      if (node.nodeType === 3) { fn(node); return; }
+      if (node.nodeType !== 1 || node.tagName === 'SCRIPT' || node.tagName === 'STYLE') return;
+      for (var c = node.firstChild; c; c = c.nextSibling) walk(c, fn);
+    }
+    function setLang(lang) {
+      window.SITE_LANG = lang;
+      document.documentElement.lang = lang;
+      try { localStorage.setItem('sxt-lang', lang); } catch (e) {}
+      walk(document.body, function (n) {
+        if (lang === 'en') {
+          var m = n.nodeValue.match(/^(\s*)([\s\S]*?)(\s*)$/);
+          var key = m[2].replace(/\s+/g, ' ');
+          if (key && D[key]) {
+            if (n.__es == null) n.__es = n.nodeValue;
+            n.nodeValue = m[1] + D[key] + m[3];
+          }
+        } else if (n.__es != null) {
+          n.nodeValue = n.__es;
+        }
+      });
+      PLACEHOLDERS.forEach(function (p) {
+        var el = document.getElementById(p.id);
+        if (el) el.placeholder = lang === 'en' ? p.en : p.es;
+      });
+      var btn = document.getElementById('lang-toggle');
+      if (btn) btn.textContent = lang === 'en' ? 'ES' : 'EN';
+      if (window.__refreshMap) window.__refreshMap();
+      if (window.__estUpdate) window.__estUpdate();
+    }
+    var toggle = document.getElementById('lang-toggle');
+    if (toggle) {
+      toggle.addEventListener('click', function () {
+        setLang(window.SITE_LANG === 'en' ? 'es' : 'en');
+      });
+    }
+    var saved = null;
+    try { saved = localStorage.getItem('sxt-lang'); } catch (e) {}
+    if (saved === 'en') setLang('en');
+  })();
 
   // Anchor links in the nav and footer should always land on the Inicio view
   document.querySelectorAll('.desktop-nav a[href^="#"]:not([data-tab]), .foot-col a[href^="#"]:not([data-tab]), a[href="#contacto"], a[href="#que-hacemos"]').forEach(function (a) {
