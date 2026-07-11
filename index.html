@@ -131,7 +131,8 @@
     background: rgba(245, 241, 232, 0.12);
     border-radius: 999px;
   }
-  .tab-switch button {
+  .tab-switch button,
+  .tab-switch .tab-link {
     border: none;
     cursor: pointer;
     padding: 9px 18px;
@@ -142,8 +143,10 @@
     background: transparent;
     color: var(--cream-dim);
     transition: background 0.15s ease, color 0.15s ease;
+    display: inline-block;
   }
-  .tab-switch button:hover { color: var(--cream); }
+  .tab-switch button:hover,
+  .tab-switch .tab-link:hover { color: var(--cream); }
   .tab-switch button.active {
     background: var(--cream);
     color: var(--forest-deep);
@@ -543,6 +546,76 @@
     font-size: 14.5px;
     line-height: 1.65;
     color: var(--ink-soft);
+  }
+  .stage-strip { margin-top: 72px; }
+  .stage-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 500;
+    margin-bottom: 26px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .stage-label::before {
+    content: "";
+    width: 30px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.65;
+  }
+  .stage-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .stage-card {
+    background: var(--paper);
+    border-top: 2px solid var(--signal);
+    padding: 26px 24px;
+    transition: transform 0.25s ease, border-top-color 0.25s ease;
+  }
+  .stage-card:hover { transform: translateY(-3px); border-top-color: var(--gold); }
+  .stage-card .stage-name {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  .stage-card .stage-desc {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+  .de-lists {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 44px;
+  }
+  .de-col h4 {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    margin: 0 0 16px;
+  }
+  .de-col ul { list-style: none; margin: 0; padding: 0; }
+  .de-col li {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    padding: 9px 0 9px 24px;
+    border-top: 1px solid var(--line);
+    position: relative;
+  }
+  .de-col li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    color: var(--signal);
   }
   .equity-note {
     margin-top: 64px;
@@ -1119,6 +1192,8 @@
     .startups-head { gap: 24px; margin-bottom: 48px; }
     .startups-grid { grid-template-columns: 1fr; gap: 32px; }
     .equity-note { grid-template-columns: 1fr; gap: 20px; }
+    .stage-grid { grid-template-columns: 1fr; }
+    .de-lists { grid-template-columns: 1fr; gap: 28px; }
     .operations-grid,
     .trust-grid { grid-template-columns: repeat(2, 1fr); }
     .process-steps { grid-template-columns: 1fr; gap: 36px; }
@@ -1188,15 +1263,13 @@
     </a>
 
     <nav class="desktop-nav">
-      <a href="#que-hacemos">Qué hacemos</a>
-      <a href="#sectores">Operaciones</a>
-      <a href="#" data-tab onclick="showTab('startups'); return false;">Startups</a>
-      <a href="blog.html">Blog</a>
+      <a href="#" data-tab onclick="showTab('inicio'); return false;">Qué hacemos</a>
     </nav>
 
     <div class="tab-switch" role="tablist" aria-label="Sección">
       <button id="tab-inicio" class="active" role="tab" aria-selected="true" onclick="showTab('inicio')">Inicio</button>
       <button id="tab-startups" role="tab" aria-selected="false" onclick="showTab('startups')">Startups</button>
+      <a href="blog.html" class="tab-link">Blog</a>
       <button id="tab-aplicar" role="tab" aria-selected="false" onclick="showTab('aplicar')">Aplicar</button>
     </div>
   </div>
@@ -1671,7 +1744,41 @@
           <div class="st-title">Deuda bancaria con avales</div>
           <div class="st-desc">Estructuras con SGR y garantías que abren la financiación bancaria a compañías jóvenes sin historial largo.</div>
         </div>
+        <div class="startup-item">
+          <div class="st-num">04</div>
+          <div class="st-title">CDTI y NEOTEC</div>
+          <div class="st-desc">Financiación pública para proyectos con base tecnológica: tramos no reembolsables y préstamos bonificados para I+D.</div>
+        </div>
+        <div class="startup-item">
+          <div class="st-num">05</div>
+          <div class="st-title">Crowdlending y deuda alternativa</div>
+          <div class="st-desc">Plataformas y fondos que financian donde la banca aún no llega, con procesos rápidos y sin mover tu operativa.</div>
+        </div>
+        <div class="startup-item">
+          <div class="st-num">06</div>
+          <div class="st-title">Subvenciones y deducciones I+D</div>
+          <div class="st-desc">Ayudas directas y deducciones fiscales que financian parte del desarrollo sin deuda y sin dilución.</div>
+        </div>
       </div>
+
+      <div class="stage-strip">
+        <div class="stage-label">¿En qué etapa estás?</div>
+        <div class="stage-grid">
+          <div class="stage-card">
+            <div class="stage-name">Pre-seed</div>
+            <div class="stage-desc">Casi todo es capital o ayudas: ENISA jóvenes emprendedores, NEOTEC, subvenciones. La deuda bancaria llega después — te ayudamos a no firmarla (ni avalarla) antes de tiempo.</div>
+          </div>
+          <div class="stage-card">
+            <div class="stage-name">Seed</div>
+            <div class="stage-desc">Con los primeros ingresos entran los participativos, el crowdlending y los avales SGR. El objetivo: llegar a la Serie A con más métricas y menos dilución acumulada.</div>
+          </div>
+          <div class="stage-card">
+            <div class="stage-name">Serie A y siguientes</div>
+            <div class="stage-desc">Venture debt junto a la ronda, banca con historial, CDTI para I+D. La estructura se profesionaliza — y cada punto de dilución evitado vale cada vez más.</div>
+          </div>
+        </div>
+      </div>
+
       <div class="equity-note">
         <div>
           <h3 class="equity-title">¿Y si lo que toca es equity?</h3>
@@ -1691,6 +1798,28 @@
           </p>
         </div>
       </div>
+
+      <div class="de-lists">
+        <div class="de-col">
+          <h4>Cuándo tiene sentido la deuda</h4>
+          <ul>
+            <li>Hay ingresos recurrentes o contratos que la repagan.</li>
+            <li>Necesitas 6–12 meses más de runway antes de la siguiente ronda.</li>
+            <li>Financias algo concreto: circulante, equipos, una campaña.</li>
+            <li>Quieres cerrar la ronda desde una posición fuerte, no por necesidad.</li>
+          </ul>
+        </div>
+        <div class="de-col">
+          <h4>Cuándo tiene sentido el equity</h4>
+          <ul>
+            <li>El producto aún no genera ingresos que soporten cuotas.</li>
+            <li>La apuesta de crecimiento no tiene retorno inmediato.</li>
+            <li>El inversor aporta más que dinero: red, mercado, experiencia.</li>
+            <li>El balance ya no soporta más deuda con comodidad.</li>
+          </ul>
+        </div>
+      </div>
+
       <div class="startups-cta">
         <p class="cta-line">Si estás levantando ronda — o quieres evitarla — el diagnóstico te dice cuánta deuda soporta tu plan.</p>
         <a href="#" class="text-cta" onclick="showTab('aplicar'); return false;">Pide tu diagnóstico →</a>
