@@ -380,69 +380,148 @@
   /* DASHBOARD FINANCIERO */
   .dash { padding: 100px 32px; }
   .dash h2 { margin-bottom: 56px; max-width: 620px; }
+  .dash-panel {
+    background: var(--forest-deep);
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 40px 90px -35px rgba(10, 70, 51, 0.55);
+  }
+  .dash-topbar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 14px 22px;
+    border-bottom: 1px solid rgba(245, 241, 232, 0.12);
+  }
+  .dash-dots { display: flex; gap: 7px; }
+  .dash-dots span {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: rgba(245, 241, 232, 0.22);
+  }
+  .dash-dots span:nth-child(2) { background: rgba(230, 185, 92, 0.55); }
+  .dash-dots span:nth-child(3) { background: rgba(44, 141, 104, 0.7); }
+  .dash-topbar-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.6);
+  }
+  .dash-topbar-live {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.5);
+  }
+  .dash-topbar-live .op-live-dot { width: 6px; height: 6px; }
   .dash-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 24px;
+    gap: 1px;
+    background: rgba(245, 241, 232, 0.12);
   }
   .dash-tile {
-    background: var(--paper);
-    border: 1px solid var(--line);
-    padding: 24px 24px 22px;
+    background: var(--forest-deep);
+    padding: 26px 26px 24px;
+  }
+  .dash-tile-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 14px;
+    min-height: 30px;
   }
   .dash-label {
     font-family: var(--mono);
-    font-size: 10px;
+    font-size: 9.5px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--ink-faint);
-    margin-bottom: 12px;
-    min-height: 26px;
+    color: rgba(245, 241, 232, 0.55);
+    line-height: 1.5;
   }
+  .chip {
+    font-family: var(--mono);
+    font-size: 9.5px;
+    letter-spacing: 0.04em;
+    padding: 3px 9px;
+    border-radius: 99px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .chip.up { color: #9fe0bd; background: rgba(44, 141, 104, 0.28); }
+  .chip.gold { color: var(--gold); background: rgba(230, 185, 92, 0.16); }
   .dash-value {
     font-family: var(--serif);
-    font-size: 34px;
+    font-size: 42px;
     font-weight: 500;
-    color: var(--forest);
+    color: var(--cream);
     line-height: 1;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
+    font-variant-numeric: tabular-nums;
   }
   .dash-sub {
     font-family: var(--mono);
-    font-size: 10.5px;
-    color: var(--ink-faint);
-    margin-top: 12px;
+    font-size: 10px;
+    color: rgba(245, 241, 232, 0.45);
+    margin-top: 14px;
   }
   /* barras EBITDA */
-  .bars { display: flex; align-items: flex-end; gap: 6px; height: 56px; }
+  .chart-area {
+    height: 64px;
+    background-image: linear-gradient(rgba(245, 241, 232, 0.08) 1px, transparent 1px);
+    background-size: 100% 21px;
+  }
+  .bars { display: flex; align-items: flex-end; gap: 7px; height: 100%; }
   .bars .bar {
     flex: 1;
-    background: var(--forest);
-    opacity: 0.55;
+    background: var(--forest-bright);
+    opacity: 0.75;
+    border-radius: 2px 2px 0 0;
     transform: scaleY(0);
     transform-origin: bottom;
     transition: transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
   }
-  .bars .bar:last-child { background: var(--signal); opacity: 1; }
+  .bars .bar:last-child { background: var(--gold); opacity: 1; }
   .in-view .bars .bar { transform: scaleY(1); }
-  .bars .bar:nth-child(2) { transition-delay: 0.1s; }
-  .bars .bar:nth-child(3) { transition-delay: 0.2s; }
-  .bars .bar:nth-child(4) { transition-delay: 0.3s; }
-  .bars .bar:nth-child(5) { transition-delay: 0.4s; }
+  .bars .bar:nth-child(2) { transition-delay: 0.12s; }
+  .bars .bar:nth-child(3) { transition-delay: 0.24s; }
+  .bars .bar:nth-child(4) { transition-delay: 0.36s; }
+  .bars .bar:nth-child(5) { transition-delay: 0.48s; }
+  .bar-labels {
+    display: flex;
+    gap: 7px;
+    margin-top: 8px;
+  }
+  .bar-labels span {
+    flex: 1;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 8.5px;
+    color: rgba(245, 241, 232, 0.4);
+  }
+  .bar-labels span:last-child { color: var(--gold); }
   /* apalancamiento */
+  .lev-wrap { padding-top: 26px; }
   .lev-track {
-    height: 8px;
-    background: var(--sand);
+    height: 9px;
+    background: rgba(245, 241, 232, 0.14);
     border-radius: 99px;
     position: relative;
-    margin-top: 24px;
   }
   .lev-fill {
     height: 100%;
     width: 0;
     border-radius: 99px;
-    background: var(--forest);
-    transition: width 1.1s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+    background: linear-gradient(90deg, var(--forest-bright), var(--gold));
+    transition: width 1.2s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
   }
   .in-view .lev-fill { width: 60%; }
   .lev-marker {
@@ -450,27 +529,96 @@
     top: -5px;
     left: 75%;
     width: 2px;
-    height: 18px;
-    background: var(--signal);
+    height: 19px;
+    background: var(--gold);
+  }
+  .lev-tag {
+    position: absolute;
+    left: 75%;
+    transform: translateX(-50%);
+    top: -24px;
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: 0.06em;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+  .lev-scale {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-family: var(--mono);
+    font-size: 8.5px;
+    color: rgba(245, 241, 232, 0.4);
   }
   /* donut DSCR */
-  .donut { display: block; margin-top: 4px; }
-  .donut .donut-track { stroke: var(--sand); }
+  .donut-wrap { position: relative; width: 88px; height: 88px; }
+  .donut { display: block; }
+  .donut .donut-track { stroke: rgba(245, 241, 232, 0.14); }
   .donut .donut-fill {
-    stroke: var(--forest);
-    stroke-dasharray: 163;
-    stroke-dashoffset: 163;
-    transition: stroke-dashoffset 1.3s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
+    stroke: var(--forest-bright);
+    stroke-dasharray: 214;
+    stroke-dashoffset: 214;
+    transition: stroke-dashoffset 1.4s cubic-bezier(0.22, 1, 0.36, 1) 0.2s;
   }
-  .in-view .donut .donut-fill { stroke-dashoffset: 55; }
+  .in-view .donut .donut-fill { stroke-dashoffset: 64; }
+  .donut-center {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .donut-center strong {
+    font-family: var(--mono);
+    font-size: 13px;
+    color: var(--gold);
+  }
+  .donut-center small {
+    font-family: var(--mono);
+    font-size: 7.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(245, 241, 232, 0.45);
+    margin-top: 2px;
+  }
   /* sparkline coste */
-  .spark { display: block; margin-top: 14px; }
-  .spark polyline {
+  .spark-wrap { position: relative; }
+  .spark { display: block; width: 100%; }
+  .spark .spark-line {
     stroke-dasharray: 100;
     stroke-dashoffset: 100;
-    transition: stroke-dashoffset 1.4s ease 0.3s;
+    transition: stroke-dashoffset 1.5s ease 0.3s;
   }
-  .in-view .spark polyline { stroke-dashoffset: 0; }
+  .in-view .spark .spark-line { stroke-dashoffset: 0; }
+  .spark .spark-area {
+    opacity: 0;
+    transition: opacity 1s ease 1s;
+  }
+  .in-view .spark .spark-area { opacity: 1; }
+  .spark .spark-dot {
+    opacity: 0;
+    transition: opacity 0.4s ease 1.6s;
+  }
+  .in-view .spark .spark-dot { opacity: 1; animation: op-pulse 2.4s ease-in-out 2s infinite; }
+  .spark-from {
+    position: absolute;
+    top: -2px;
+    left: 0;
+    font-family: var(--mono);
+    font-size: 8.5px;
+    color: rgba(245, 241, 232, 0.45);
+  }
+  .spark-to {
+    position: absolute;
+    bottom: 14px;
+    right: 0;
+    font-family: var(--mono);
+    font-size: 9.5px;
+    color: var(--gold);
+  }
   .dash-note {
     font-size: 12.5px;
     font-style: italic;
@@ -478,11 +626,12 @@
     margin: 22px 0 0;
   }
   @media (prefers-reduced-motion: reduce) {
-    .bars .bar, .lev-fill, .donut .donut-fill, .spark polyline { transition: none; }
+    .bars .bar, .lev-fill, .donut .donut-fill, .spark .spark-line, .spark .spark-area, .spark .spark-dot { transition: none; animation: none; }
     .bars .bar { transform: scaleY(1); }
     .lev-fill { width: 60%; }
-    .donut .donut-fill { stroke-dashoffset: 55; }
-    .spark polyline { stroke-dashoffset: 0; }
+    .donut .donut-fill { stroke-dashoffset: 64; }
+    .spark .spark-line { stroke-dashoffset: 0; }
+    .spark .spark-area, .spark .spark-dot { opacity: 1; }
   }
 
   /* QUE HACEMOS */
@@ -1133,7 +1282,156 @@
   .faq-item.open .faq-a { padding-bottom: 26px; }
   .faq-a { transition: padding 0.35s ease; }
 
-  /* ENCAJE */
+  /* MAPA DE FINANCIACIÓN */
+  .fin-map { grid-column: 1 / -1; margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .fin-map-label {
+    font-family: var(--mono);
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--forest);
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  .fin-map-q {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0 0 26px;
+  }
+  .fin-chips { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 26px; }
+  .fin-chip {
+    font-family: var(--mono);
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    padding: 9px 16px;
+    border: 1px solid var(--line-strong);
+    border-radius: 99px;
+    background: var(--paper);
+    color: var(--ink-soft);
+    cursor: pointer;
+    transition: border-color 0.15s ease, color 0.15s ease, background 0.15s ease, transform 0.15s ease;
+  }
+  .fin-chip:hover { border-color: var(--forest); color: var(--forest); transform: translateY(-2px); }
+  .fin-chip.active {
+    background: var(--forest);
+    border-color: var(--forest);
+    color: var(--cream);
+  }
+  .fin-detail {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--signal);
+    padding: 28px 32px;
+    max-width: 860px;
+  }
+  .fin-detail h4 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    margin: 0 0 12px;
+  }
+  .fin-detail .fd-desc {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .fin-detail .fd-when {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink);
+    margin: 0 0 16px;
+  }
+  .fin-detail .fd-when strong { color: var(--forest); }
+  .fin-detail .fd-meta {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--signal);
+  }
+
+  /* CALCULADORA DE CAPACIDAD */
+  .calc { padding: 100px 32px 0; }
+  .calc-card {
+    max-width: 1060px;
+    margin: 0 auto;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+  }
+  .calc-left { padding: 44px 44px 40px; }
+  .calc-left h2 { margin-bottom: 10px; font-size: 30px; }
+  .calc-left .calc-intro {
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin: 0 0 28px;
+  }
+  .calc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 18px; }
+  .calc-field { display: flex; flex-direction: column; gap: 6px; }
+  .calc-field label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-faint);
+  }
+  .calc-field input {
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--cream);
+    border: 1px solid var(--line-strong);
+    border-radius: var(--radius-btn);
+    padding: 11px 12px;
+    width: 100%;
+  }
+  .calc-field input:focus {
+    outline: none;
+    border-color: var(--forest);
+    box-shadow: 0 0 0 3px rgba(14, 91, 67, 0.12);
+  }
+  .calc-left .btn-primary {
+    border: none;
+    cursor: pointer;
+    font-family: var(--sans);
+    margin-top: 24px;
+    padding: 14px 30px;
+  }
+  .calc-right {
+    background: var(--forest-deep);
+    color: var(--cream);
+    padding: 44px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .calc-result-label {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+  .calc-result {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--cream);
+  }
+  .calc-result strong { color: var(--gold); font-weight: 500; white-space: nowrap; }
+  .calc-note {
+    font-size: 12px;
+    font-style: italic;
+    color: rgba(245, 241, 232, 0.55);
+    margin: 22px 0 0;
+    line-height: 1.55;
+  }
   .fit { padding: 100px 32px 0; }
   .fit-card {
     max-width: 900px;
@@ -1507,6 +1805,7 @@
     .stats .stat:first-child { border-top: none; padding-top: 0; }
     .stats .stat:last-child { padding-bottom: 0; }
     .foot-top { grid-template-columns: 1fr; }
+    .calc-card { grid-template-columns: 1fr; }
     .fit-card { padding: 40px 32px; }
     .fit-facts { grid-template-columns: 1fr; gap: 20px; }
     .aplicar-grid { grid-template-columns: 1fr; gap: 36px; }
@@ -1546,9 +1845,16 @@
     .contact-form .btn-primary { width: 100%; }
     .fit { padding: 64px 20px 0; }
     .fit-card { padding: 32px 24px; }
+    .calc { padding: 64px 20px 0; }
+    .calc-left, .calc-right { padding: 30px 24px; }
+    .calc-fields { grid-template-columns: 1fr; }
+    .calc-left h2 { font-size: 26px; }
     .operations-grid, .trust-grid { grid-template-columns: 1fr; gap: 18px; }
-    .dash-grid { grid-template-columns: 1fr; gap: 16px; }
+    .dash-grid { grid-template-columns: 1fr; gap: 1px; }
     .dash { padding: 64px 20px; }
+    .dash-topbar { padding: 12px 16px; }
+    .dash-tile { padding: 22px 20px; }
+    .dash-value { font-size: 36px; }
     h2 { font-size: 27px; }
     .service-cells { grid-template-columns: 1fr; }
     .service-cell { padding: 24px; }
@@ -1573,11 +1879,11 @@
       <a href="#" data-tab onclick="showTab('inicio'); return false;">Inicio</a>
       <a href="#que-hacemos">Qué hacemos</a>
       <a href="#" data-tab onclick="showTab('startups'); return false;">Startups</a>
-      <a href="blog.html">Blog</a>
       <a href="#contacto">Contáctanos</a>
     </nav>
 
     <div class="tab-switch" role="tablist" aria-label="Sección">
+      <a href="blog.html" class="tab-link">Blog</a>
       <button id="tab-aplicar" role="tab" aria-selected="false" onclick="showTab('aplicar')">Aplicar</button>
     </div>
   </div>
@@ -1715,44 +2021,83 @@
     <div class="container">
       <div class="eyebrow">El expediente, en cifras</div>
       <h2>Hablamos el idioma de los financiadores.</h2>
-      <div class="dash-grid" id="dash-grid">
-        <div class="dash-tile">
-          <div class="dash-label">EBITDA · evolución</div>
-          <div class="dash-value">1,8 M€</div>
-          <div class="bars" aria-hidden="true">
-            <div class="bar" style="height: 38%"></div>
-            <div class="bar" style="height: 52%"></div>
-            <div class="bar" style="height: 47%"></div>
-            <div class="bar" style="height: 71%"></div>
-            <div class="bar" style="height: 100%"></div>
+      <div class="dash-panel">
+        <div class="dash-topbar">
+          <div class="dash-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+          <span class="dash-topbar-title">SXT · Expediente tipo</span>
+          <span class="dash-topbar-live"><span class="op-live-dot"></span>Datos ilustrativos</span>
+        </div>
+        <div class="dash-grid" id="dash-grid">
+          <div class="dash-tile">
+            <div class="dash-tile-head">
+              <div class="dash-label">EBITDA · evolución</div>
+              <span class="chip up">+28 % vs 2025</span>
+            </div>
+            <div class="dash-value" data-count="1.8" data-decimals="1" data-suffix=" M€">0,0 M€</div>
+            <div class="chart-area" aria-hidden="true">
+              <div class="bars">
+                <div class="bar" style="height: 38%"></div>
+                <div class="bar" style="height: 52%"></div>
+                <div class="bar" style="height: 47%"></div>
+                <div class="bar" style="height: 71%"></div>
+                <div class="bar" style="height: 100%"></div>
+              </div>
+            </div>
+            <div class="bar-labels" aria-hidden="true"><span>22</span><span>23</span><span>24</span><span>25</span><span>26</span></div>
           </div>
-          <div class="dash-sub">Último ejercicio</div>
-        </div>
-        <div class="dash-tile">
-          <div class="dash-label">Apalancamiento · DFN / EBITDA</div>
-          <div class="dash-value">2,4x</div>
-          <div class="lev-track" aria-hidden="true">
-            <div class="lev-fill"></div>
-            <div class="lev-marker"></div>
+          <div class="dash-tile">
+            <div class="dash-tile-head">
+              <div class="dash-label">Apalancamiento · DFN / EBITDA</div>
+              <span class="chip up">Estable</span>
+            </div>
+            <div class="dash-value" data-count="2.4" data-decimals="1" data-suffix="x">0,0x</div>
+            <div class="lev-wrap" aria-hidden="true">
+              <div class="lev-track">
+                <div class="lev-fill"></div>
+                <div class="lev-marker"></div>
+                <div class="lev-tag">3,0x límite</div>
+              </div>
+              <div class="lev-scale"><span>0x</span><span>1x</span><span>2x</span><span>3x</span><span>4x</span></div>
+            </div>
+            <div class="dash-sub">Dentro de la zona de confort bancaria</div>
           </div>
-          <div class="dash-sub">Zona de confort &lt; 3,0x</div>
-        </div>
-        <div class="dash-tile">
-          <div class="dash-label">DSCR · cobertura del servicio de deuda</div>
-          <div class="dash-value">1,7x</div>
-          <svg class="donut" width="64" height="64" viewBox="0 0 64 64" aria-hidden="true">
-            <circle class="donut-track" cx="32" cy="32" r="26" fill="none" stroke-width="7"/>
-            <circle class="donut-fill" cx="32" cy="32" r="26" fill="none" stroke-width="7" stroke-linecap="round" transform="rotate(-90 32 32)"/>
-          </svg>
-          <div class="dash-sub">Mínimo bancario ~1,2x</div>
-        </div>
-        <div class="dash-tile">
-          <div class="dash-label">Coste medio de la deuda</div>
-          <div class="dash-value">5,8 %</div>
-          <svg class="spark" width="100%" height="48" viewBox="0 0 120 48" preserveAspectRatio="none" aria-hidden="true">
-            <polyline points="0,10 20,15 40,13 60,24 80,29 100,36 120,40" fill="none" stroke="#c0871a" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/>
-          </svg>
-          <div class="dash-sub">−1,2 pp tras reestructurar</div>
+          <div class="dash-tile">
+            <div class="dash-tile-head">
+              <div class="dash-label">DSCR · cobertura del servicio de deuda</div>
+            </div>
+            <div class="dash-value" data-count="1.7" data-decimals="1" data-suffix="x">0,0x</div>
+            <div class="donut-wrap" aria-hidden="true">
+              <svg class="donut" width="88" height="88" viewBox="0 0 76 76">
+                <circle class="donut-track" cx="38" cy="38" r="34" fill="none" stroke-width="8"/>
+                <circle class="donut-fill" cx="38" cy="38" r="34" fill="none" stroke-width="8" stroke-linecap="round" transform="rotate(-90 38 38)"/>
+              </svg>
+              <div class="donut-center"><strong>+42 %</strong><small>vs mínimo</small></div>
+            </div>
+            <div class="dash-sub">Mínimo bancario ~1,2x</div>
+          </div>
+          <div class="dash-tile">
+            <div class="dash-tile-head">
+              <div class="dash-label">Coste medio de la deuda</div>
+              <span class="chip gold">−1,2 pp</span>
+            </div>
+            <div class="dash-value" data-count="5.8" data-decimals="1" data-suffix=" %">0,0 %</div>
+            <div class="spark-wrap" aria-hidden="true">
+              <span class="spark-from">7,0 %</span>
+              <svg class="spark" height="64" viewBox="0 0 120 56" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="spark-grad" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#e6b95c" stop-opacity="0.3"/>
+                    <stop offset="100%" stop-color="#e6b95c" stop-opacity="0"/>
+                  </linearGradient>
+                </defs>
+                <path class="spark-area" d="M0,14 L20,19 L40,17 L60,28 L80,33 L100,40 L114,43 L114,56 L0,56 Z" fill="url(#spark-grad)"/>
+                <polyline class="spark-line" points="0,14 20,19 40,17 60,28 80,33 100,40 114,43" fill="none" stroke="#e6b95c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" pathLength="100"/>
+                <circle class="spark-dot" cx="114" cy="43" r="3.5" fill="#e6b95c"/>
+              </svg>
+              <span class="spark-to">5,8 %</span>
+            </div>
+            <div class="dash-sub">Tras reestructurar la deuda viva</div>
+          </div>
         </div>
       </div>
       <p class="dash-note">Métricas ilustrativas de un expediente tipo — las que mira cualquier comité de riesgos, y las que dejamos ordenadas antes de presentar tu operación.</p>
@@ -1957,6 +2302,19 @@
         </div>
         <p class="more-note">…y las demás las seleccionamos según lo que necesita tu operación.</p>
       </div>
+
+      <!-- MAPA DE FINANCIACIÓN -->
+      <div class="fin-map">
+        <div class="fin-map-label">Mapa de financiación</div>
+        <p class="fin-map-q">¿Qué tipo de financiación necesita tu empresa?</p>
+        <div class="fin-chips" id="fin-chips" role="tablist" aria-label="Instrumentos de financiación"></div>
+        <div class="fin-detail" id="fin-detail" role="tabpanel">
+          <h4 id="fd-title"></h4>
+          <p class="fd-desc" id="fd-desc"></p>
+          <p class="fd-when" id="fd-when"></p>
+          <div class="fd-meta" id="fd-meta"></div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -2025,6 +2383,47 @@
       <p class="cta-q">¿Te queda alguna duda?</p>
       <a href="#contacto" class="btn-primary">Agenda una llamada de 30 minutos</a>
     </div>
+    </div>
+  </section>
+
+  <!-- CALCULADORA DE CAPACIDAD -->
+  <section id="calculadora" class="calc">
+    <div class="calc-card">
+      <div class="calc-left">
+        <div class="eyebrow">Calculadora</div>
+        <h2>¿Cuánta financiación podría conseguir tu empresa?</h2>
+        <p class="calc-intro">Introduce tus cifras anuales y obtén una horquilla orientativa en segundos. No guardamos ningún dato.</p>
+        <form id="calc-form" novalidate>
+          <div class="calc-fields">
+            <div class="calc-field">
+              <label for="calc-fact">Facturación anual (€)</label>
+              <input type="number" id="calc-fact" min="0" step="10000" placeholder="1.200.000">
+            </div>
+            <div class="calc-field">
+              <label for="calc-ebitda">EBITDA (€)</label>
+              <input type="number" id="calc-ebitda" step="10000" placeholder="180.000">
+            </div>
+            <div class="calc-field">
+              <label for="calc-beneficio">Beneficio neto (€)</label>
+              <input type="number" id="calc-beneficio" step="10000" placeholder="90.000">
+            </div>
+            <div class="calc-field">
+              <label for="calc-antig">Antigüedad (años)</label>
+              <input type="number" id="calc-antig" min="0" step="1" placeholder="6">
+            </div>
+            <div class="calc-field">
+              <label for="calc-deuda">Deuda financiera actual (€)</label>
+              <input type="number" id="calc-deuda" min="0" step="10000" placeholder="150.000">
+            </div>
+          </div>
+          <button type="submit" class="btn-primary">Calcular capacidad</button>
+        </form>
+      </div>
+      <div class="calc-right">
+        <div class="calc-result-label">Capacidad estimada</div>
+        <div class="calc-result" id="calc-result">Introduce tus cifras y te damos una horquilla orientativa al momento.</div>
+        <p class="calc-note">Estimación orientativa basada en ratios habituales de mercado. La capacidad real depende del análisis completo de la operación — exactamente lo que hace el diagnóstico.</p>
+      </div>
     </div>
   </section>
 
@@ -2498,23 +2897,139 @@
     update();
   })();
 
-  // Dashboard: animar al entrar en pantalla
+  // Dashboard: animar al entrar en pantalla (gráficos + contadores)
   (function () {
     var grid = document.getElementById('dash-grid');
     if (!grid) return;
-    if ('IntersectionObserver' in window) {
-      var io = new IntersectionObserver(function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            grid.classList.add('in-view');
-            io.disconnect();
-          }
-        });
-      }, { threshold: 0.3 });
-      io.observe(grid);
-    } else {
-      grid.classList.add('in-view');
+
+    function animateCount(el) {
+      var target = parseFloat(el.getAttribute('data-count'));
+      var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
+      var suffix = el.getAttribute('data-suffix') || '';
+      var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (reduced) {
+        el.textContent = target.toFixed(decimals).replace('.', ',') + suffix;
+        return;
+      }
+      var duration = 1400;
+      var start = null;
+      function frame(ts) {
+        if (!start) start = ts;
+        var p = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        el.textContent = (target * eased).toFixed(decimals).replace('.', ',') + suffix;
+        if (p < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
     }
+
+    function activate() {
+      grid.classList.add('in-view');
+      grid.querySelectorAll('[data-count]').forEach(animateCount);
+    }
+
+    var activated = false;
+    function run() {
+      if (activated) return;
+      activated = true;
+      activate();
+      document.removeEventListener('scroll', checkVisible, true);
+    }
+    function checkVisible() {
+      if (activated) return;
+      var rect = grid.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 40 && rect.bottom > 0) run();
+    }
+    document.addEventListener('scroll', checkVisible, true);
+    checkVisible();
+    // red de seguridad: animar pasados 2,5 s aunque no se detecte el scroll
+    setTimeout(run, 2500);
+  })();
+
+  // Mapa de financiación interactivo
+  (function () {
+    var chipsBox = document.getElementById('fin-chips');
+    if (!chipsBox) return;
+    var DATA = [
+      { n: 'ICO', d: 'Líneas públicas que se firman a través de tu banco: liquidez e inversión con tipos limitados por el propio ICO y plazos largos con carencia.', w: 'Tu perfil es bancable y quieres abaratar coste y alargar plazo.', m: 'Hasta 10+ años · Tipo limitado · Vía banco' },
+      { n: 'SGR', d: 'Una sociedad de garantía recíproca avala tu operación ante el banco: la garantía la pone la SGR, no tu patrimonio personal.', w: 'La garantía es lo que frena tu operación, o quieres evitar el aval personal.', m: 'Coste ~0,5–1,25 %/año · Mejora tipo y plazo' },
+      { n: 'Renting', d: 'Uso de vehículos o equipos por una cuota que incluye mantenimiento y servicios, sin inversión inicial y fuera de balance.', w: 'Necesitas renovar equipamiento sin inmovilizar caja ni endeudar el balance.', m: 'Cuota todo incluido · Sin inversión inicial' },
+      { n: 'Leasing', d: 'Financiación de un activo con opción de compra al final: el activo es la garantía y la cuota tiene ventajas fiscales.', w: 'Vas a comprar maquinaria, vehículos o inmuebles de uso productivo.', m: 'El activo garantiza · Amortización acelerada' },
+      { n: 'Factoring', d: 'Anticipas el cobro de tus facturas de clientes; en la modalidad sin recurso, el riesgo de impago se traslada al financiador.', w: 'Cobras a 60–120 días y necesitas convertir cartera en caja.', m: 'Caja inmediata · Posible sin recurso' },
+      { n: 'Confirming', d: 'El financiador gestiona tus pagos a proveedores, que pueden anticipar el cobro. Tú ordenas tu tesorería y ganas músculo negociador.', w: 'Quieres reforzar la relación con proveedores y ordenar los pagos.', m: 'Mejora negociación · Ordena tesorería' },
+      { n: 'Venture Debt', d: 'Deuda para startups respaldadas por inversores, normalmente con un pequeño componente de warrants: alarga el runway sin ceder apenas cap table.', w: 'Estás entre rondas con métricas creciendo y quieres llegar más lejos antes de levantar.', m: 'Junto a rondas · Dilución mínima' },
+      { n: 'Fondos privados', d: 'Fondos de deuda que prestan directamente, sin banco: más rápidos y flexibles en estructura, a cambio de un tipo superior.', w: 'El importe, el plazo o la urgencia no encajan en la banca tradicional.', m: 'Semanas, no meses · Estructura a medida' },
+      { n: 'Family Offices', d: 'Capital privado paciente que entra como deuda, equity o fórmulas mixtas, con relación directa y criterios propios.', w: 'Tu operación es singular y se explica mejor de tú a tú que ante un comité.', m: 'Capital paciente · Deuda o equity' },
+      { n: 'Bancos', d: 'La financiación más barata disponible y la base de casi cualquier estructura; exige historial, cuentas ordenadas y garantías.', w: 'Siempre que el perfil lo permita: el resto de piezas se construye alrededor.', m: 'El coste más bajo · Exige preparación' },
+      { n: 'ENISA', d: 'Préstamos participativos públicos sin aval ni garantías personales, que además refuerzan los fondos propios a ojos del resto de financiadores.', w: 'Empresa joven o en crecimiento que quiere financiarse sin diluirse.', m: 'Sin aval · Sin dilución · Largo plazo' },
+      { n: 'CDTI', d: 'Financiación pública para proyectos de I+D e innovación tecnológica, con tramos no reembolsables y tipos bonificados.', w: 'Tu proyecto tiene componente tecnológico o de innovación real.', m: 'Tramo no reembolsable · Para I+D' }
+    ];
+    function select(i) {
+      chipsBox.querySelectorAll('.fin-chip').forEach(function (c, j) {
+        c.classList.toggle('active', j === i);
+        c.setAttribute('aria-selected', j === i);
+      });
+      document.getElementById('fd-title').textContent = DATA[i].n;
+      document.getElementById('fd-desc').textContent = DATA[i].d;
+      document.getElementById('fd-when').innerHTML = '<strong>Cuándo usarlo:</strong> ' + DATA[i].w;
+      document.getElementById('fd-meta').textContent = DATA[i].m;
+    }
+    DATA.forEach(function (item, i) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'fin-chip';
+      b.setAttribute('role', 'tab');
+      b.textContent = item.n;
+      b.addEventListener('click', function () { select(i); });
+      chipsBox.appendChild(b);
+    });
+    select(0);
+  })();
+
+  // Calculadora de capacidad de financiación
+  (function () {
+    var form = document.getElementById('calc-form');
+    if (!form) return;
+    var out = document.getElementById('calc-result');
+    var fmt = function (n) { return Math.round(n).toLocaleString('es-ES') + ' €'; };
+    var round25 = function (n) { return Math.round(n / 25000) * 25000; };
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fact = Number(document.getElementById('calc-fact').value) || 0;
+      var ebitda = Number(document.getElementById('calc-ebitda').value) || 0;
+      var beneficio = Number(document.getElementById('calc-beneficio').value) || 0;
+      var antig = Number(document.getElementById('calc-antig').value) || 0;
+      var deuda = Number(document.getElementById('calc-deuda').value) || 0;
+
+      if (fact <= 0 || document.getElementById('calc-ebitda').value === '') {
+        out.innerHTML = 'Necesitamos al menos la facturación y el EBITDA para estimar la capacidad.';
+        return;
+      }
+      if (ebitda <= 0) {
+        out.innerHTML = 'Con EBITDA negativo, la vía no suele ser deuda tradicional — pero hay alternativas: participativos, ayudas públicas o capital. <strong>Hablemos.</strong>';
+        return;
+      }
+      var low = 2.5 * ebitda - deuda;
+      var high = 3.5 * ebitda - deuda;
+      var factor = 1;
+      if (antig < 3) factor *= 0.6;
+      if (beneficio <= 0) factor *= 0.75;
+      low = Math.max(0, low * factor);
+      high = Math.max(0, high * factor);
+      high = Math.min(high, fact * 0.35);
+      low = Math.min(low, high);
+      low = round25(low); high = round25(high);
+
+      if (high < 25000) {
+        out.innerHTML = 'Con estas cifras, el balance ya va cargado de deuda para los ratios habituales. Es justo el escenario donde una reestructuración aporta más — <strong>hablemos.</strong>';
+        return;
+      }
+      if (low === high || low < 25000) {
+        out.innerHTML = 'Tu empresa podría optar a en torno a <strong>' + fmt(high) + '</strong> de financiación.';
+      } else {
+        out.innerHTML = 'Tu empresa podría optar a entre <strong>' + fmt(low) + '</strong> y <strong>' + fmt(high) + '</strong> de financiación.';
+      }
+    });
   })();
 
   // FAQ accordion
