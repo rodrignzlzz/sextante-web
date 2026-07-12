@@ -1912,7 +1912,7 @@
     <nav class="desktop-nav">
       <a href="#" data-tab onclick="showTab('inicio'); return false;">Inicio</a>
       <a href="#que-hacemos">Qué hacemos</a>
-      <a href="#" data-tab onclick="showTab('startups'); return false;">Startups</a>
+      <a href="#startups" data-tab onclick="showTab('startups'); return false;">Startups</a>
       <a href="#contacto">Contáctanos</a>
     </nav>
 
@@ -2286,7 +2286,7 @@
           inversores cuando lo que toca es equity. Hemos preparado una página
           entera sobre cómo financiar tu crecimiento sin regalar tu compañía.
         </p>
-        <a href="#" class="text-cta" data-tab onclick="showTab('startups'); return false;">Ver cómo ayudamos a startups →</a>
+        <a href="#startups" class="text-cta" data-tab onclick="showTab('startups'); return false;">Ver cómo ayudamos a startups →</a>
       </div>
     </div>
   </section>
@@ -2384,7 +2384,7 @@
           ¿Cómo cobráis por vuestro trabajo?
           <svg class="chev" width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 6L8 11L13 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
         </button>
-        <div class="faq-answer"><div class="faq-a">Nos quedamos una pequeña comisión sobre la financiación conseguida. Por lo general, el ahorro que generamos la compensa en menos de 24 meses — así que en una deuda a 6 o 7 años, todo el ahorro restante se lo queda íntegro el cliente.</div></div>
+        <div class="faq-answer"><div class="faq-a">Como se trabaja en debt advisory: un retainer inicial acotado, que cubre el diagnóstico y la preparación del expediente, más un success fee sobre el importe efectivamente cerrado, con porcentaje escalado según el tamaño de la operación. Solo cobramos del cliente — nunca comisiones de financiadores — y conoces ambos números antes de firmar el mandato. El ahorro que generamos suele compensar el coste total en menos de 24 meses.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-toggle" aria-expanded="false">
@@ -2775,7 +2775,7 @@
           <a href="#proceso">Cómo trabajamos</a>
           <a href="#sectores">Operaciones</a>
           <a href="#herramientas">Herramientas</a>
-          <a href="#" data-tab onclick="showTab('startups'); return false;">Startups</a>
+          <a href="#startups" data-tab onclick="showTab('startups'); return false;">Startups</a>
           <a href="blog.html">Blog</a>
         </div>
         <div class="foot-col">
@@ -2809,8 +2809,18 @@
         btn.setAttribute('aria-selected', active);
       }
     });
+    // URL compartible por pestaña (sin provocar salto de scroll)
+    if (history.replaceState) {
+      history.replaceState(null, '', tab === 'inicio' ? location.pathname : '#' + tab);
+    }
     window.scrollTo({ top: 0 });
   }
+
+  // Abrir directamente la pestaña indicada en la URL (#startups, #aplicar)
+  (function () {
+    var h = location.hash.replace('#', '');
+    if (h === 'startups' || h === 'aplicar') showTab(h);
+  })();
 
   /* ==========================================================
      FORMULARIO DE CONTACTO — envío con FormSubmit (formsubmit.co)
@@ -3000,7 +3010,13 @@
       { n: 'Family Offices', nEn: 'Family Offices', d: 'Capital privado paciente que entra como deuda, equity o fórmulas mixtas, con relación directa y criterios propios.', dEn: 'Patient private capital that comes in as debt, equity or hybrids, with a direct relationship and its own criteria.', w: 'Tu operación es singular y se explica mejor de tú a tú que ante un comité.', wEn: 'Your deal is singular and is better explained face to face than before a committee.', m: 'Capital paciente · Deuda o equity', mEn: 'Patient capital · Debt or equity' },
       { n: 'Bancos', nEn: 'Banks', d: 'La financiación más barata disponible y la base de casi cualquier estructura; exige historial, cuentas ordenadas y garantías.', dEn: 'The cheapest financing available and the base of almost any structure; requires track record, tidy accounts and guarantees.', w: 'Siempre que el perfil lo permita: el resto de piezas se construye alrededor.', wEn: 'Whenever your profile allows it: the other pieces are built around it.', m: 'El coste más bajo · Exige preparación', mEn: 'Lowest cost · Requires preparation' },
       { n: 'ENISA', nEn: 'ENISA', d: 'Préstamos participativos públicos sin aval ni garantías personales, que además refuerzan los fondos propios a ojos del resto de financiadores.', dEn: 'Public participative loans with no personal guarantees, which also strengthen equity in the eyes of other financiers.', w: 'Empresa joven o en crecimiento que quiere financiarse sin diluirse.', wEn: 'A young or growing company that wants financing without dilution.', m: 'Sin aval · Sin dilución · Largo plazo', mEn: 'No guarantees · No dilution · Long term' },
-      { n: 'CDTI', nEn: 'CDTI', d: 'Financiación pública para proyectos de I+D e innovación tecnológica, con tramos no reembolsables y tipos bonificados.', dEn: 'Public financing for R&D and tech innovation projects, with non-refundable tranches and subsidised rates.', w: 'Tu proyecto tiene componente tecnológico o de innovación real.', wEn: 'Your project has a real technology or innovation component.', m: 'Tramo no reembolsable · Para I+D', mEn: 'Non-refundable tranche · For R&D' }
+      { n: 'CDTI', nEn: 'CDTI', d: 'Financiación pública para proyectos de I+D e innovación tecnológica — Neotec, PID, Cervera — con tramos no reembolsables y tipos bonificados.', dEn: 'Public financing for R&D and tech innovation projects — Neotec, PID, Cervera — with non-refundable tranches and subsidised rates.', w: 'Tu proyecto tiene componente tecnológico o de innovación real.', wEn: 'Your project has a real technology or innovation component.', m: 'Tramo no reembolsable · Para I+D', mEn: 'Non-refundable tranche · For R&D' },
+      { n: 'Sale & leaseback', nEn: 'Sale & leaseback', d: 'Vendes un activo — nave, equipos — y lo sigues usando en alquiler: liberas el capital inmovilizado sin perder la operativa.', dEn: 'You sell an asset — premises, equipment — and keep using it on lease: you free up trapped capital without losing operations.', w: 'Tienes activos valiosos en balance y necesitas caja para crecer.', wEn: 'You hold valuable assets on the balance sheet and need cash to grow.', m: 'Libera capital · Mantienes el uso', mEn: 'Frees capital · You keep using it' },
+      { n: 'Revenue-based', nEn: 'Revenue-based', d: 'Financiación que se devuelve como porcentaje de tus ingresos mensuales: la cuota respira con el negocio y no hay dilución.', dEn: 'Financing repaid as a percentage of your monthly revenue: the instalment breathes with the business and there is no dilution.', w: 'Ingresos recurrentes (SaaS, ecommerce, suscripción) y quieres evitar equity.', wEn: 'Recurring revenue (SaaS, ecommerce, subscriptions) and you want to avoid equity.', m: 'Cuota flexible · Sin dilución', mEn: 'Flexible instalment · No dilution' },
+      { n: 'Avales técnicos', nEn: 'Technical guarantees', d: 'Avales ante terceros — licitaciones, anticipos, garantías de obra — que bien estructurados no consumen tus líneas bancarias.', dEn: 'Guarantees before third parties — tenders, advances, performance bonds — which, well structured, do not consume your bank lines.', w: 'Contratas con administraciones o trabajas por hitos y certificaciones.', wEn: 'You contract with public bodies or work on milestones and certifications.', m: 'Licitaciones · No consume CIRBE', mEn: 'Tenders · Keeps bank lines free' },
+      { n: 'CESCE', nEn: 'CESCE', d: 'Seguro de crédito y garantías a la exportación por cuenta del Estado: cubre el impago internacional y desbloquea el circulante exportador.', dEn: 'State-backed export credit insurance and guarantees: covers international default and unlocks exporter working capital.', w: 'Vendes fuera y el riesgo de cobro frena tu financiación.', wEn: 'You sell abroad and collection risk is blocking your financing.', m: 'Cobertura export · Cuenta del Estado', mEn: 'Export cover · State account' },
+      { n: 'COFIDES', nEn: 'COFIDES', d: 'Financiación pública para la internacionalización: deuda o capital para filiales, plantas o adquisiciones fuera de España.', dEn: 'Public financing for internationalisation: debt or equity for subsidiaries, plants or acquisitions outside Spain.', w: 'Vas a invertir o implantarte en el exterior.', wEn: 'You are investing or setting up abroad.', m: 'Internacionalización · Deuda o capital', mEn: 'Internationalisation · Debt or equity' },
+      { n: 'FEI / BEI', nEn: 'EIF / EIB', d: 'Garantías y fondos europeos (InvestEU) canalizados a través de bancos y fondos locales: mejoran precio y acceso, pero hay que saber pedirlos.', dEn: 'European guarantees and funds (InvestEU) channelled through local banks and funds: they improve price and access, but you need to know how to ask.', w: 'Pyme innovadora o sostenible que puede acogerse a líneas garantizadas.', wEn: 'An innovative or sustainable SME eligible for guaranteed lines.', m: 'Garantía europea · Vía intermediarios', mEn: 'European guarantee · Via intermediaries' }
     ];
     var currentIdx = 0;
     function isEn() { return window.SITE_LANG === 'en'; }
@@ -3214,7 +3230,7 @@
       'Preguntas frecuentes': 'FAQ',
       'Lo que nos preguntan siempre.': 'What we always get asked.',
       '¿Cómo cobráis por vuestro trabajo?': 'How do you charge for your work?',
-      'Nos quedamos una pequeña comisión sobre la financiación conseguida. Por lo general, el ahorro que generamos la compensa en menos de 24 meses — así que en una deuda a 6 o 7 años, todo el ahorro restante se lo queda íntegro el cliente.': 'We take a small fee on the financing obtained. The savings we generate typically offset it in under 24 months — so on a 6-7 year loan, all the remaining savings stay entirely with the client.',
+      'Como se trabaja en debt advisory: un retainer inicial acotado, que cubre el diagnóstico y la preparación del expediente, más un success fee sobre el importe efectivamente cerrado, con porcentaje escalado según el tamaño de la operación. Solo cobramos del cliente — nunca comisiones de financiadores — y conoces ambos números antes de firmar el mandato. El ahorro que generamos suele compensar el coste total en menos de 24 meses.': 'The standard debt advisory structure: a capped initial retainer covering the diagnosis and file preparation, plus a success fee on the amount actually closed, on a sliding scale by deal size. We are paid only by the client — never commissions from financiers — and you know both numbers before signing the mandate. The savings we generate typically offset the total cost in under 24 months.',
       '¿Qué tamaño de operación trabajáis?': 'What deal sizes do you work on?',
       'Analizamos cada caso de forma individual. En el diagnóstico inicial te decimos con franqueza si tu operación encaja con lo que hacemos.': 'We look at every case individually. In the initial diagnosis we tell you frankly whether your deal fits what we do.',
       '¿Cuánto tarda un proceso típico?': 'How long does a typical process take?',
